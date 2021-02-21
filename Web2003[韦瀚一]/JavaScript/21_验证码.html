@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21_验证码</title>
+</head>
+
+<body>
+    <script src="js/Verification_code.js"></script>
+    <script>
+        var a = "abcdefghijklmnopqrstuvwxyz";
+        var b = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var num = "0123456789";
+        var yzm = "";
+        // 方法一
+        console.log(numUpperLower());
+        function fn1(i, f) {
+            var lnu = [];
+            for (var l = 0; l < f; l++) {
+                var lnu = [];
+                for (var k = 0; k < i; k++) {
+                    lnu += numUpperLower().charAt(parseInt(Math.random() * 61));
+                }
+                console.log(lnu);
+            }
+            return '';
+        }
+        console.log(fn1(4, 2));
+
+        //方法二
+        /* function fn1() {
+            return a.charAt(parseInt(Math.random() * 26));
+        }
+        function fn2() {
+            return b.charAt(parseInt(Math.random() * 26));
+        }
+        function fn3() {
+            return num.charAt(parseInt(Math.random() * 10));
+        }
+        for (var i = 0; i < 4; i++) {
+            var n = parseInt(Math.random() * 3);
+            switch (n) {
+                case 0:
+                    yzm += fn1();
+                    break;
+                case 1:
+                    yzm += fn2();
+                    break;
+                case 2:
+                    yzm += fn3();
+                    break;
+            }
+        }
+        console.log(yzm); */
+    </script>
+</body>
+
+</html>

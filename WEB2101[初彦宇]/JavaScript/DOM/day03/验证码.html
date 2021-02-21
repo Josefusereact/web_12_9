@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+</head>
+
+<body>
+
+    <script>
+        function setCode() {
+            var verification = [];
+            for (var u = 0; u <= 9; u++) {
+                verification.push(u);
+            }
+            for (var u = 'A'.charCodeAt(); u <= 'Z'.charCodeAt(); u++) {
+                verification.push(String.fromCharCode(u));
+                verification.push(String.fromCharCode(u).toLowerCase());
+            }
+            return verification;
+        }
+        // push正常 0-9 A-Z a-z
+        // console.log(setCode());
+
+        function getCode(len) {
+            var authCode = '';
+            for (var n = 0; n < len; n++) {
+                authCode += setCode()[parseInt(Math.random() * 61 + 1)];
+            }
+            return authCode;
+        }
+        // authcode生成正常
+        // console.log(getCode(4));
+
+        while (true) {
+            // enter != getCode(4) ? enter : '输入正确';
+            var k = getCode(4);
+            var enter = prompt('enter authCode: ' + k);
+            if (enter.toUpperCase() != k.toUpperCase()) {
+                alert('验证码错误');
+            }
+            else {
+                alert('验证码正确');
+                // document.write('验证码正确');
+                break
+            }
+        }
+
+    </script>
+</body>
+
+</html>

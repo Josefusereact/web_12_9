@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+
+<body>
+    <script>
+        // 男孩们的父对象
+        function Person(name, age, word) {
+            this.name = name;
+            this.age = age;
+            this.word = word;
+        }
+        // 代码重用, 节约内存
+        Person.prototype.say = function () {
+            console.log(this.name + ' ' + this.age + ' ' + this.word);
+        }
+
+        function Boy() {
+            Person.apply(this, arguments);
+            // 可以在初始化对象的时候让他说话
+            // Person.prototype.say.apply(this);
+        }
+        // 直接更改好小子指向的原型对象
+        // Boy.prototype = Person.prototype;
+        Object.setPrototypeOf(Boy.prototype, Person.prototype);
+
+        function Fatboy() {
+            Person.apply(this, arguments);
+        }
+        // 直接更改胖小子指向的原型对象
+        // Fatboy.prototype = Person.prototype;
+        Object.setPrototypeOf(Fatboy.prototype, Person.prototype);
+
+        // 实例化好小子
+        var goodBoy = new Boy('goodBoy', 16, '芜湖...');
+        // 实例化胖小子
+        var fatBoy = new Fatboy('FatBoy', 17, '嗝儿...');
+
+        // 输出好小子信息
+        console.log(goodBoy);
+        // 好小子学龙叫了一声
+        goodBoy.say();
+
+        // 输出胖小子信息
+        console.log(fatBoy);
+        // 胖小子打了个嗝
+        fatBoy.say();
+
+        // 查看好小子类型
+        console.log('好小子是 Object？ ' + Object.prototype.isPrototypeOf(goodBoy));
+        console.log('好小子是 Object？ ' + goodBoy.toString().slice(8, -1));
+        console.log('好小子是 Object？ ' + (goodBoy instanceof Boy));
+        console.log('好小子是 Object？ ' + Object.prototype.toString.call(goodBoy));
+        console.log('好小子是 Array？ ' + Array.isArray(goodBoy));
+
+        // 查看胖小子类型
+        console.log('胖小子是 Object？ ' + Object.prototype.isPrototypeOf(Fatboy));
+
+    </script>
+
+</body>
+
+</html>

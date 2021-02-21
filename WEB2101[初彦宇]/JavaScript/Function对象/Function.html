@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 54, 146, 756, 88, 34, 6, 7];
+        var cmp = new Function('a', 'b', 'return a-b');
+        arr.sort(cmp);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

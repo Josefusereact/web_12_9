@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day04</title>
+    <style>
+        * {
+            /* margin: 0; */
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f1423;
+        }
+
+        table {
+            background-color: #353332;
+        }
+
+        .outline1 {
+            outline-style: double;
+            outline-width: 3px;
+            outline-color: brown;
+        }
+
+        .outline2 {
+            outline-style: solid;
+            outline-width: 3px;
+            outline-color: brown;
+        }
+
+        .outline3 {
+            outline-style: dotted;
+            outline-width: 3px;
+            outline-color: brown;
+        }
+
+        .outline4 {
+            outline-style: dashed;
+            outline-width: 3px;
+            outline-color: brown;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            list-style: none inside url("../day03/img/icon-index_20aa3cd.png");
+            background-color: #0f1423;
+            color: rgb(255, 255, 255);
+        }
+
+        .list1 .mark1 {
+            list-style: disc inside;
+            border: 3px solid #ff6700;
+        }
+
+        .list2 .mark2 {
+            list-style: circle inside;
+            border: 3px dotted blue;
+        }
+
+        .list3 .mark3 {
+            list-style: square inside;
+            border: 4px double #ffca28;
+        }
+
+        .list4 .mark4 {
+            list-style: decimal inside;
+            border: 3px dashed #008c8c;
+        }
+
+        .bg {
+            width: 135px;
+            height: 45px;
+            color: white;
+            background-image: url(../day03/img/logo_news_276_88_1f9876a.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .tshadow {
+            color: azure;
+            text-shadow: 3px 3px 3px #ff6700;
+        }
+
+        .bshadow {
+            width: 200px;
+            height: 200px;
+            background-color: #ff6700;
+            box-shadow: 53px 53px 44px 4px rgba(255, 255, 255, .7);
+            border-radius: 110px 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <table align="center">
+        <thead>
+            <tr>
+                <th class="outline1">
+                    <input type="text" name="" id="" value="">
+                </th>
+                <th class="outline2">
+                    <input type="text" name="" id="" value="">
+                </th>
+                <th class="outline3">
+                    <input type="text" name="" id="" value="">
+                </th>
+                <th class="outline4">
+                    <input type="text" name="" id="" value="">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul class="list1">
+                        <li class="mark1">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list2">
+                        <li class="mark2">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list3">
+                        <li class="mark3">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list4">
+                        <li class="mark4">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="4">
+                    <div class="bg">
+                        tenetur
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span class="tshadow">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                </td>
+                <td colspan="2">
+                    <div class="bshadow"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

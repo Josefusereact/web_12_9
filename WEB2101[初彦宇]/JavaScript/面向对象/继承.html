@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .app {
+            width: 220px;
+            margin: 0 auto;
+        }
+
+        button {
+            width: 220px;
+            height: 40px;
+            font-size: 25px;
+            margin-top: 10px;
+            color: white;
+            background-color: #0f1423;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <button onclick="kirito.interSelf(this);">猜猜我是谁~</button>
+        <button onclick="Asuna.interSelf(this);">猜猜我是谁~</button>
+    </div>
+    <script>
+        function Mother(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        Mother.prototype.interSelf = function (btn) {
+            btn.innerHTML = '我是 ' + this.name + ' ' + this.age + ' ' + this.sex;
+        }
+        var kirito = new Mother('kirito', 18, '男');
+        var Asuna = new Mother('Asuna', 20, '女');
+    </script>
+</body>
+
+</html>

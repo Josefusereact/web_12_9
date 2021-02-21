@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .listbox{
+            width: 500px;
+            height:375px;
+            border: 1px solid #333333;
+            margin: 200px auto;
+            position: relative;
+        }
+        .listbox img{
+            width: 500px;
+            height:375px;
+        }
+        .listbox ul li{
+            width: 30px;
+            height:30px;
+            background: rgba(0, 0,0, 0.5);
+            float: left;
+            list-style: none;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            margin: 0 2px;
+        }
+        .listbox ul li a{
+            color:white;
+            text-decoration: none;
+        }
+        .listbox ul{
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+        .listbox ul li:hover{
+            background: rgba(0, 0,0, 0.8);
+        }
+        .images{
+            overflow: hidden;
+            width: 500px;
+            height: 375px;
+        }
+    </style>
+</head>
+<body>
+     <div class="listbox">
+         <div class="images">
+            <img id="pic1"src="https://t8.baidu.com/it/u=1484500186,1503043093&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1592580706&t=5b1963c847015038fcc2b4ffe0647834" alt="">
+            <img id="pic2" src="https://t8.baidu.com/it/u=2247852322,986532796&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1592580706&t=b6244cb3996a93660e296f489153df86" alt="">
+            <img id="pic3" src="https://t9.baidu.com/it/u=583874135,70653437&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1592580706&t=113b5ae98e92a5f1ebe697e66bc26a98" alt="">    
+            <img id="pic4" src="https://t9.baidu.com/it/u=3363001160,1163944807&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1592580706&t=00b319d4e1676c5ac2a419e3a9f3c4f2" alt="">
+            
+         </div>
+        <ul>
+            <li><a href="#pic1">1</a></li>
+            <li><a href="#pic2">2</a></li>
+            <li><a href="#pic3">3</a></li>
+            <li><a href="#pic4">4</a></li>
+        </ul>
+    </div>
+</body>
+</html>

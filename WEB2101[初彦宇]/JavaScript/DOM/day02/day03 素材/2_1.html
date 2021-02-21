@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>动态操作表格</title>
+	<meta charset="utf-8" />
+	<style>
+		table {
+			width: 500px;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		td {
+			border: 1px solid #ccc
+		}
+	</style>
+
+</head>
+
+<body>
+	<button onclick="createTable()">创建表格</button>
+	<button onclick="fillData()">加载数据</button>
+	<div id="data"></div>
+
+	<script>
+		var products = [
+			{ "id": 1001, "name": '可口可乐', "price": 2.5, "count": 3000 },
+			{ "id": 1003, "name": '百事可乐', "price": 2.5, "count": 5000 },
+			{ "id": 1011, "name": '非常可乐', "price": 2.3, "count": 1000 }
+		];
+
+		var table = document.createElement('table');
+		var thead = table.createTHead();
+		var tr = thead.insertRow();
+		for (var key in products[0]) {
+			tr.insertCell().innerHTML = key;
+		}
+		tr.insertCell().innerHTML = 'operate';
+
+		var tbody = table.createTBody();
+		for (var i = 0; i < products.length; i++) {
+			var tr = tbody.insertRow();
+			for (var key in products[i]) {
+				tr.insertCell().innerHTML = products[i][key];
+			}
+
+			var td = tr.insertCell();
+			btn = document.createElement('button');
+			btn.innerHTML = 'delete';
+			btn.onclick = function () {
+				var table = document.querySelector("#data>table");
+				var tr = this.parentNode.parentNode;
+				var pname = tr.cells[1].innerHTML;
+				if (confirm('go on deleting: ' + pname + '?')) {
+					table.deleteRow(tr.rowIndex);
+				}
+			};
+			// tr.insertCell().appendChild(btn);
+			td.appendChild(btn);
+		}
+		data.appendChild(table);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>倒计时自动关闭/跳转页面</title>
+	<meta charset="utf-8" />
+
+</head>
+
+<body>
+	<span id='tip'>5秒钟后自动关闭</span><br>
+	<a href="javascript:stop()">留在本页</a>
+	<script>
+		/* function myClose() {
+			close();
+			
+		}
+		var timer = setTimeout(myClose, 5000);
+		function stop() {
+			clearTimeout(timer);
+		} */
+
+		function calc() {
+			var n = parseInt(tip.innerHTML);
+			n--;
+			tip.innerHTML = n + '秒钟后自动关闭';
+			if (n < 0) {
+				close();
+			}
+		}
+
+		var timer = setInterval(calc, 1000);
+
+		function stop() {
+			clearInterval(timer);
+		}
+
+		timer = null;
+	</script>
+</body>
+
+</html>

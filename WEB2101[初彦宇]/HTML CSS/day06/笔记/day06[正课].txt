@@ -1,0 +1,87 @@
+正课: CSS3
+    渐变: 颜色渐变
+        取值: linear-gradient(direction / angle, color1, color2, .......)
+            direction :  to right
+                         to bottom right
+                         [不屑方向默认上到下]
+                         https://www.moulem.com/images/logoLeft.png
+                         
+            angle[角度 顺时针] : 0deg  下~上
+                    90deg   左~右
+                    180deg  上~下
+                    -90deg  右~左
+            
+    径向渐变：
+        取值： radial-gradient(shape size at position, start color, ....., last color);
+            shape形状： circle   ellipse[椭圆形(默认)]
+            size: closest-side          镜像渐变的半径长度为从圆心最近的边的距离
+                  farthest-side         径向渐变的半径长度为从圆心到离圆心最远的距离
+                  closest-corner        径向渐变的半径长度为从圆心到离圆心最近的角的距离
+                  farthest-corner       径向渐变的半径长度为从圆心到离圆心最远的角的角度
+            position: 
+                center(默认)
+                top     设置顶部为径向渐变圆心的纵坐标取值
+                bottom  设置底部为径向渐变圆心的纵坐标取值
+                位置 x, y
+
+    转换: 允许元素进行2D / 3D旋转 / 缩放 / 移动 / 倾斜
+        属性:   transform
+            2D转换:
+                位移:
+                    translate(x轴坐标, y轴坐标)
+                    translate(x轴坐标)
+                    translate(y轴坐标)
+                缩放:
+                    scale(n,n);[默认是1倍] 
+                    scale(n);[表示宽高缩放相同] 
+                    scaleX(n)
+                    scaleY(n)
+                旋转:
+                    rotate(angle)  angle角度    单位: deg
+                        如果以一个值,以元素的中心点旋转
+                    rotateX(angle)
+                        以元素的水平中心线为轴围绕着x轴进行旋转
+                    rotateY(angle)
+                        以元素的垂直中心线为轴围绕着y轴进行旋转
+                倾斜: 
+                    skew(xdeg, ydeg)
+                    skewX(angle)
+                    skweY(angle)
+
+            3D转换: 
+                位移:
+                    translate3d(X, Y, Z)
+                    translateZ(Z)
+                缩放:
+                    scale3d(X, Y, Z)
+                    scaleZ(n)
+                旋转:
+                    rotate3d(X, Y, Z, angle)
+                    rotateZ(angle)
+                    
+            景深[透视距离]: perspective
+                取值: 具体数值+px
+                当为元素设置该属性时,其子元素获得透视效果,而不是元素本身
+
+
+            转换源点: 允许改变被转换元素的微中子
+                transform-origin: X, Y, Z
+                X / Y / Z的取值:
+                    Left
+                    center
+                    right
+                    %
+            元素的空间:规定被嵌套元素如何在3D空间中显示
+                transform-style
+                    取值:flat    子元素不保留3D位置
+                         preserve-3D   保留3D位置            
+                
+    过渡:
+
+
+
+    动画
+
+
+    flex
+

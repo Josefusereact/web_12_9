@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_选中鲤鱼</title>
+    <style>
+        select {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>选中鲤鱼</button>
+    <button>去掉选中</button>
+    <select name="" id="" multiple>
+        <option value="1">苹果</option>
+        <option value="2">香蕉</option>
+        <option value="3">鲤鱼</option>
+        <option value="4">榴莲</option>
+        <option value="5">葡萄</option>
+    </select>
+
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button");
+            var opt = document.getElementsByTagName("option");
+            btn[0].onclick = function () {
+                for (var i = 0; i < opt.length; i++) {
+                    if (opt[i].innerText == "鲤鱼") {
+                        // opt[i].setAttribute("selected", true);
+                        opt[i].selected = true;
+                    }
+                }
+            }
+            btn[1].onclick = function () {
+                for (var i = 0; i < opt.length; i++) {
+                    if (opt[i].innerText == "鲤鱼") {
+                        // opt[i].setAttribute("selected", false);
+                        opt[i].selected = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

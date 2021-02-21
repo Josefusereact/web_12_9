@@ -1,0 +1,141 @@
+/* 列表页专有的css */
+.nav {
+    overflow: hidden;
+}
+
+.sk {
+    position: absolute;
+    left: 190px;
+    top: 40px;
+    border-left: 1px solid #c81523;
+    padding: 3px 0 0 14px;
+}
+
+.sk_list {
+    float: left;
+}
+
+.sk_list ul li {
+    float: left;
+}
+
+.sk_list ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 28px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+
+.sk_con {
+    float: left;
+}
+
+.sk_con ul li {
+    float: left;
+}
+
+.sk_con ul li a {
+    display: block;
+    line-height: 49px;
+    font-size: 14px;
+    margin-left: 28px;
+    padding-right: 18px;
+}
+
+.sk_con ul li:last-child a::after {
+    content: '\e91e';
+    font-family: 'icomoon';
+}
+
+.sk_bd ul li {
+    float: left;
+    width: 290px;
+    height: 460px;
+    border: 1px solid transparent;
+    margin: 10px 13px 10px 0px;
+}
+
+.sk_bd ul li:nth-child(4n) {
+    margin: 10px 0 10px 0;
+}
+
+.sk_img img {
+    width: 100%;
+}
+
+.sk_bd h4 {
+    font-weight: 400;
+    color: #666;
+    margin: 5px 25px;
+}
+
+.sk_bd ul li rmb,
+.sk_bd ul li del {
+    font-size: 14px;
+    color: #a5a5a5;
+    margin-left: 25px;
+}
+
+.sk_bd ul li rmb,
+.sk_bd ul li span {
+    color: #c81523;
+}
+
+.sk_bd ul li span {
+    font-size: 22px;
+}
+
+.sk_bar {
+    margin-left: 25px;
+    color: #a5a5a5;
+}
+
+.sk_bar .num {
+    font-size: 13px;
+    color: #c81523;
+}
+
+.sk_bar .bar {
+    display: inline-block;
+    width: 125px;
+    height: 10px;
+    background-color: lightsteelblue;
+    border-radius: 7px;
+    padding: 1px 0 1px 0;
+}
+
+.bar .bar_in {
+    width: calc(100% - 40px);
+    height: 8px;
+    background-color: blueviolet;
+    border-radius: 7px;
+    transition: all .3s ease-out;
+}
+
+.bar:hover .bar_in {
+    width: 100%;
+}
+
+.sk_bd .go {
+    display: block;
+    width: 228px;
+    height: 50px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 50px;
+    background-color: firebrick;
+    margin: 3px 28px 0 28px;
+}
+
+.sk_bd ul li:hover,
+.sk_bd ul li.active {
+    position: relative;
+    top: 1px;
+    border: 1px solid steelblue;
+    box-shadow: 5px 5px 3px 2px steelblue;
+    transition: all .3s ease-out;
+}

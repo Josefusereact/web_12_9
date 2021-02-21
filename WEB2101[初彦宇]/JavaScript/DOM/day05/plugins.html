@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		// Chrome PDF Viewer
+
+		function checkPlugin(pname) {
+			var emptyObj = {};
+			if (pname == undefined) {
+				alert('未输入插件名称!');
+				alert('即将遍历所有插件!');
+				for (var i = 0, len = navigator.plugins; i < len.length; i++) {
+					emptyObj['插件 ' + i] = len[i].name;
+				}
+				alert(JSON.stringify(emptyObj));
+			} else {
+				alert('正在为您查询相关插件');
+				// 遍历plugins集合中每个插件
+				// for (var i = 0; i < navigator.plugins.length; i++) {
+				for (var i = 0, len = navigator.plugins; i < len.length; i++) {
+					// 如果当前插件的name = pname
+					// if (navigator.plugins[i].name == pname) {
+					if (len[i] == pname) {
+						// 提示：已安装 pname 插件
+						// document.write("已安装" + pname + "插件");
+						alert('已安装 ' + pname + ' 插件');
+						// 退出函数 
+						return;
+					} else {
+						// 提示：未安装 pname 插件，请下载
+						// document.write("未安装" + pname + "请下载");
+						alert('未安装 ' + pname + ' 插件, 请下载');
+						return;
+					}
+				}// 遍历结束
+			}
+			return emptyObj;
+		}
+
+		checkPlugin();
+		checkPlugin("Chrome PDF Viewer");
+		checkPlugin("Shockwave Flash");
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var width = "12px";
+    // 将12px + 2px 之后在存回width中
+    // console.log(parseInt(width)+2+"px");// 
+    width = parseInt(width)+2+"px";
+    console.log(typeof(width));
+
+    var money = "$300";
+
+
+    money = "34.56.78";
+    console.log(parseFloat(money));
+
+
+
+    console.log(Number(true));//1
+    console.log(parseInt(true));//NaN
+
+    // 鄙视题：在页面中，创建一个弹出框，输入工资。将工资增加1000之后输出涨薪之后的值
+    // window.prompt(); 弹出输入框
+    var salary = window.prompt("请输入工资");
+
+    alert(typeof(salary));
+
+    // salary = parseInt(salary)+1000;
+
+    alert(salary);
+  </script>
+</body>
+</html>

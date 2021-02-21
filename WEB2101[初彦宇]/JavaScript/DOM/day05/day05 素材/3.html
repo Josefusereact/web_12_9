@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>事件处理</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/3.css" />
+
+</head>
+
+<body>
+	<div class="d1">
+		<div class="d2">
+			<div class="d3">
+			</div>
+		</div>
+	</div>
+
+	<a href="#" id="a1">我是跳转</a>
+	<script>
+		function highLight(e) {
+			//设置当前元素的background为yellow
+			this.style.backgroundColor = 'yellow';
+			// 弹出提示：我是 + class值
+			alert('我是' + this.className + '我始终记着' + e.target.className);
+			// 清除当前元素的background
+			this.style.backgroundColor = "";
+			e.stopPropagation();
+		}
+		// 为class为d1的元素绑定单击事件：highLight
+		document.querySelector('.d1').addEventListener('click', highLight);
+		// 为class为d2的元素绑定单击事件：highLight
+		// document.querySelector(".d2").addEventListener("click", highLight);
+		// 为class为d3的元素绑定单击事件：highLight
+		// document.querySelector(".d3").addEventListener("click", highLight);
+
+		a1.addEventLitener('click', function () {
+			alert('约吗?');
+			// e.preventDefault();
+			return;
+		});
+
+
+
+	</script>
+</body>
+
+</html>

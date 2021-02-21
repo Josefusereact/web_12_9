@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>自我介绍</title>
+	<link rel="Stylesheet" href="index.css" />
+</head>
+
+<body>
+	<div id="parentDiv">
+		<div id="lilei" onmouseover="lilei.intrSelf()" onmouseout="dialog.style.display='none'">
+		</div>
+		<div id="hmm" onmouseover="hmm.intrSelf()" onmouseout="dialog.style.display='none'">
+		</div>
+		<div id="dialog">
+
+		</div>
+	</div>
+	<script>
+		/* function Student(name,age){
+			this.name = name;
+			this.age = age;
+			this.intrSelf = function(){
+				dialog.innerHTML = "i`m Han Meimei,i`m " + this.age;
+				dialog.style.display = "block";
+			}
+		}
+
+		var lilei = new Student("Li lei",11);
+		var hmm = new Student("Han Meimei",12);
+
+  var lilei = {
+			"name":"Li Lei",
+			"age":11,
+			"intrSelf":function(){
+				// 设置ID为dialog元素的内容为  i`m Lilei,i`m 11
+				dialog.innerHTML = "i`m Lilei,i`m " + this.age;
+				// 同时设置id为dialog的元素的display为block
+				dialog.style.display = "block";
+			}
+		}
+
+		function clone(obj){
+			//创建一个空对象 copy
+			var copy = {};
+			//遍历obj的属性
+			for(var key in obj){
+				// 像copy中添加新的属性
+				// 属性名为key，值为obj中key属性的值。
+				copy[key] = obj[key];
+			}
+			return copy;
+		}
+		var lilei_copy = clone(lilei);
+		console.dir(lilei_copy);
+		console.dir(lilei);
+
+		// var lilei = {
+		// 	"name":"Li Lei",
+		// 	"age":11,
+		// 	"intrSelf":function(){
+		// 		// 设置ID为dialog元素的内容为  i`m Lilei,i`m 11
+		// 		dialog.innerHTML = "i`m Lilei,i`m " + this.age;
+		// 		// 同时设置id为dialog的元素的display为block
+		// 		dialog.style.display = "block";
+		// 	}
+		// }
+
+		// lilei.age++;
+
+		// // 定义hmm对象:姓名：Han Meimei 年龄:12
+		// var hmm = {
+		// 	"name":"Han Meimei",
+		// 	"age":12,
+		// 	"intrSelf":function(){
+		// 		dialog.innerHTML = "i`m Han Meimei,i`m " + this.age;
+		// 		dialog.style.display = "block";
+		// 	}
+		// }
+			// 自我介绍
+
+
+		var hmm = new Object();
+		hmm.name = "Han Meimei";
+		hmm.age = 12;
+		hmm.intrSelf = function(){
+			dialog.innerHTML = "i`m Han Meimei,i`m " + this.age;
+			dialog.style.display = "block";
+		} */
+
+		var hmm = [];
+		hmm["name"] = "Han Meimei";
+		hmm["age"] = 12;
+		hmm["intrSelf"] = function () {
+			dialog.innerHTML = "i`m Han Meimei,i`m " + this.age;
+			dialog.style.display = "block";
+		}
+		console.log(hmm);
+	</script>
+</body>
+
+</html>

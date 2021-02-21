@@ -1,0 +1,184 @@
+/* starbucks */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #222;
+    font: 600 12px/1.5 "Gotham", Helvetica, Arial, PingFeng-SC-Regular, "Microsoft YaHei", "wenquanyi MicroHei", sans-serif;
+    min-width: 1920px;
+}
+
+i,
+em,
+s,
+strick {
+    font-style: normal;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+ul li {
+    float: left;
+    list-style: none;
+}
+
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+}
+
+.clearfix::before {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.container {
+    position: fixed;
+    width: 570.9px;
+    height: 100%;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, .3);
+    z-index: 1;
+}
+
+.container .header {
+    padding: 24px;
+    height: 48px;
+}
+
+.header .topbar-list li a {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 10px 5px 10px;
+    letter-spacing: 1px;
+}
+
+.header .topbar-list .logo-title .logo {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background: url(../img/logo.svg) no-repeat center/cover;
+    margin-right: 12px;
+}
+
+.header .topbar-list .logo-title a {
+    font-size: 0px;
+    font-weight: 0;
+    text-indent: -999em;
+}
+
+.header .menu-icon a {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/icon-hamburger.svg) no-repeat center/cover;
+    margin: 6px 0;
+}
+
+.container .body {
+    padding: 390px 24px 100% 84px;
+}
+
+.body .nav-tit .cof-content {
+    font-size: 26px;
+    letter-spacing: .45;
+    font-weight: 550;
+}
+
+.nav-tit .account-footer .sign-in {
+    display: inline-block;
+    color: #009758;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 0;
+    line-height: 28px;
+}
+
+.nav-tit .account-footer .sign-in .act-ico {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: -9px;
+    background: url(../img/icon-account.svg) no-repeat center/cover;
+}
+
+.nav-tit .account-footer .sign-in .register {
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    border: 1px solid #009758;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+/* content */
+.content {
+    position: relative;
+    width: calc(100% - 570.9px);
+    /* width: 1332.1px; */
+    /* height: 496.433px; */
+    margin-left: 570.9px;
+}
+
+.content .topBannerWrapper {
+    /* height: 496.433px; */
+    height: 624.133px;
+}
+
+.content .ad-tail {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 37px;
+    height: 22px;
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 1);
+    font-weight: 350;
+    opacity: .6;
+}
+
+.content .banner a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../img/main2_6f1c9a9f-d029-4d02-85b1-3ab3158ba6f8.jpg) no-repeat center/cover;
+}
+
+.content .promotion {
+    padding: 24px 32px 0;
+}
+
+.promotion .pro-list {
+    margin-right: -24px;
+}
+
+.promotion li {
+    margin-right: 24px;
+    width: 412.033px;
+    height: 260.783px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .3);
+}
+
+.promotion li img {
+    width: 412.033px;
+}

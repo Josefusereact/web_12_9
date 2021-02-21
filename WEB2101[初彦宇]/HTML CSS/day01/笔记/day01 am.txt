@@ -1,0 +1,97 @@
+13936619882@139.com  /  chuyanyu@hljxlh.net   华为 
+
+前端：网页、页面（情商高）
+  HTML：HyperText Makeup Language  超文本*标记*语言
+    专门呈现网页内容的语言。素颜
+    不是一种变成语言,是一种标记语言
+    标记语言是一套有组织的有规则的标记标签(markup tag)
+  CSS：cascading style sheets    层叠样式表
+    专门为网页内容装饰的语言。化妆
+  W3C：world wide web consortinm 万维网联盟  非盈利性组织
+     ISO国际标准组织
+  所谓超文本,有两层含义: 它可以加入图片、声音 、动画、多媒体等内容（超越了文本限制）
+  		    它还可以从一个文件跳转到另一个文件，与世界各地主机的文件链接（超链接文本）
+  网页的形成：网页就是由声音、图片、动画、多媒体等内容组成，其实就是一个.html文件，然后通过浏览器渲染解析后展示给用户
+  
+  HTML:
+    书写方式：
+      双标签（元素）：
+        <标签名称>  页面上显示的内容    </标签名称>
+         开始标签                                         结束标签
+     单标签（元素）：
+        <标签名称 />  
+        自身即开始又结束
+
+   文件后缀：让计算机识别当前文件的打开软件
+       .txt   .exe  .mp4  .mp3  .avi   .jpg  .png..
+       .html / .htm   .css   .js
+   浏览器：
+        主流浏览器： 存在独立的内核
+           chrome        webkit /  Blink
+           firefox          Gecko
+           Opera          Presto /  Blink
+           safari           webkit
+           IE                 Trident
+  编辑器：
+      记事本
+      重量级：WS   DW  
+      中量级：sublime   
+      轻量级：记事本 、Editplus 、VSCode（微软）
+
+  HTML基本结构：
+    <!DOCTYPE html>     			声明文档类型  document type   html
+    <html lang="en">     			根标签（一个页面有且仅有一对）
+ 					  属性： lang  <==>  language
+					     取值：en   英文
+					                zh-cn    中文简体
+ 					                de   han   
+       <head>				头部标签   用作提示页面操作信息，不显示内容
+          <meta charset="utf-8">		元数据 附加信息
+					  属性：charset  编码方式
+				 	     取值：utf-8   国际编码字符集8进制
+					               unicode  国际编码字符集
+ 					               utf-16
+					               gb2312   中文编码字符集第2312条（简）
+					               GBK         中文编码字符集补全版（繁）
+
+          <title>document</title>		页签标题
+       </head>
+       <body>				身体标签（内容标签）
+           页面中所有的显示内容
+       </body>
+   </html>
+  
+  控制台：F12
+  语义化：
+    每一个HTML都有自身具体的含义。元素展示到页面中的效果，由CSS决定。
+    提高搜索优化（seo）
+
+   块级元素：独占一样  存在外边距
+
+   常用元素：
+      标题标签：双标签   文字加粗   放大   块级元素
+         h1~h6
+         <h1></h1>  <h2></h2>  <h3></h3>  <h4></h4>  <h5></h5>  <h6></h6>
+      段落标签： 双标签  块级元素
+         p
+
+    标题和段落不可以互相嵌套
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exec</title>
+</head>
+
+<body>
+    <a href="http://www.bilibili.com" class="curr">go to bilibili!</a>
+    <a name="top">top</a>
+    <h1>HelloWorld!</h1>
+    <a name="bottom">bottom</a>
+    <div><a href="https://www.zzzfun.com">go to zzzfun!</a></div>
+
+    <script>
+        var html = document.body.innerHTML;
+        var reg = /<a[^>]*?href=(["'])([^"']*?)\1[^>]*?>/g;
+        var arr = null;
+        while ((arr = reg.exec(html)) != null) {
+            // console.log(arr);
+            console.log(RegExp.$2);
+        }
+
+
+        var reg = /(?![a-z0-9]+$)(?![a-zA-z]+$)[\w,.?]{8,10}/g;
+        while (reg.test(prompt('请输入密码')) == false) {
+            alert('密码强度不够,或包含特殊符号!');
+        }
+        document.write('验证通过!');
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

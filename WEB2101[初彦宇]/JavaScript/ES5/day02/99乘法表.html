@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99乘法表</title>
+</head>
+
+<body>
+    <script>
+        /* for (var i = 1, sum = 1; i <= 100; sum *= i, i++);
+        for (var i = 0, n = 1; n <= 1000; n += 2) {
+            i += 1 / n;
+        }
+        console.log(sum);
+        console.log(i); */
+
+        var sum = 0, and = 1;
+        for (var i = 3; i <= 99; i += 2) {
+            and *= i;
+            console.log(i + "次\t" + sum + " * " + (i) + " + " + and + " / " + i);
+            sum = sum * (i) + and / i;
+        }
+        console.log(sum);
+    </script>
+</body>
+
+</html>

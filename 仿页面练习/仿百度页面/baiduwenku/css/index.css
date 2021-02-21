@@ -1,0 +1,303 @@
+/* 百度文库练习  Cascading Style Sheets*/
+
+/* Introduce font style */
+@font-face {
+    font-family: "icomoon";
+    src: url('../fonts/font/iconfont.eot?t=1608035467818');
+    /* IE9 */
+    src: url('../fonts/font/iconfont.eot?t=1608035467818#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/font/iconfont.woff2?t=1608035467818') format('woff2'),
+        url('../fonts/font/iconfont.woff?t=1608035467818') format('woff'),
+        url('../fonts/font/iconfont.ttf?t=1608035467818') format('truetype'),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+        url('../fonts/font/iconfont.svg?t=1608035467818#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+.app {
+    width: 100%;
+}
+
+/* wk-topbar-nav start  */
+.wk-topbar-nav {
+    height: 32px;
+    font: 13px Arial;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.topnav-tab .tab-list,
+.topnav-use .use-list {
+    float: left;
+    margin: 0 12px;
+    line-height: 32px;
+}
+
+.wk-color-vip-red {
+    font-weight: 600;
+    color: #df4d4b;
+}
+
+.topnav-tab .tab-list,
+.topnav-use .use-list {
+    text-decoration: underline;
+    transition: all .2s;
+}
+
+.topnav-tab .tab-list {
+    font-weight: 600;
+}
+
+.topnav-tab .tab-list:hover,
+.topnav-tab .tab-list.active {
+    text-decoration: none;
+}
+
+.topnav-tab .spacer {
+    color: #ebebeb;
+}
+
+.topnav-use {
+    margin-right: 10px;
+}
+
+/* wk-header start*/
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.wk-header {
+    /* margin-top: 32px; */
+    font-size: 16px;
+}
+
+/* logo部分 */
+.wk-header .wk-logo {
+    float: left;
+    width: 135px;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 23px 0 5px 0;
+    margin: 0 20px 0 150px;
+}
+
+.wk-logo .logo-icon {
+    display: block;
+    width: 135px;
+    height: 44px;
+    text-indent: -9999em;
+    background: url(../images/logo.png) no-repeat;
+}
+
+.wk-logo .logo-icon .title {
+    margin: 0;
+}
+
+/* 搜索内容部分 */
+.wk-header .wk-content {
+    width: 895px;
+    margin-top: 32px;
+}
+
+.wk-search {
+    position: relative;
+}
+
+.wk-search .text-search {
+    width: 535px;
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid #b8b8b8;
+    padding: 0 15px;
+    vertical-align: middle;
+    transition: all .2s;
+}
+
+.wk-search .text-search:hover {
+    border: 1px solid #999;
+}
+
+.wk-search .text-search:focus {
+    border: 1px solid #317ef3;
+}
+
+.wk-search .icon2::before {
+    font-family: 'icomoon';
+    content: '\e64d';
+    display: inline-block;
+    position: absolute;
+    top: 2.5px;
+    right: 222px;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    color: #19a97b;
+    cursor: pointer;
+}
+
+.wk-search button {
+    width: 104px;
+    height: 40px;
+    color: white;
+    font-weight: 100;
+    border: 1px solid #3385ff;
+    background-color: #3385ff;
+    /* :hover #317ef3 */
+    vertical-align: middle;
+    transition: all .2s;
+}
+
+.wk-search .button-blue {
+    margin-left: -6px;
+}
+
+.wk-search .button-blue:hover {
+    color: #fff;
+    background-color: #317ef3;
+}
+
+.wk-search .button-blue:focus {
+    background-color: #3075dc;
+}
+
+.wk-search .button-white:hover {
+    color: #3385ff;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.wk-search .button-white:focus {
+    opacity: .6;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3),
+        inset -1px -1px 1px rgba(0, 0, 0, .3);
+}
+
+/* 广告背景图 Advertising */
+.wk-ad {
+    width: 130px;
+    height: 50px;
+}
+
+/* 选择文档类型模块 */
+.wk-sl {
+    /* height: 26px; */
+    margin: 6px 0 8px 0;
+}
+
+.wk-sl ul li {
+    float: left;
+    font-size: 12px;
+    color: #666;
+    margin: 0 23px 0 0;
+}
+
+.wk-sl ul li label input {
+    vertical-align: -2px;
+    margin-right: 3px;
+}
+
+/* wk（文库） main-nav start */
+.wk-nav-wrap .green-nav {
+    background-color: #19a97b;
+}
+
+.wk-nav-wrap .green-nav .inner {
+    min-width: 1100px;
+    max-width: 1200px;
+}
+
+.green-nav .main-list li,
+.green-nav .side-list li {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+}
+
+.green-nav .side-list li {
+    font-size: 14px;
+}
+
+.green-nav .main-list li .pad-42,
+.green-nav .main-list li .pad-26,
+.green-nav .side-list li .pad-left44 {
+    position: relative;
+    display: inline-block;
+    border-left: 1px solid #139667;
+    border-right: 1px solid #139667;
+    padding: 0 43px 0 43px;
+    color: white;
+    margin-right: -1px;
+    /* width: 118px; */
+    transition: all .3s;
+}
+
+.green-nav .side-list li .pad-left44 {
+    border-right: 1px solid #139667;
+    border-left: 1px solid transparent;
+    margin-right: -1px;
+}
+
+.green-nav .side-list li:nth-child(2) .pad-left44 {
+    border-right: 1px solid transparent;
+}
+
+.green-nav .main-list li .pad-26 {
+    padding: 0 27px !important;
+}
+
+.green-nav .side-list li .pad-left44 {
+    padding: 0 24px 0 45px;
+}
+
+.green-nav .side-list li:nth-child(2) .pad-left44 {
+    padding-right: 18px;
+}
+
+.green-nav .main-list li:not(:first-child) .pad-42::after,
+.green-nav .main-list li:not(:nth-child(4n)) .pad-26::after,
+.green-nav .side-list li .pad-left44::after {
+    font-family: 'icomoon';
+    content: '\e6d4';
+    display: inline-block;
+    position: absolute;
+    right: 22px;
+    top: 0px;
+    font-size: 15px;
+}
+
+.green-nav .main-list li:not(:first-child) .pad-42:hover::after,
+.green-nav .main-list li:not(:nth-child(4n)) .pad-26:hover::after,
+.green-nav .side-list li .pad-left44:hover::after {
+    content: '\e6ac';
+}
+
+.green-nav .main-list li a[class^=pad]:hover,
+.green-nav .side-list li .pad-left44:hover {
+    background-color: #12976d;
+    border-left: 1px solid #107D54;
+    border-right: 1px solid #107D54;
+    margin-right: -1px;
+    z-index: 2;
+}
+
+.green-nav .side-list li .pad-left44:hover {
+    margin: 0 -1px 0 0;
+}
+
+.green-nav .side-list li:nth-child(2) .pad-left44:hover {
+    margin: 0 -1px 0 0;
+}
+
+.green-nav .main-list li .pad-26::after {
+    right: 7px !important;
+}
+
+.green-nav .side-list li:first-child .pad-left44::after {
+    right: 5px;
+}
+
+.green-nav .side-list li .pad-left44::after {
+    right: 2px;
+}

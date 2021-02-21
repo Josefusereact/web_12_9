@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切換</title>
+    <style>
+        .tab {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        #red {
+            height: 200px;
+            background-color: brown;
+        }
+
+        #green {
+            height: 200px;
+            background-color: green;
+        }
+
+        #blue {
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="#red" class="active">紅</a>
+        <a href="#green">绿</a>
+        <a href="#blue">蓝</a>
+        <div class="tab">
+            <div id="red"></div>
+            <div id="green"></div>
+            <div id="blue"></div>
+        </div>
+    </div>
+</body>
+
+</html>

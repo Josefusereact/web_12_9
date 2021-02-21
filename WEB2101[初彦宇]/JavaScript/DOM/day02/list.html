@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list</title>
+</head>
+
+<body>
+    <div id="app"> </div>
+    <script>
+        // 1、声明一个递归函数 并传入一个二维数组
+        function list(arr) {
+            // 遍历二维数组
+            // 遍历矩阵行
+            /* let arrCopy = '';
+            for (var i = 0; i < arr.length; i++) {
+                // 遍历矩阵列
+                for (var j = 0; j < arr[i].length; j++) {
+                    arrCopy += String(arr[i][j]) + ' ';
+                }
+                arrCopy += '\n';
+            } */
+            var arrCopy = [];
+            for (var k = 0; k < arr.length; k++) {
+                for (var j = 0; j < arr[k].length; j++) {
+                    // 拼接字符串形式
+                    // arrCopy += arr[j][k] + ' ';
+
+                    // 交换中间值
+                    arrCopy = arr[j][k];
+                    debugger
+                    arr[j][k] = arr[k][j];
+                    debugger
+                    arr[k][j] = arrCopy;
+                    debugger
+                }
+                // arrCopy += '\n';
+                console.log(arr)
+            }
+            // return arr;
+            // return arrCopy;
+            // 设置返回值为此函数调用自身
+            // return list(arr);
+        }
+
+        // 先用一个四行四列的数组做测试
+        var arr = [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12],
+            [13, 14, 15, 16]
+        ];
+
+        // 调用函数
+        // a = list(arr);   console.log(a);   // 接收return 返回值 并输出
+
+        // 调用输出
+        console.log(list(arr));
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>读取节点信息</title>
+	<meta charset="utf-8" />
+	<script>
+
+	</script>
+</head>
+
+<body>
+	<!--这里有一段HTML注释-->
+	<span id="cnt" class="content">文本内容</span>
+
+	<script>
+		var body = document.body;
+		function traverse(parent) {
+			console.log(parent.nodeType == 3 ? '🛑读取节点信息: ' + parent.nodeValue :
+				(parent.nodeName == 'SCRIPT' && parent.firstChild.nodeType == 3) ? ('🛑读取节点信息: ' + parent.nodeName + '\n脚本内容被隐藏' + (parent.innerHTML = "")) :
+					'🛑读取节点信息: ' + parent.nodeName);
+			var children = parent.childNodes;
+			for (var i = 0, len = children.length; i < len; i++) {
+				traverse(children[i]);
+			}
+		}
+		traverse(body);
+	</script>
+</body>
+
+</html>

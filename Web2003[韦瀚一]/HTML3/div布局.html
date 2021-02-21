@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div布局</title>
+    <style>
+        .container {
+            width: 970px;
+            height: 593px;
+            margin: 0 auto;
+            clear: both;
+        }
+
+        .container .top {
+            height: 103px;
+            margin-bottom: 10px;
+        }
+
+        .container .content {
+            height: 435px;
+            margin-bottom: 10px;
+        }
+
+        .container .footer {
+            height: 35px;
+            background-color: blue;
+        }
+
+        .container .top .top-left {
+            float: left;
+            width: 277px;
+            height: 103px;
+            margin-right: 14px;
+            background-color: brown;
+        }
+
+        .container .top .top-right {
+            float: right;
+            width: 679px;
+            height: 103px;
+        }
+
+        .container .top .top-right .top-right-top {
+            float: right;
+            width: 137px;
+            height: 49px;
+            background-color: green;
+            margin-bottom: 8px;
+        }
+
+        .container .top .top-right .top-right-footer {
+            float: right;
+            width: 679px;
+            height: 46px;
+            background-color: green;
+        }
+
+        .container .content .content-left {
+            float: left;
+            width: 310px;
+            height: 435px;
+            background-color: blueviolet;
+            margin-right: 10px;
+        }
+
+        .container .content .content-right {
+            float: right;
+            width: 190px;
+            height: 400px;
+            background-color: teal;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .container .content .content-center {
+            float: left;
+            width: 450px;
+            height: 400px;
+        }
+
+        .container .content .content-footer {
+            float: right;
+            width: 650px;
+            height: 25px;
+            background-color: black;
+        }
+
+        .container .content .content-center .content-center-top {
+            height: 240px;
+            background-color: #0f1423;
+            margin-bottom: 10px;
+        }
+
+        .container .content .content-center .content-center-middle {
+            height: 110px;
+            background-color: tomato;
+            margin-bottom: 10px;
+        }
+
+        .container .content .content-center .content-center-footer {
+            height: 30px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="top-left"></div>
+            <div class="top-right">
+                <div class="top-right-top"></div>
+                <div class="top-right-footer"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-left"></div>
+            <div class="content-center">
+                <div class="content-center-top"></div>
+                <div class="content-center-middle"></div>
+                <div class="content-center-footer"></div>
+            </div>
+            <div class="content-right"></div>
+            <div class="content-footer"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>

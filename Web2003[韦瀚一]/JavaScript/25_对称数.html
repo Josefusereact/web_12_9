@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25_对称数</title>
+</head>
+
+<body>
+    <script>
+        // i变成字符串  字符串长度奇数  
+        /* for (var i = 10; i < 10000; i++) {
+            var str = String(i);
+            if (str.length % 2 == 0) {
+                if (str.charAt(0) == str.charAt(str.length - 1) && str.charAt(1) == str.charAt(str.length - 2)) {
+                    console.log(str);
+                }
+            } else {
+                if (str.charAt(0) == str.charAt(str.length - 1)) {
+                    console.log(str);
+                }
+            }
+        }    */
+        // 第二种方式
+        function isSymNum(start, end) {
+            start = (start <= 11 ? 11 : start);
+            for (var i = start; i <= end; i++) {
+                var strl = +(i.toString().split("").reverse().join(""));
+                // console.log(strl);
+                if (strl == i) {
+                    console.log(i);
+                }
+            }
+        }
+        isSymNum(1, 10000);
+    </script>
+</body>
+
+</html>

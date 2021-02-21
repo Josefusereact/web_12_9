@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23_双色球</title>
+</head>
+
+<body>
+    <button onclick="doubleBall()">随即双色球</button>
+    <script>
+        // 6 红 1-33    1 蓝 1-16    
+        function doubleBall() {
+            var reds = [];
+            var blue = 0;
+            // 反复生成红球, 6个红球
+            for (var i = 0; i < 6; i++) {
+                var num = Math.round(Math.random() * 33 + 1);
+                if (reds.indexOf(num) == -1) {
+                    reds.push(num);
+                } else {
+                    num = i--;
+                }
+            }
+            blue = Math.round(Math.random() * 16 + 1);
+            reds.sort(function (a, b) {
+                return a - b;
+            })
+            alert(reds + "|" + blue);
+        }
+    </script>
+</body>
+
+</html>

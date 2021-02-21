@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var org = new Date(0);
+    console.log(org);
+
+
+    var date1 = new Date(24*3600*1000);
+    console.log(date1);
+
+    // 计算从你出生到现在活了多少天
+    var birth = new Date("1898/12/26");
+
+    var now = new Date();
+
+    var ms = now  - birth;
+    console.log(ms);
+
+    var days = ms/1000/3600/24;
+    console.log(days);
+
+  </script>
+</body>
+</html>

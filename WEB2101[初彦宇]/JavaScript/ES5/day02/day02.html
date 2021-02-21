@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day02</title>
+</head>
+
+<body>
+    <script>
+        /* var price = parseInt(prompt('请输入商品单价: '));
+        var count = parseInt(prompt('请输入购买数量:'));
+        var money = parseFloat(prompt('请输入付款金额'));
+        var total = price * count;
+        if (total >= 500) {
+            total *= 0.8;
+        }
+        if (money >= total) {
+            var change = money - total;
+        } else {
+            change = total - money;
+            alert('支付金额不足,还差：' + change);
+            money += parseFloat(prompt('请支付剩余金额: '));
+            change = total - money;
+            change >= total ? alert('支付成功') : alert('支付失败') + (change = 0);
+        }
+        alert('总价为:' + total + '\n找零为:' + change) */
+
+        /* 
+            请用户输入一个数字
+            如果输入1，执行查询操作
+            如果输入2，执行取款操作
+            如果输入3，执行转账操作
+            如果输入0，退出
+            否则，提示输入错误
+        */
+        /* var enter = '';
+        while (enter != "0") {
+            enter = prompt('请输入数字：');
+            switch (enter) {
+                case '1':
+                    alert('正在查询');
+                    break;
+                case '2':
+                    alert('正在取款');
+                    break;
+                case '3':
+                    alert('正在转帐');
+                    break;
+                case '0':
+                    alert('退出，欢迎下次光临');
+                    break;
+                default:
+                    alert('输入有误')
+            }
+        } */
+
+
+
+
+        // 猜数字在程序中存一个0-9之间的整数I
+        // 随机生成一个数
+        // 在任意最大值和最小值之间生成随机整数公式
+        // parseInt(Math.random()*(max-min+1)+min)
+        // 在任意最大值和最小值之间生成随机整数数
+        // 请用户反复输入
+        // 如果输入>程序中的数，输出”大了”//如果输入<程序中的数，输出“小了”
+        // 否则，“猜对了"
+        // 三要素
+        // 循环条件：输入！=程序中的数
+        // 循环变量：输入
+        // 循环体：请用户输入一个e-9的数字，根据用户的输入，输出对应内容var n=5；var input=""；while（input！=n）{
+        /* var n = parseInt(Math.random() * (100 - 1 + 1) + 1);
+        var input = "";
+        while (input != n) {
+            // while(true) //死循环
+            input = prompt('请用户输入');
+            if (input == "exit") {
+                alert('放弃了');
+                break;
+            }
+            alert(
+                input > n ? '大了' :
+                    input < n ? '小了' :
+                        '猜对了'
+            );
+        } */
+
+        var sum = 1;
+        // 第一种方式
+        var i = 1;
+        while (sum < 5050) {
+            sum += i;
+            i++;
+        }
+        // 第二种
+        for (var a = 1; a <= 100; a++) {
+            sum *= a;
+        }
+        console.log(sum);
+    </script>
+</body>
+
+</html>

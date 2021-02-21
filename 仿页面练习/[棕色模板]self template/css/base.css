@@ -1,0 +1,86 @@
+/* 初始化样式表 */
+
+/* 默认文字样式及颜色 */
+body {
+    font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    background-color: #fff;
+    /* CSS3 抗锯齿，让文字显示的更加清晰 */
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    min-width: 1210px;
+}
+
+/* 清除所有标签内外边距 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 清除em i标签默认倾斜 */
+em,
+i {
+    font-style: normal;
+}
+
+/* 清除ul ol默认圆点 */
+ul,
+ol {
+    list-style: none;
+
+}
+
+/* 清除a链接下划线 */
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+/* 清除文本框 按钮默认边框 */
+input,
+button,
+button:hover,
+button:focus {
+    border: 0;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* 清除图片底侧缝隙 */
+img {
+    /* border 0 照顾低版本浏览器 如果图片外面包含了链接会有边框的问题 */
+    border: 0;
+    /* 取消图片底侧有空白缝隙的问题 */
+    vertical-align: middle;
+}
+
+/* 顯示隱藏 */
+.hide,
+.none {
+    display: none;
+}
+
+/* 清除浮动 */
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>split</title>
+</head>
+
+<body>
+    <ul id="emps">
+        <li>kirito</li>
+        <li>Asuna</li>
+        <li>Alice</li>
+        <li>kasati</li>
+        <li>yukinasu</li>
+    </ul>
+    <script>
+        // var lis = '<li>kirito</li><li>Asuna</li><li>Alice</li><li>kasati</li><li>yukinasu</li>';
+        // 获取ul中所有内容
+        var lis = document.getElementsByTagName('ul')[0].innerHTML;
+        console.log(lis);
+        // 去除所有空格
+        // lis = lis.trim();
+        lis = lis.replace(/\s*/g, '');
+        console.log(lis);
+        // 去掉li的开头和结尾  并重新无缝拼接
+        lis = Array.prototype.slice.call(lis, 4, -5).join('');
+        console.log(lis);
+        // 根据 </li><li> 进行切割 取得字符串内容
+        // var reg = /<[^>]*?>\s*<[^>]*>/ig;
+        // var reg = /(<)([^>]*?)(>)[^>]*?\3/ig;
+        var reg = new RegExp(/<[^>]*?>[^>]*[^>]*?>/, 'igm');
+        var arr = String.prototype.split.call(lis, reg);
+        console.log(arr);
+        // 重新进行拼接
+        var html = arr.sort().join('</li><li>');
+        console.log(html);
+        document.write("<ul><li>" + html + '</li></ul>');
+    </script>
+
+
+    <!-- 遍历方式 -->
+    <!-- <script>
+        // 获取ul下所有li
+        var lis = document.getElementsByTagName('li');
+        // 遍历li中内容并存入empty数组
+        for (var i = 0, empty = [], len = lis.length; i < len; i++) {
+            empty[i] = lis[i].innerHTML;
+        }
+        // 进行排序
+        empty = empty.sort();
+        // 创建文档片段
+        var frag = document.createDocumentFragment();
+        // 创建ul
+        var ul = document.createElement('ul');
+        // 遍历 
+        for (var i = 0, len = empty.length; i < len; i++) {
+            // 创建li节点
+            var li = document.createElement('li');
+            // 依次将empty内值取出并赋值给li
+            li.innerHTML = empty[i];
+            // 将li挂到ul节点上
+            ul.appendChild(li);
+        }
+        // 遍历结束
+        // 将ul片段挂载到文档片段上
+        frag.appendChild(ul);
+        // 将文档片段挂载到body中
+        document.body.appendChild(frag);
+    </script> -->
+</body>
+
+</html>

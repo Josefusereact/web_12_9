@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="id=edge">
+    <meta name="author" content="Email = 987064101@qq.com">
+    <meta name="generator" content="Vscode">
+    <meta name="description" content="倒计时">
+    <meta name="shortcut-icon" href="" type="image/x-icon">
+    <title>17_倒计时</title>
+</head>
+
+<body>
+    <p id="p1">当前时间到2025年12月26日的毫秒数:&emsp;</p>
+    <p id="p2">当前时间到2025年12月26日倒计时:&emsp;</p>
+    <script type="text/javascript">
+        var p1 = document.getElementById("p1");
+        var p2 = document.getElementById("p2");
+        setInterval(function () {
+            var date = new Date();
+            // 时间戳: 格林尼治时间 1970年1月1日 00:00:00毫秒 到现在的毫秒数
+            var dateMill = date.getTime(); // 获取从1970.1.1到当前时间的毫秒数
+            var newDate = new Date(2021, 0, 30, 13, 50, 30); // 设置一个未来日期 
+            var newDateMill = newDate.getTime(); // 获取从1970.1.1到未来日期的毫秒数
+            var time = newDateMill - dateMill; // 求出当前日期到未来日期的毫秒数
+            if (time < 0) {
+                p1.innerHTML = "当前时间到" + newDate.getFullYear() + "年" + (newDate.getMonth() + 1) + "月" + newDate.getDate() + "日" + "的毫秒数: " + "0000";
+            } else {
+                p1.innerHTML = "当前时间到" + newDate.getFullYear() + "年" + (newDate.getMonth() + 1) + "月" + newDate.getDate() + "日" + "的毫秒数: " + time;
+            }
+            var day = fn(parseInt(time / 1000 / 60 / 60 / 24));
+            var hours = fn(parseInt(time / 1000 / 60 / 60 % 24));
+            var minutes = fn(parseInt(time / 1000 / 60 % 60));
+            var seconds = fn(parseInt(time / 1000 % 60));
+            if (seconds < "00") {
+                clearInterval();
+                p2.innerHTML = "距离时间还有: " + 0 + "天" + "00" + "小时" + "00" + "分钟" + "00" + "秒";
+            } else {
+                p2.innerHTML = "距离时间还有: " + parseInt(day) + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒";
+            }
+        }, 100);
+        function fn(num) {
+            return num < 10 ? "0" + num : num;
+        }
+    </script>
+</body>
+
+</html>

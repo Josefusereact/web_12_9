@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重载</title>
+</head>
+
+<body>
+    <script>
+        /* function checkout() {
+            if (arguments.length == false) {
+                console.log('给阿姨倒一杯卡布奇诺');
+            } else if (arguments.length == 1) {
+                console.log('玩你🐎!');
+            } else {
+                console.log('今天我就把电脑屏幕当场吃掉!');
+            }
+        }
+        checkout();
+        checkout(100);
+        checkout(100, 2, 3); */
+
+        function add() {
+            // 任意个数字累加    arguments
+            // 遍历arguments中的每个参数值,同时声明变量sum初始为0
+            for (var i = 0, sum = 0; i < arguments.length; i++) {
+                // 将当前参数值累加到sum中
+                sum += arguments[i];
+            }
+            // 遍历结束
+            // 返回sum中值
+            return sum;
+        }
+        console.log(add(3, 5, 7), add(1, 2, 3, 4, 5, 6));
+    </script>
+</body>
+
+</html>

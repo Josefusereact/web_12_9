@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 490px;
+            height: 170px;
+            padding: 10px;
+            margin: 100px auto;
+            border: 1px solid;
+        }
+
+        .inner {
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            width: 3000px;
+            height: 100%;
+            list-style: none;
+            position: relative;
+            right: 0;
+        }
+
+        ul li {
+            float: left;
+        }
+
+        .span_box {
+            position: absolute;
+            font-size: 38px;
+            width: 490px;
+            top: 50%;
+            margin-top: -25px;
+            /* display: none; */
+        }
+
+        .span_box a {
+            display: inline-block;
+            width: 30px;
+            height: 50px;
+            position: inherit;
+            color: white;
+            background: rgba(0, 0, 0, .5);
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+        }
+
+        .inner .number span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            right: -358px;
+            bottom: 27px;
+            border: 1px solid red;
+            border-radius: 50%;
+            background-color: blueviolet;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        .inner .number span.current {
+            background: #fff;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="inner">
+            <ul>
+                <li><img src="32e4373a03483e77c9156e777c642ac.jpg" alt=""></li>
+                <li><img src="4a4ea3bf9a92ba178b3a4cdfc51d2f4.jpg" alt=""></li>
+                <li><img src="4ac471679f2b2c345bec80a4a3e1506.jpg" alt=""></li>
+                <li><img src="738ed647d51d0785c180117211891a1.jpg" alt=""></li>
+                <li><img src="e995db11759a499d3c85900a54c6585.jpg" alt=""></li>
+            </ul>
+            <div class="number">
+                <span class="current">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <div class="span_box">
+                <a href='javascript:(0);' class="left" onselectstart="return false">&lsaquo;</a>
+                <a href='javascript:(0);' class="right" onselectstart="return false">&rsaquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var span = document.querySelectorAll('span');
+        var ul = document.querySelector('ul');;
+        var inner = document.querySelector('.inner');
+        // 轮播索引
+        var num = 0;
+        function scorllRight() {
+            num++
+        }
+
+        autoScroll();
+        function autoScroll() {
+            for (var i = 0; i < span.length; i++) {
+                span[i].index = i;
+                span[i].onmouseover = function () {
+                    for (var j = 0; j < span.length; j++) {
+                        span[j].className = '';
+                    }
+                    this.className = 'current';
+                    animate(ul, -this.index * inner.offsetWidth);
+                }
+            }
+        }
+
+        function animate(ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) > 0 ? 10 : -10;
+                if (Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
+                    clearInterval(ele.timer)
+                    ele.style.left = target + 'px';
+                } else {
+                    ele.style.left = ele.offsetLeft + step + 'px';
+                }
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>

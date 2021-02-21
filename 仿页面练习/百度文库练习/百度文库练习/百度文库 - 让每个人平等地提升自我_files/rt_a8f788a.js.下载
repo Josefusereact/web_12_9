@@ -1,0 +1,1 @@
+define("wkcommon:widget/rt/rt.js",function(t){var o=t("wkcommon:widget/ui/lib/jquery/jquery.js");o(document).ready(function(){var t="/static/wkcommon/widget/rt/img/rt.png",e="position:absolute;bottom:0;left:0",i=escape(location.href),n=top===window,m=(new Date).getTime();t=t+"?fr="+i+"&istop="+ +n+"&t="+m,o('<img src="'+t+'" style="'+e+'"/>').appendTo(document.body)})});

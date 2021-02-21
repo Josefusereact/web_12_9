@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05_京东狗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="img" src="images/jd1.png" style="cursor: pointer" />
+    <script>
+        //window.onload页面加载完毕以后再执行此代码
+        window.onload = function () {
+            //1.获取事件源
+            var img = document.getElementById("img");
+            //2.绑定事件(悬停事件：鼠标进入到事件源中立即触发事件)
+            img.onmouseover = function () {
+                //3.书写事件驱动程序(修改src)
+                img.src = "images/jd2.png";
+            }
+
+            var img = document.getElementById("img");
+            img.onmouseout = function () {
+                img.src = "images/jd1.png";
+            }
+        }
+    </script>
+</body>
+
+</html>

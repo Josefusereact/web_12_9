@@ -1,0 +1,1 @@
+define("wkcore:widget/ui/nsTypeMap/nsTypeMap.js",function(e){var a=e("wkcommon:widget/lib/fis/data/data.js"),n={"general.reqanother":"00001001","general.tag_click":"00001002","general.doc_click":"00001003","general.show":"000001004","key.view":"99999999"};a.set("nsTypeMap",n)});

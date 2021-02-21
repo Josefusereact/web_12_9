@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组拼接</title>
+</head>
+
+<body>
+
+    <script>
+        /* var emps = [];
+        var i = 0;
+        var input = '';
+        while ((input = prompt('请输入员工姓名')) != "exit") {
+            emps[i++] = input;
+        }
+        console.log(emps); */
+
+        /* var arr = [4, 2, 8, 1, 6, 7, 5, 3];
+        for (var i = 1; i < arr.length; i++) {
+            for (var j = 0; j < arr.length - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    var empty = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = empty;
+                }
+            }
+        }
+        console.log(arr); */
+
+        /* var provice = ['北京市', '河北省', '河南省'];
+        var citys = [
+            ['朝阳区', '海淀区', '丰台区'],
+            ['廊坊市', '石家庄', '唐山市'],
+            ['洛阳市', '开封市', '郑州市']
+        ]; */
+        // var district = [];
+        /* var enter = prompt('输入');
+        var i = provice.indexOf(enter);
+        if (i != -1) {
+            alert(citys[i]);
+        } else {
+            alert('没找到');
+        } */
+
+        /* var rabbit1 = 1;
+        var rabbit2 = 0;
+        var sum = 0;
+        for (var i = 1; i <= 12; i++) {
+            sum = rabbit1 + rabbit2;
+            rabbit1 = rabbit2;
+            rabbit2 = sum;
+            console.log(sum);
+        } */
+
+        var initialize = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]];
+        var empty = null;
+        for (var i = 0; i < initialize.length; i++) {
+            for (var j = 0; j < initialize[i].length; j++) {
+                empty = initialize[i][j];
+                console.log(j + ":" + empty);
+                initialize[j][i] = empty;
+                initialize[i][j] = initialize[j][i];
+            }
+        }
+        console.log(initialize);
+    </script>
+</body>
+
+</html>

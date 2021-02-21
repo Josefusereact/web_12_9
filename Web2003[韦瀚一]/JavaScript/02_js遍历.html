@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02_js遍历</title>
+</head>
+
+<body>
+    <script>
+        // 1.将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+        // 第一种形式 join 将每个元素通过‘|’连接在一起
+        /* var arr = ["Kirito", "Asuna", "Alice", "John"];
+        console.log(arr.join('|')); */
+        // 第二种形式 通过for循环遍历数组和拼接字符串
+        /* var arr = ["Kirito", "Asuna", "Alice", "John"];
+        var brr = arr[0];
+        for (var j = 1; j < arr.length; j++) {
+            brr += '|' + arr[j];
+        }
+        console.log(brr); */
+
+
+        // 2.将一个字符串数组的元素的顺序进行反转。["a","b","c","d"] ["d","c","b","a"]。使用两种种方式实现。提示：第i个和第length-i-1个进行交换
+        // 第一种形式 通过for遍历 以及通过中间值交换元素
+        /* var arr = ["a", "b", "c", "d"];
+        for (var i = 0; i < arr.length / 2; i++) {
+            var temp = arr[i];
+            arr[i] = arr[arr.length - i - 1];
+            arr[arr.length - i - 1] = temp;
+        }
+        console.log(arr); */
+        //第二种形式 通过 reverse 翻转数组
+        /*var arr = ["a", "b", "c", "d"];
+        console.log(arr.reverse());
+        第三种形式 通过sort进行倒序排序
+        var arr = ["a", "b", "c", "d"];
+        console.log(arr.sort(function (a, b) {
+            return b - a;
+        })); */
+
+
+        // 3.找到数组中每个字母出现的次数["c","a","z","a","a"]
+        // 第一种方式
+        /* var arr = ["d", "k", "z", "x", "y", "x", "k", "k", "l", "l", "x", "k", "a"];
+        var obj = {}; // 用对象来保存结果
+        // 先遍历数组
+        for (var i = 0; i < arr.length; i++) {
+            var key = arr[i];
+            // key多次出现  obj已经存在[key]属性
+            if (obj[key]) {
+                obj[key] += 1;
+            } else if (obj[key] == undefined) {
+                // 首次出现 obj.key = 1;
+                obj[key] = 1;
+            }
+        }
+        console.log(obj); */
+        // 第二种方式 元素去重
+        /* var arr = ["d", "k", "z", "x", "y", "x", "k", "k", "l", "l", "x", "k", "a"];
+        function repeat(array) {
+            var newarr = [];
+            for (var i = 0; i < arr.length; i++) {
+                var flag = true;
+                for (var j = 0; j < newarr.length; j++) {
+                    if (newarr[j] == arr[i]) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    newarr[newarr.length] = arr[i];
+                }
+            }
+            return newarr;
+        }
+        console.log(repeat(arr)); */
+        // 第三种方式 使用 indexOf 查找元素 进行索引比较
+        /* var arr = [1, 5, 84, 4894, 44, 45, 454, 444, 515, 3, 4, 84, 4894, 44, 45, 454, 444, 515, 3, 4, 6, 6, 6, 6, 4];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr.indexOf(arr[i]) == i) {
+                var num = 1;
+                for (var j = i + 1; j < arr.length; j++) {
+                    if (arr[i] === arr[j]) {
+                        num++;
+                    }
+                }
+                console.log(arr[i] + "出现bai的du次zhi数dao是zhuan：shu" + num)
+            }
+        } */
+        // 第四种方式
+        var arr = ["d", "k", "d", "z", "x", "y", "x", "k", "k", "l", "l", "x", "k", "a"];
+        function repeat(arr) {
+            var brr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr.indexOf(arr[i]) == i) {
+                    var num = 1;
+                    for (var j = i + 1; j < arr.length; j++) {
+                        if (arr[j] == arr[i]) {
+                            num++;
+                        }
+                    }
+                    brr.push(arr[i] + ':' + num);
+                }
+            }
+            brr = brr.join();
+            return brr;
+        }
+        console.log(repeat(arr));
+        // 2020/12/22/上课讲的
+        /* var arr = ["c", "a", "z", "a", "a", "z"];
+        function getCount(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                var temp = arr[i];
+                var count = 0;
+                for (var j = 0; j < arr.length; j++) {
+                    if (arr[j] == temp) {
+                        count++;
+                        arr[j] = -1;
+                    }
+                }
+                if (temp != -1) {
+                    newArr.push(temp + ":" + count);
+                }
+            }
+            return newArr;
+        }
+        console.log(getCount(arr)); */
+
+
+
+        // 4.工资的数组[1500,1200,2000,2100,1800],把工资超过2000的删除
+        // 第一种方式 使用内置 api 方法 filter
+        /* var arr = [1500, 1200, 2000, 2100, 1800];
+        var brr = arr.filter(function (item, index, arr) {
+            if (item > 2000) {
+                return false;
+            }
+            return true;
+        });
+        console.log(brr); */
+        // 第二种方式
+        /* var arr = [1500, 1200, 2000, 2100, 1800, 2500];
+        function remove(arr) {
+            arr.forEach(function (item, index, arr) {
+                if (item > 2000) {
+                    // slice splice
+                    arr.splice(index, 1);
+                    fn(arr)
+                }
+            })
+            return arr;
+        }
+        console.log(remove(arr)); */
+        // 第三种方式 pop shift
+        /* var arr = [1500, 1200, 2000, 2100, 1800, 2500];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[arr.length - 1] > 2000) {
+                arr.pop();
+            }
+            if (arr[i] > 2000) {
+                var content = arr[i];
+                arr[i] = arr[arr.length - 1];
+                arr[arr.length - 1] = content;
+            }
+        }
+        console.log(arr); */
+        // 第四种使用for(var index in item)的方式 孙磊
+        /* var arr = [1500, 1200, 2000, 2100, 1800, 2500];
+        function fn(arr) {
+            for (var i in arr) {
+                if (arr[i] > 2000) {
+                    arr.splice(i, 1);
+                    fn(arr);
+                }
+            }
+            return arr;
+        }
+        console.log(fn(arr)); */
+    </script>
+</body>
+
+</html>

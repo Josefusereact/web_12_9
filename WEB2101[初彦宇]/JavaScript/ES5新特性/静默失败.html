@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静默失败</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        var emp = {
+            id: 1001,
+            naem: 'eric',
+            salary: 10000
+        }
+        Object.defineProperties(
+            emp, 'salary', { enumerable: false, configurable: false },
+            emp,
+            
+        );
+
+        for (var key in emp) {
+            console.log(key + ':' + emp[key]);
+        }
+        console.log(emp.salary);
+    </script>
+</body>
+
+</html>

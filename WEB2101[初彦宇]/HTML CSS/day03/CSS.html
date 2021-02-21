@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <!-- 内嵌样式表 -->
+    <!-- <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+
+        #na {
+            width: 300px;
+            height: 400px;
+            background-color: aqua;
+        }
+
+        #cc {
+            background-color: blue;
+        }
+
+        .na {
+            width: 300px;
+            height: 400px;
+        }
+
+        .cc {
+            background-color: blueviolet;
+        }
+    </style> -->
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="shortcut icon" href="https://www.baidu.com/favicon.ico" type="image/x-icon">
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: cadetblue;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        /* 并集 */
+        .link .links.links-tail {
+            color: brown;
+        }
+
+        /* 后代 */
+        .children span {
+            color: blueviolet;
+        }
+
+        /* 子元素 */
+        .son>em {
+            color: chartreuse;
+        }
+
+        /* 相邻兄弟 */
+        .local-bro+strong {
+            color: #ff6700;
+        }
+
+        /* 兄弟元素 */
+        .brother~div {
+            border: 5px solid #ff6700;
+        }
+
+        /* 交集 */
+        article .p1,
+        section .p2 {
+            font-size: 22px;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inner"></div>
+    <!-- 内联样式 -->
+    <p style="width: 400px; height: 200px;">Cacasding Style Sheets</p>
+    <div class="inner"></div>
+    <div id="na cc" class="inner">1</div>
+    <div id="na" class="inner">2</div>
+    <div id="na" class="inner">3</div>
+    <div class="inner">4</div>
+    <div class="inner">5</div>
+    <div class="inner cla">6</div>
+    <div class="inner cla cc">7</div>
+
+    <!-- 并集选择器 -->
+    <div class="link">
+        <a href="#" class="links links-tail">
+            <i>Lorem ipsum dolor sit amet, consectetur adipisicing.</i>
+        </a>
+    </div>
+    <!-- 后代选择器 -->
+    <div class="children">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+    </div>
+    <!-- 子元素选择器 -->
+    <div class="son">
+        <em>Lorem ipsum dolor sit amet, consectetur adipisicing.</em>
+    </div>
+    <!-- 相邻兄弟选择器 -->
+    <div class="local-bro"></div>
+    <strong>Lorem ipsum dolor sit amet consectetur adipisicing.</strong>
+    <strong>Lorem ipsum dolor sit amet consectetur adipisicing.</strong>
+    <strong>Lorem ipsum dolor sit amet consectetur adipisicing.</strong>
+    <!-- 兄弟元素选择器 -->
+    <div class="brother">Lorem ipsum dolor sit amet.</div>
+    <div class="brother2">Lorem ipsum dolor sit amet.</div>
+    <div class="brother3">Lorem ipsum dolor sit amet.</div>
+    <div class="brother4">Lorem ipsum dolor sit amet.</div>
+    <div class="brother5">Lorem ipsum dolor sit amet.</div>
+    <!-- 群组选择器  交集选择器-->
+    <article>
+        <p class="p1">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </article>
+    <section>
+        <p class="p2">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定定位</title>
+    <style>
+        .container {
+            position: relative;
+            width: 1519px;
+            margin: 0 auto;
+        }
+
+        .container .top {
+            position: fixed;
+            top: 0;
+            bottom: 20px;
+            height: 44px;
+        }
+
+        .container .content {
+            height: 1677px;
+            margin-top: 44px;
+            background: url(作业/固定定位/box.png) no-repeat 260px 0;
+        }
+
+        .container .left {
+            position: fixed;
+            width: 120px;
+            top: 74px;
+            left: 0;
+            height: 288px;
+            background: url(作业/固定定位/r2_c1.png) no-repeat;
+        }
+
+        .container .right {
+            position: fixed;
+            top: 74px;
+            right: 0;
+            float: right;
+            width: 120px;
+            height: 288px;
+            background: url(作业/固定定位/r2_c2.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top"><img src="作业/固定定位/r1_c1.png" alt=""></div>
+        <div class="content"></div>
+
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>

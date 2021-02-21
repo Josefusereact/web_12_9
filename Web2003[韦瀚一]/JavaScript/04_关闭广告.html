@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关闭广告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            background-color: rgb(25, 14, 66);
+        }
+
+        .box2 {
+            position: relative;
+            width: 1126px;
+            margin: 0 auto;
+        }
+
+        .banner {
+            display: block;
+            height: 80px;
+            background: url(images/2.jpg) no-repeat center -150px;
+        }
+
+        .close {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            text-decoration: none;
+            background-color: yellow;
+            color: #0f1423;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1 top-banner" id="box1">
+        <div class="box2">
+            <a href="javascript:;" class="banner"></a>
+            <a href="javascript:;" class="close" id="closeBanner">x</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            // 1.获取事件源和相关元素
+            var a_id = document.getElementById('closeBanner');
+            var box1 = document.getElementsByClassName('box1')[0];
+            box1.style.opacity = 1;
+            var timer = null;
+            // 2.绑定事件
+            a_id.onclick = function () {
+                // 3.书写事件驱动程序
+                timer = setInterval(function () {
+                    if (box1.style.opacity == 0) {
+                        clearInterval(timer);
+                        box1.style.display = 'none';
+                    }
+                    box1.style.opacity -= 0.1;
+                }, 50);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mona Lisa</title>
+    <link rel="stylesheet" href="MonaLisa.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        .cleaerfix:after,
+        .cleaerfix::before {
+            content: '';
+            display: table;
+        }
+
+        .cleaerfix::after {
+            clear: both;
+        }
+
+        .cleaerfix {
+            *zoom: 1;
+        }
+
+        .idCard {
+            width: 800px;
+            margin: 15px auto;
+        }
+
+        .topCard,
+        .bottomCard {
+            width: 380px;
+            margin: 20px auto;
+            border: 1px solid #dedede;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, .3);
+        }
+
+        .cardBar {
+            padding: 10px 15px;
+            border-bottom: 1px solid #dedede;
+        }
+
+        .cardBar h1 {
+            float: left;
+            font-size: 16px;
+            color: #222;
+            letter-spacing: 1px;
+        }
+
+        .cardBar a {
+            float: right;
+            color: #999;
+            text-decoration: none;
+        }
+
+        .cardContent .cardList li {
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .cardContent .cardList a>img,
+        .cardContent .cardList .desc {
+            display: inline-block;
+        }
+
+        .cardContent .cardList a>img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            vertical-align: -1.5px;
+        }
+
+        .cardContent .cardList .desc {
+            width: 200px;
+            margin: 0 0 0 12px;
+        }
+
+        .cardContent .cardList .praise {
+            float: right;
+            line-height: 30px;
+            border: 1px solid #dedede;
+            padding: 0px 15px;
+            border-radius: 20px;
+            margin: 2px 0;
+        }
+
+        .bottomCard {
+            border: 1px solid #dedede;
+        }
+
+
+        .bottomCard .imagearea {
+            border-top: 1px solid #dedede;
+            overflow: hidden;
+        }
+
+        .bottomCard .imagearea .imgList .sk1,
+        .bottomCard .imagearea .imgList .sk2 {
+            float: left;
+        }
+
+        .bottomCard .imagearea .imgList .sk1 .imgLower {
+            /* float: left; */
+            width: 170px;
+            height: 100px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .bottomCard .imagearea .imgList .sk2 .imgUpper {
+            width: 170px;
+            height: 120px;
+            border-radius: 5px;
+            margin: 10px 0 10px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="monalisa" /> -->
+    <div class="idCard cleaerfix">
+        <div class="topCard clearfix">
+            <div class="cardBar cleaerfix">
+                <h1>Who to follow</h1>
+                <a href="#">
+                    <span class="more">Refresh</span>
+                </a>
+            </div>
+            <div class="cardContent">
+                <ul class="cardList clearfix">
+                    <li class="cleaerfix">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="">
+                        </a>
+                        <div class="desc">
+                            <p>Lorem ipsum</p>
+                            <p>Australla</p>
+                        </div>
+                        <div class="praise">Follow</div>
+                    </li>
+                    <li class="cleaerfix">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="">
+                        </a>
+                        <div class="desc">
+                            <p>Lorem ipsum</p>
+                            <p>Australla</p>
+                        </div>
+                        <div class="praise">Follow</div>
+                    </li>
+                    <li class="cleaerfix">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="">
+                        </a>
+                        <div class="desc">
+                            <p>Lorem ipsum</p>
+                            <p>Australla</p>
+                        </div>
+                        <div class="praise">Follow</div>
+                    </li>
+                    <li class="cleaerfix">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="">
+                        </a>
+                        <div class="desc">
+                            <p>Lorem ipsum</p>
+                            <p>Australla</p>
+                        </div>
+                        <div class="praise">Follow</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottomCard clearfix">
+            <div class="cardBar cleaerfix">
+                <h1>latest</h1>
+                <a href="#">
+                    <span class="more">See All</span>
+                </a>
+            </div>
+            <div class="imagearea">
+                <ul class="imgList clearfix">
+                    <li class="sk1">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="" class="imgLower">
+                        </a>
+                    </li>
+                    <li class="sk2">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="" class="imgUpper">
+                        </a>
+                    </li>
+                    <li class="sk2 sk3">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="" class="imgUpper">
+                        </a>
+                    </li>
+                    <li class="sk1">
+                        <a href="#">
+                            <img src="wallhaven-8xlpg2.jpg" alt="" class="imgLower">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

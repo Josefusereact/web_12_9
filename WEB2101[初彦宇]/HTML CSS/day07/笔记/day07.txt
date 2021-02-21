@@ -1,0 +1,30 @@
+正课：
+    过渡：
+        transition-property 过渡的属性名    
+            取值：css属性名
+        transition-duration过渡的时间
+            取值：具体数值+单位（s/ms）
+        transition-timing-function 过渡的时间速度曲线   
+            取值：linear匀速
+                  ease慢-快-慢
+                  ease-in 慢开始快结束
+                  ease-out 快开始慢结束
+                  ease-in-out 加速开始减速结束
+        transition-delay过渡的延迟执行
+            取值：具体数值+单位（s/ms）
+        简写：
+            transition：property duration timing-function delay;
+
+动画:
+    关键帧:
+    @keyframes flashName{
+        0% / from {
+            样式规则 / content
+        }
+        50% / to {
+            样式规则 / content
+        }
+        100% / to {
+            样式规则 / content
+        }
+    }

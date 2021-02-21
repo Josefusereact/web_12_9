@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07_单个子节点</title>
+    <style>
+        #box {
+            width: 330px;
+            height: 300px;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+
+        .sb1,
+        .sb2,
+        .sb3 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            float: left;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="sb1"></div>
+        <div class="sb2"></div>
+        <div class="sb3"></div>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            // 第一种使用next 和 pervious
+            /* var sb2 = document.getElementsByClassName("sb2")[0];
+            var sb3 = sb2.nextElementSibling || sb2.nextSibling;
+            var sb1 = sb2.previousElementSibling || sb2.previousSibling;
+            sb2.onmouseover = function () {
+                sb3.style.backgroundColor = "skyblue";
+                sb1.style.backgroundColor = "skyblue";
+            }
+            sb2.onmouseout = function () {
+                sb3.style.backgroundColor = "white";
+                sb1.style.backgroundColor = "white";
+            } */
+            // 第二种使用first 和 last
+            var box = document.getElementById("box");
+            var sb3 = box.lastElementChild || box.lastChild;
+            var sb1 = box.firstElementChild || box.firstChild;
+            console.log(sb3);
+            console.log(sb1);
+        }
+    </script>
+</body>
+
+</html>

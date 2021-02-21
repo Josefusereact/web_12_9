@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08_(作业)美女画廊</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        } */
+        body {
+            background-color: #cccccc;
+        }
+
+        #w {
+            width: 556px;
+            margin: 0 auto;
+        }
+
+        #w h1 {
+            font-weight: 300;
+        }
+
+        #w .p1,
+        .p2 {
+            font-weight: 300;
+            font-size: 20px;
+            color: #ff6700;
+        }
+
+        #w .p2 {
+            color: #333;
+        }
+
+        #w .figure {
+            width: 576px;
+            margin-left: -20px;
+            overflow: hidden;
+        }
+
+        #w .figure ul {
+            width: 100%;
+            list-style: none;
+            height: 80px;
+            padding: 0;
+            margin: 0;
+            margin-left: 20px;
+            overflow: hidden;
+        }
+
+        #w .figure ul li {
+            float: left;
+            margin-right: 20px;
+            width: 124px;
+            height: 80px;
+        }
+
+        #w .figure .fg-link {
+            display: inline-block;
+        }
+
+        #w .figure .fg-img {
+            width: 100%;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="w">
+            <h1>美女画廊</h1>
+            <p class="p1">注册</p>
+            <div class="figure">
+                <ul>
+                    <li><a href="images/1.jpg" class="fg-link" title="美女1">
+                            <img src="images/1-small.jpg" alt="美女1" class="fg-img">
+                        </a></li>
+                    <li><a href="images/2.jpg" class="fg-link" title="美女2">
+                            <img src="images/2-small.jpg" alt="美女2" class="fg-img">
+                        </a></li>
+                    <li><a href="images/3.jpg" class="fg-link" title="美女3">
+                            <img src="images/3-small.jpg" alt="美女3" class="fg-img">
+                        </a></li>
+                    <li><a href="images/4.jpg" class="fg-link" title="美女4">
+                            <img src="images/4-small.jpg" alt="美女4" class="fg-img">
+                        </a></li>
+                </ul>
+            </div>
+            <img src="images/placeholder.png" alt="" style="width: 100%;margin-right: 20px;" id="img400">
+            <p class="p2" id="p2">选择一个图片</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var a = document.getElementsByTagName("a");
+            for (var i = 0; i < a.length; i++) {
+                a[i].onclick = function () {
+                    document.getElementById("img400").src = this.href;
+                    document.getElementById("p2").innerHTML = this.title;
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

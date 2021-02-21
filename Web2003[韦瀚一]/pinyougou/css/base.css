@@ -1,0 +1,116 @@
+/* 初始化样式 */
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* 把我们所有标签的内外边距清零 */
+* {
+    margin: 0;
+    padding: 0;
+    /* CSS3盒子模型 */
+    box-sizing: border-box;
+}
+
+/* 去掉li前面的小圆点 */
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* em 和 i 的文字不倾斜 */
+em,
+i {
+    font-style: normal;
+}
+
+img {
+    /* border 0 照顾低版本浏览器 如果图片外面包含了链接会有边框的问题 */
+    border: 0;
+    /* 取消图片底侧有空白缝隙的问题 */
+    vertical-align: middle;
+}
+
+button {
+    /* 鼠标经过button时鼠标变成小手 */
+    cursor: pointer;
+}
+
+button,
+input {
+    /* \5B8B\4F53 是宋宋体的意思 字符编码格式 这样浏览器兼容较好 */
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    /* 默认有灰色边框我们需要手动去掉 */
+    border: 0;
+    outline: 0;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c81623;
+}
+
+
+body {
+    /* CSS3 抗锯齿，让文字显示的更加清晰 */
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4f53", sans-serif;
+    color: #666;
+    margin: 0;
+}
+
+.hide,
+.none {
+    display: none;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+    content: ' ';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+dt,
+dd {
+    margin: 0;
+}

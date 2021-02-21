@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+        .fl {
+            float: left;
+        }
+
+        [title*="tit"] {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            margin: 0 10px 0 0;
+        }
+
+        [title^="0"] {
+            background-color: blueviolet;
+        }
+
+        [title$="4"] {
+            background-color: black;
+        }
+
+        [title="3tit-3"] {
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div title="0tit-0123" class="fl"></div>
+    <div title="1tit-1" class="fl"></div>
+    <div title="2tit-2" class="fl"></div>
+    <div title="3tit-3" class="fl"></div>
+    <div title="4tit-4" class="fl"></div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>联动菜单</title>
+	<meta charset="utf-8" />
+
+</head>
+
+<body>
+	<div id="category"></div>
+	<script>
+		/*使用 HTML DOM 的方式实现联动菜单*/
+		var categories = [
+			{
+				"id": 10, "name": '男装', "children": [
+					{ "id": 101, "name": '正装' },
+					{ "id": 102, "name": 'T恤' },
+					{ "id": 103, "name": '裤衩' }
+				]
+			},
+			{
+				"id": 20, "name": '女装', "children": [
+					{ "id": 201, "name": '短裙' },
+					{ "id": 202, "name": '连衣裙' },
+					{
+						"id": 203, "name": '裤子', "children": [
+							{ "id": 2031, "name": '长裤' },
+							{ "id": 2031, "name": '九分裤' },
+							{ "id": 2031, "name": '七分裤' }
+						]
+					},
+				]
+			},
+			{
+				"id": 30, "name": '童装', "children": [
+					{ "id": 301, "name": '帽子' },
+					{
+						"id": 302, "name": '套装', "children": [
+							{ "id": 3021, "name": "0-3岁" },
+							{ "id": 3021, "name": "3-6岁" },
+							{ "id": 3021, "name": "6-9岁" },
+							{ "id": 3021, "name": "9-12岁" }
+						]
+					},
+					{ "id": 303, "name": '手套' }
+				]
+			}
+		];
+
+		function createSelect(cates) {
+			var sel = document.createElement('select');
+			sel.add(new Option('--请选择--', '0'));
+			for (var i = 0; i < cates.length; i++) {
+				sel.add(new Option(cates[i].name, cates[i].id));
+			}
+			sel.onchange = function () {
+				// while (this != this.parentNode.lastChild) {
+				while (this.nextElementSibling) {
+					// this.parentNode.removeChild(this.parentNode.lastChild);
+					category.removeChild(this.nextElementSibling);
+				}
+				var i = this.selectedIndex;
+				if (i >= 1) {
+					var cate = cates[i - 1];
+					if (cate.children) {
+						createSelect(cate.children);
+					}
+				}
+			}
+			category.appendChild(sel);
+		}
+		createSelect(categories);
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>读取并修改元素的属性</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/4_1.css" />
+	<style>
+		.foreground {
+			z-index: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>实现多标签页效果</h2>
+	<ul id="tab">
+		<li id="tab1" onclick="show(this)">10元套餐</li>
+		<li id="tab2" onclick="show(this)">30元套餐</li>
+		<li id="tab3" onclick="show(this)">50元包月</li>
+	</ul>
+	<div id="container">
+		<!--<div id="content1" class="foreground">-->
+		<!--强调：使用style.设置的属性，默认格式都是:
+			"属性: 值;"-->
+		<div id="content1" style="z-index: 1;">
+			10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+		</div>
+		<div id="content2">
+			30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+		</div>
+		<div id="content3">
+			50元包月详情：<br />&nbsp;每月无限量随心打
+		</div>
+	</div>
+
+	<script>
+		function show(li) {
+			// 如果li 的 z-index 不是1的时候
+			if (li.style.zIndex != '1') {
+				// 获得id 为container 的所有直接子元素 保存在divs中
+				var divs = container.children;
+				// 遍历divs中每个div
+				for (var i = 0; i < divs.length; i++) {
+					// 移除当前div的style
+					divs[i].removeAttribute('style');
+				}
+				// 遍历结束
+				// 设置li对应的div的z-index 为1
+				document.getElementById('content' + li.id[3]).style.zIndex = '1';
+			}
+		}
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="列表详情页">
+    <meta name="generator" content="IDEA">
+    <meta name="author" content="Email:987064101@qq.com">
+    <meta name="shortcut-icon" href="favicon.ico" type="image/x-icon">
+    <title>list</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px/1.5 'Courier New', Courier, monospace;
+            background-color: #161a21;
+        }
+
+        #app {
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        #app .title {
+            position: relative;
+            height: 50px;
+            text-align: center;
+        }
+
+        #app .title h1 {
+            float: left;
+            line-height: 50px;
+            color: yellow;
+        }
+
+        #app .title p {
+            display: inline-block;
+            font-size: 20px;
+            line-height: 50px;
+            color: aliceblue;
+        }
+
+        #app .title a {
+            position: relative;
+            top: 12.5px;
+            float: right;
+            height: 25px;
+        }
+
+        #app .btn {
+            width: 50px;
+            height: 100%;
+            background-color: teal;
+            text-decoration: none;
+            font-size: 14px;
+            text-align: center;
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+        }
+
+        #app .title .teal:active .btn,
+        #app .show-list .blue:active .btn,
+        #app .show-list .dangerous:active .btn {
+            background-color: rgb(9, 83, 83);
+            font-size: 13px;
+        }
+
+        #app .show-list .blue,
+        #app .show-list .dangerous {
+            display: inline-block;
+            height: 25px;
+
+        }
+
+        #app .show-list .blue .btn {
+            background-color: darkblue;
+        }
+
+        #app .show-list .dangerous .btn {
+            background-color: brown;
+        }
+
+
+        #app .show-list .blue:active .btn {
+            background-color: rgb(20, 9, 83);
+        }
+
+        #app .show-list .dangerous:active .btn {
+            background-color: rgb(97, 14, 14);
+        }
+
+        #app .show-list {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 0;
+            border: 1px solid brown;
+            color: white;
+            font-size: 18px;
+            font-weight: 200;
+            text-align: center;
+        }
+
+        #app .show-list th {
+            background-color: darkslategrey;
+            font-weight: 500;
+            color: tomato;
+        }
+
+        #app .show-list td {
+            background-color: #0f1423;
+        }
+
+        #app .show-list th,
+        #app .show-list td {
+            width: 25%;
+            height: 40px;
+        }
+
+        #app .show-list th:not(:last-child),
+        #app .show-list td:not(:last-child) {
+            border-right: 1px solid #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="title">
+            <h1>User list</h1>
+            <p class="time">芜湖!</p>
+            <a href="javascript:;" class="teal"><button class="btn">添加</button></a>
+        </div>
+        <table class="show-list">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>fdx</td>
+                    <td>芜湖</td>
+                    <td><a href="javascript:;" class="blue"><button class="btn">修改</button></a>
+                        <a href="javascript:;" class="dangerous"><button class="btn">删除</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>jzx</td>
+                    <td>芜湖</td>
+                    <td><a href="javascript:;" class="blue"><button class="btn">修改</button></a>
+                        <a href="javascript:;" class="dangerous"><button class="btn">删除</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        //获取当前时间
+        var time = document.getElementsByClassName("time")[0];
+        setInterval(function () {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            var weekday = date.getDay();
+            time.innerHTML = "当前时间:" + year + "年" + month + "月" + day + "日" + minute + "分" + second + "秒" + "\t" + "星期" + weekday;
+        }, 100);
+
+        //添加模拟
+        var btn = document.getElementsByClassName("btn");
+        var num = 3;
+        btn[0].onclick = function () {
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+
+            td1.innerHTML = num;
+            td2.innerHTML = "kirito";
+            td3.innerHTML = 17;
+            td4.innerHTML = '<a href="javascript:;" class="blue"><button class="btn">修改</button></a>' + '\n' + '<a href="javascript:;" class="dangerous"><button class="btn">删除</button></a>';
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+
+            var tbody = document.getElementsByTagName("tbody")[0];
+            console.log(tbody);
+            tbody.appendChild(tr);
+
+            num++
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+/* 登录页面css */
+.py-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.logoArea {
+    height: 78px;
+    overflow: hidden;
+}
+
+.loginArea {
+    height: 487px;
+    background-color: #7e00ff;
+}
+
+.logo {
+    width: 182px;
+    height: 78px;
+    background: url(../images/logo.png) no-repeat;
+    margin: 12px 0 0 5px;
+}
+
+.login {
+    height: 487px;
+    background: url(../upload/loginbg.png) no-repeat;
+}
+
+.loginform {
+    position: relative;
+    float: right;
+    top: 50%;
+    margin-top: -155px;
+    width: 350px;
+    height: 311px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.loginform .tab-wraped {
+    border: 1px solid #ddd;
+    overflow: hidden;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.loginform .tab-wraped .nav {
+    float: left;
+    width: 173.7px;
+    height: 42px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    background-color: rgb(252, 252, 252);
+    border: 0;
+}
+
+.loginform .tab-wraped .nav .nava {
+    display: block;
+    width: 175px;
+    height: 42px;
+}
+
+.tab-wraped li.active a {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-wraped .nav-2>a {
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #28a3ef;
+    color: darkred;
+}
+
+.tab-content {
+    float: left;
+    width: 350px;
+    height: 269px;
+    background-color: #fff;
+    padding: 16px 18px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.sui-form {
+    width: 312px;
+    height: 175px;
+    margin-top: 17px;
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 18px;
+}
+
+.sui-form .inp {
+    float: left;
+    width: 275px;
+    height: 32px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-left: none;
+    font-size: 14px;
+    color: #555;
+    border-radius: 2px 0 0 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: all .7s ease-out;
+    margin-bottom: 16px;
+}
+
+.sui-form .inp:hover {
+    border: 1px solid #28a3ef;
+    border-left: none;
+}
+
+.sui-form .input-prepend {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.sui-form .add-on,
+.sui-form .add-on {
+    padding: 4px 5px;
+    border: 1px solid #ccc;
+    text-shadow: 0 1px 0 #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.loginname,
+.loginpwd {
+    float: left;
+    width: 37px;
+    height: 32px;
+    border-radius: 2px 0 0 2px;
+    background-color: #ccc;
+    background-image: url(../images/icons.png);
+    background-position: -10px -201px;
+}
+
+.loginpwd {
+    background-position: -72px -201px;
+}
+
+.setting {
+    overflow: hidden;
+    width: 312px;
+    height: 18px;
+    margin: 0 0 25px;
+    color: #333;
+}
+
+.setting label input {
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+    margin-right: 3px;
+
+}
+
+.forget {
+    float: right;
+}
+
+.logined {
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+}
+
+.logined a {
+    width: 312px;
+    height: 36px;
+}
+
+.logined button {
+    width: 312px;
+    height: 36px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 5px;
+    background-color: rgb(200, 22, 35);
+}
+
+.registeration {
+    padding-bottom: 25px;
+}
+
+.registeration a {
+    float: right;
+    color: #28a3ef;
+    padding-top: 4px;
+}
+
+.registeration li {
+    float: left;
+    margin-right: 20px;
+}
+
+.registeration li a {
+    display: block;
+    width: 34px;
+    height: 34px;
+    background: url(../images/regetype.png) no-repeat -18px -7px;
+}
+
+.registeration ul li:nth-child(2) a {
+    background-position: -70px -7px;
+}
+
+.registeration ul li:nth-child(3) a {
+    background-position: -122px -7px;
+}
+
+.registeration ul li:nth-child(4) a {
+    background-position: -175px -7px;
+}
+
+
+
+
+
+
+
+
+.py_copyright {
+    text-align: center;
+    line-height: 24px;
+    font: 12px 'tahoma, arial, "Hiragino Sans GB", "Microsoft Yahei", 宋体, sans-serif';
+    ;
+}
+
+.py_copyright .links ul {
+    height: 48px;
+}
+
+.py_copyright .links ul li {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 0 17px;
+    height: 18px;
+    font-size: 13px;
+    border-right: 1px solid #ddd;
+}
+
+.py_copyright .links ul li:last-child {
+    border: none;
+}
+
+.address {
+    height: 24px;
+    margin-top: -17px;
+    line-height: 24px;
+    color: #333;
+}
+
+.beian {
+    height: 24px;
+    line-height: 24px;
+}

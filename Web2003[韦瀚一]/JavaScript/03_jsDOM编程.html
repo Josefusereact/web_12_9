@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>改变样式</button>
+    <input type="text"></input>
+    <!-- <a id="app" class="btn" id="id_btn"></a> -->
+    <script>
+        // dom document object model  //操作html节点
+        //1.获取事件源
+        /* var a = document.getElementsByTagName("a")[0];
+        var btn = document.getElementsByTagName("btn")[0];
+        var id_btn = document.getElementsByTagName("id_btn");
+        console.log(btn);
+        console.log(id_btn);
+        //2.绑定事件 单击   双击   移入    移出    鼠标按下   鼠标弹起   键盘按下    键盘弹起
+        a.onclick = function () {
+            //3.事件驱动程序
+            alert("叫");
+            // cursor: pointer
+        } */
+
+        var btn = document.getElementsByTagName("button")[0];
+        var input = document.getElementsByTagName("input")[0];
+        input.onchange = function () {
+            input.style.width = "300px";
+            input.style.height = "300px";
+            input.style.backgroundColor = "bl";
+            input.style.border = "10px solid #ccc";
+            input.disabled = false;
+            input.maxLength = "8";
+            input.type = "password";
+        }
+    </script>
+</body>
+
+</html>

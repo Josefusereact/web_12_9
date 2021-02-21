@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dec2bin</title>
+</head>
+
+<body>
+    <script>
+        /* function dec2bin(n) {
+            var ds = [];
+            while (n != 0) {
+                ds.push(n % 2);
+                n = parseInt(n / 2);
+            }
+            return ds.reverse().join('');
+        }
+        console.log(dec2bin(35));
+        console.log(35 .toString(2)); */
+
+        function nucleateReview(count) {
+            var empty = [];
+            for (var i = 1; i <= count; i++) {
+                // empty.push(arr[i]);
+                empty.push(' 需检测人员' + i);
+                if (empty.length == count) {
+                    empty.push(' self');
+                }
+            }
+            console.log(empty);
+            while (count > 0) {
+                console.log(empty.shift() + '预约成功' + ', 还剩: ' + empty);
+                count--;
+            }
+            return empty + '预约失败';
+        }
+        console.log(nucleateReview(11));
+    </script>
+</body>
+
+</html>

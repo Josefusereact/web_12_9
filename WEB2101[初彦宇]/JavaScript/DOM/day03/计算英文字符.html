@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算字符数量</title>
+</head>
+
+<body>
+    <script>
+        // \u4e00 \u9fa5
+        var str = '今晚308,w84u';
+        var chs = 0, eng = 0, num = 0, oth = 0;
+        for (var i = 0; i < str.length; i++) {
+            str.charAt(i) >= "0" && str.charAt(i) <= "9" ? ++num :
+                str.charAt(i) >= "A" && str.charAt(i) <= "Z" || str.charAt(i) >= "a" && str.charAt(i) <= "z" ? ++eng :
+                    str.charAt(i) >= "\u4e00" && str.charAt(i) <= "\u9fa5" ? ++chs : ++oth;
+        }
+        console.log(
+            "数字: " + num + ", 字母: " + eng + " 汉字: " + chs + ", 其他: " + oth
+        );
+    </script>
+</body>
+
+</html>

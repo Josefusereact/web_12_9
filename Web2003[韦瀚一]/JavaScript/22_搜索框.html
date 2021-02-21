@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22_搜索框</title>
+    <style>
+        #box {
+            width: 500px;
+            margin: 200px auto;
+        }
+
+        input {
+            width: 400px;
+        }
+
+        button {
+            width: 70px;
+        }
+
+        ul {
+            width: 396px;
+            margin: 0;
+            border: 1px solid brown;
+            list-style-type: none;
+            padding: 5px;
+            color: #dedede;
+        }
+
+        ul li:hover {
+            color: #000;
+            background-color: rgba(59, 25, 138, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" name="" id="" value="">
+        <button>搜索</button>
+        <!-- <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>abb</li>
+            <li>cbb</li>
+            <li>cab</li>
+            <li>cadafb</li>
+        </ul> -->
+    </div>
+
+    <script>
+        window.onload = function () {
+            // 1.获取事件源
+            /* inp.value 如果与数字中的元素的第一个字符的第一个字符匹配上,那么就加到ul>li里面 */
+            var arr = ["aaa", "aac", "aab", "abc", "acb", "baa", "bac", "bca", "bbb", "acdb", "bda", "cbd"];
+            var inp = document.getElementsByTagName("input")[0];
+            var btn = document.getElementsByTagName("button")[0];
+            var box = document.getElementById("box");
+            var newArr = [];
+            var ul = null;
+            // 2.绑定事件
+            inp.oninput = function () {
+                if (this.value == "") {
+                    box.removeChild(ul);
+                    if (box.children[2]) {//如果ul存在那么就给他删除
+                        newArr = [];
+                    }
+                } else {
+                    for (var i = 0; i < arr.length; i++) {
+                        // 如果this.value的值与数组中的第一个值的首个字符匹配,把匹配的数组元素添加到新数组里面
+                        if (arr[i].indexOf(this.value) == 0) {
+                            newArr.push("<li>" + arr[i] + "</li>");
+                        }
+                    }
+                    ul = document.createElement("ul");
+                    box.appendChild(ul);
+                    var str = newArr.join("");
+                    ul.innerHTML = str;
+                }
+            }
+            // 3.书写事件驱动程序
+        }
+    </script>
+</body>
+
+</html>

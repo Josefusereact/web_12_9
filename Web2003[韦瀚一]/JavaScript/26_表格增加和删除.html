@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26_表格增加和删除</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #app {
+            margin: 0 auto;
+        }
+
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table border="1" width="50%" id="table">
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>xh001</td>
+                    <td>王小明</td>
+                    <td>
+                        <a href="javascrit:;" onclick="remove(this)">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>xh002</td>
+                    <td>刘晓芳</td>
+                    <td>
+                        <a href="javascrit:;" onclick="remove(this)">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>xh003</td>
+                    <td>汪啸天</td>
+                    <td>
+                        <a href="javascrit:;" onclick="remove(this)">删除</a>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>删除按钮</td>
+                </tr> -->
+            </tbody>
+            <tfoot>
+                <tr style="text-align: right;">
+                    <td colspan="3"><button>添加</button></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script>
+        window.onload = function () {
+            // 1.获取事件源
+            var tr = document.getElementsByTagName("tr");
+            var btn = document.getElementsByTagName("button")[0];
+            var table = document.getElementById("table");
+            var num = 3;
+            // 2.绑定事件
+            for (var i = 0; i < tr.length; i++) {
+                tr[i].onmouseover = function () {
+                    for (var j = 0; j < tr.length; j++) {
+                        tr[j].style.backgroundColor = "#fff";
+                    }
+                    this.style.backgroundColor = "#f2f2f2";
+                }
+            }
+            btn.onclick = function () {
+                // 3.事件驱动程序
+                num++;
+                var tr = document.createElement("tr");
+                var idTd = document.createElement("td");
+                var nameTd = document.createElement("td");
+                var delTd = document.createElement("td");
+                idTd.innerText = "xh00" + num;
+                nameTd.innerText = "学生" + num;
+                delTd.innerHTML = "<a href=\"javascrit:;\" onclick=\"remove(this)\">删除</a>";
+                tr.appendChild(idTd);
+                tr.appendChild(nameTd);
+                tr.appendChild(delTd);
+                table.appendChild(tr);
+            }
+        }
+        function remove(obj) {
+            var tr = obj.parentNode.parentNode;
+            tr.parentNode.removeChild(tr);
+        }
+    </script>
+</body>
+
+</html>

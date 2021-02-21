@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图导航</title>
+    <style>
+        .container {
+            position: relative;
+            height: 60px;
+            margin-top: 70px;
+            background: #000;
+        }
+
+        .container ul {
+            overflow: hidden;
+            position: relative;
+            height: 60px;
+            list-style: none;
+            line-height: 60px;
+            margin: 0 0 0 190px;
+        }
+
+        .container ul li {
+            float: left;
+        }
+
+        .container ul li a {
+            position: relative;
+            display: inline-block;
+            color: #fff;
+            padding: 0 10px;
+            text-decoration: none;
+        }
+
+        .container ul a:hover {
+            background-color: #3a92d0;
+        }
+
+        /* .container ul li a span {
+            position: absolute;
+            width: 26px;
+            height: 20px;
+        }
+
+        .container ul li a .nav-hot {
+            top: -8px;
+            left: 45px;
+            background: url(作业/精灵图导航练习/sprite.png) -58px 0;
+        }
+
+        .container ul li a .nav-new {
+            top: -8px;
+            left: 32px;
+            background: url(作业/精灵图导航练习/sprite.png) -136px 0;
+        }*/
+
+        span {
+            position: absolute;
+            width: 26px;
+            height: 20px;
+        }
+
+        .nav-hot {
+            top: -8px;
+            left: 465px;
+            background: url(作业/精灵图导航练习/sprite.png) -58px 0;
+        }
+
+        .nav-new {
+            top: -8px;
+            left: 825px;
+            background: url(作业/精灵图导航练习/sprite.png) -136px 0;
+        }
+    </style>
+</head>
+<!-- 58 136 62 -->
+
+<body>
+    <div class="container">
+        <ul>
+            <li><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">Java</a></li>
+            <li><a href="javascript:;">UI设计</a></li>
+            <li><a href="javascript:;">前端与移动开发</a></li>
+            <li><a href="javascript:;">问答专区</a></li>
+            <li><a href="javascript:;">ios</a></li>
+            <li><a href="javascript:;">PHP</a></li>
+            <li><a href="javascript:;">C/C++</a></li>
+            <li><a href="javascript:;">python</a></li>
+            <li><a href="javascript:;">网络营销</a></li>
+            <li><a href="javascript:;">活动专区</a></li>
+        </ul>
+        <span class="nav-hot"></span>
+        <span class="nav-new"></span>
+    </div>
+</body>
+
+</html>

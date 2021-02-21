@@ -1,0 +1,184 @@
+/* 列表页 */
+.sk {
+    position: absolute;
+    top: 37px;
+    left: 195px;
+    height: 35px;
+    border-left: 1px solid #b1191a;
+    padding: 5px 0 0 15px;
+}
+
+.sk-list li {
+    float: left;
+    height: 47px;
+    line-height: 47px;
+    margin: 0 30px;
+}
+
+.sk-list li a {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.sk-con li {
+    float: left;
+    margin: 0 20px;
+    height: 47px;
+    line-height: 47px;
+}
+
+.sk-con li a {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sk-bd {
+    margin-top: 25px;
+}
+
+.sk-goods {
+    position: relative;
+    float: left;
+    width: 290px;
+    height: 460px;
+    border: 1px solid transparent;
+    margin: 0 12px 15px 0;
+}
+
+.sk-goods:nth-child(4n) {
+    margin: 0 0 15px 0;
+}
+
+.sk-goods img {
+    width: 100%;
+}
+
+.sk-goods .sk-goods-title {
+    font-size: 14px;
+    color: #666;
+    padding: 10px;
+    font-weight: normal;
+}
+
+.sk-goods-price {
+    font-size: 22px;
+    color: #e60012;
+    padding: 0 10px;
+}
+
+.sk-goods-price del {
+    font-size: 14px;
+    padding: 0 0 0 7px;
+    color: #a4a4a4;
+}
+
+.sk-goods-progress {
+    padding: 0 10px;
+}
+
+.sk-goods-progress em,
+.sk-goods-progress i {
+    color: #e60012;
+}
+
+.bar {
+    display: inline-block;
+    width: 147px;
+    height: 11px;
+    border: 1px solid #b1191a;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.bar-in {
+    width: 80%;
+    height: 9px;
+    background-color: #e60012;
+    border-radius: 5px;
+    vertical-align: baseline;
+}
+
+.sk-goods-buy {
+    display: block;
+    height: 47px;
+    font-size: 20px;
+    background-color: #b1191a;
+    color: aliceblue;
+    text-align: center;
+    line-height: 47px;
+    font-weight: 300;
+    margin: 3px 0 0;
+}
+
+.sk-goods-buy:hover {
+    color: #ffffff;
+    background-color: #e60012;
+}
+
+.bar:hover .bar-in {
+    width: 90%;
+    transition: all .3s ease-out;
+}
+
+.sk-goods:hover {
+    border: 1px solid #b1191a;
+}
+
+.page {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.page-num .pn-prev,
+.page-num .pn-next {
+    width: 83px;
+}
+
+.page-num a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+.page-num .pn-prev>span,
+.page-num .pn-next>span {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: middle;
+    margin: -6px 4px 0;
+}
+
+.page-num .current,
+.page-num .dotted,
+.page-num a:hover {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.page-skip {
+    display: inline-block;
+}
+
+.page-skip input {
+    width: 46px;
+    height: 36px;
+    border: 1px solid #ccc;
+    text-align: center;
+    transition: all .3s;
+}
+
+.page-skip input:focus {
+    width: 88px;
+    border: 1px solid skyblue;
+}
+
+.page-skip button {
+    width: 54px;
+    height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}

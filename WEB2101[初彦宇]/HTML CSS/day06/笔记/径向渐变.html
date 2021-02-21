@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>径向渐变</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            margin: 10px auto;
+        }
+
+        #radial1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(closest-corner, blue, #ff67);
+        }
+
+        #radial2 {
+            width: 200px;
+            height: 300px;
+            background: radial-gradient(farthest-corner at 10% 10%, brown, blue);
+        }
+
+        #radial3 {
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(closest-side, black, #ccc);
+        }
+
+        #radial4 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(farthest-side, #fd6495, #777);
+        }
+
+        #trans {
+            width: 200px;
+            height: 200px;
+            transform: translate(115px, 200px);
+            margin: 0 auto;
+            background: radial-gradient(closest-corner, #0f1423, #dedede);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="radial1"></div>
+    <div id="radial2"></div>
+    <div id="radial3"></div>
+    <div id="radial4"></div>
+    <p id="trans"></p>
+</body>
+
+</html>

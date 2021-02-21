@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东注册页</title>
+    <style>
+        span {
+            color: red;
+        }
+
+        form fieldset legend {
+            font-size: 12px;
+        }
+
+        input {
+            margin-bottom: 1px;
+            margin-top: -2px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>账户信息</legend>
+            <legend><span>*</span>用户名：<input type="text"></legend>
+            <br>
+            <legend><span>*</span>密码：<input type="text"></legend>
+            <br>
+            <legend>性别：<input type="radio" id="man"> <label for="man">男</label><input type="radio" id="woman"> <label
+                    for="woman">女</label></legend>
+        </fieldset>
+        <fieldset>
+            <legend>公司信息</legend>
+            <br>
+            <legend>公司名称：<input type="text"></legend>
+            <br>
+            <legend>公司所在地址：
+                <select name="" id="">
+                    <option value="" selected>---请选择---</option>
+                    <option value="">黑龙江</option>
+                </select>
+                <select name="" id="">
+                    <option value="" selected>---请选择---</option>
+                    <option value="">哈尔滨</option>
+                </select>
+                <select name="" id="">
+                    <option value="" selected>---请选择---</option>
+                    <option value="">南岗区</option>
+                </select>
+            </legend>
+            <br>
+            <legend>购买类型用途：
+                <input type="checkbox" checked> IT
+                <input type="checkbox"> 通讯设备
+                <input type="checkbox"> 大家电
+                <input type="checkbox"> 办公耗材
+            </legend>
+            <br>
+            <legend>
+                公司行业：<textarea name="" id="" cols="10" rows="4">IT行业   计算机软件    市场推广 广告
+                </textarea>
+            </legend>
+            <br>
+            <legend>公司介绍：<textarea name="" id="" cols="30" rows="10"></textarea></legend>
+            <br>
+            <legend>营业执照上传：<button>选择文件</button>
+                未选择任何文件</legend>
+            <br>
+            <legend><img src="./images/reg.jpg" alt=""></legend>
+        </fieldset>
+    </form>
+</body>
+
+</html>

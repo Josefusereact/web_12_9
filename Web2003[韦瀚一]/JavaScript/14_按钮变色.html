@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_按钮变色</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button");
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].onmouseover = function () {
+                    for (var j = 0; j < btn.length; j++) {
+                        btn[j].style.background = "white";
+                    }
+                    this.style.backgroundColor = "yellow"
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

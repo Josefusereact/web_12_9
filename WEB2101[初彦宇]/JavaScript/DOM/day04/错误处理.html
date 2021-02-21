@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var kword = /no/ig;
+    // var input = prompt("输入一句话");
+    // var arr = input.match(kword);
+    // try{
+    //   alert("共找到" + arr.length + "处");
+
+    // }catch(err){
+    //   alert("没找到");
+    //   console.log(err);
+    // }finally{
+    //   alert("释放了");
+    //   arr = null;
+    // }
+    // if(arr){
+    //   alert("共找到" + arr.length + "处");
+    // }else{
+    //   alert("没找到");
+    // }
+    // arr=null;
+
+
+    var m = 3;
+    function fun(){
+      try{
+        m++;return m;//4
+      }catch(err){
+        m++;return m;
+      }finally{
+        m++;//5
+        // return m;//5
+      }
+    }
+    console.log(fun());//4
+    console.log(m);//5
+
+
+
+    var xhr = XMLHttpRequest();
+    try{
+      new XMLHttpRequest();
+      document.write("支持");
+    }catch(err){
+      document.write("不支持");
+    }
+  </script>
+</body>
+</html>

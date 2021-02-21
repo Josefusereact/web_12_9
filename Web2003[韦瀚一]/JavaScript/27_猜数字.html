@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27_猜数字</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            background-color: #04090f;
+        }
+
+        #app {
+            width: 700px;
+            margin: 100px auto;
+            color: aliceblue;
+            background-color: cadetblue;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 1px 2px 12px 2px rgba(189, 185, 172, 0.7);
+        }
+
+        #divbar {
+            height: 20px;
+            background-color: brown;
+            margin-bottom: 10px;
+        }
+
+        #app button,
+        #app input {
+            width: 90px;
+            height: 32px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            outline: 0;
+        }
+
+        #app button:nth-child(3) {
+            margin-left: 80px;
+        }
+
+        #app input {
+            width: 200px;
+            height: 25px;
+            margin-left: 100px;
+            padding-left: 10px;
+            font-size: 16px;
+        }
+
+        #status {
+            font-size: 20px;
+            font-weight: 600;
+            color: #16203d;
+            text-shadow: 2px 2px 5px #ff6700;
+            font-family: "Microsoft YaHei";
+            margin-bottom: 15px;
+            text-align: center;
+            background-color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="divbar">????????????</div>
+        <input type="text" placeholder="请输入数字:">
+        <button>猜数字!</button>
+        <button>游戏开始!</button>
+        <br>
+        <div id="status">让我们猜一猜吧!</div>
+    </div>
+    <script>
+        window.onload = function () {
+            var divbar = document.getElementById("divbar");
+            var inp = document.getElementsByTagName("input")[0];
+            var btn = document.getElementsByTagName("button");
+            var number = parseInt(Math.random() * 10 + 1);
+            var status = document.getElementById("status");
+            var timer = null;
+            var w = divbar.offsetWidth;
+            // 猜
+            btn[0].onclick = function () {
+                if (number > inp.value) {
+                    status.innerText = "😫,唔~有点小..呢..!";
+                } else if (number < inp.value) {
+                    status.innerText = "😫,唔~有点大..呢..!";
+                } else {
+                    status.innerText = "😉,猜对了哦!!再猜请刷新页面哦亲!";
+                    clearInterval(timer);
+                }
+            }
+            // 游戏开始
+            btn[1].onclick = function () {
+                timer = setInterval(function () {
+                    if (divbar.offsetWidth <= 2) {
+                        clearInterval(timer);
+                        divbar.style.width = 0;
+                        btn[0].disabled = true;
+                    }
+                    divbar.style.width = divbar.offsetWidth - w * 0.1 + "px";
+                }, 1200);
+            }
+        }
+    </script>
+</body>
+
+</html>

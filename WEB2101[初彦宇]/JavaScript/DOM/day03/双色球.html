@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双色球</title>
+</head>
+
+<body>
+    <button onclick="doubleBall()">机选</button>
+    <script>
+        function doubleBall() {
+            var reds = [];
+            var blue = 0;
+            // 反复生成红球  length < 6
+            // for (var i = reds.length; i < 6; i++) {
+            while (reds.length < 6) {
+                var r = parseInt(Math.random() * 33 + 1);
+                // reds.indexOf(r) == -1 ? reds.push(r) : '';
+                reds.indexOf(r) == -1 && reds.push(r);
+                /* if (reds[i].indexOf(r) == -1) {
+                    reds[i].push(r);
+                } */
+            }
+
+            reds.sort(function (a, b) {
+                return a - b;
+            });
+
+            blue = parseInt(Math.random() * 16 + 1);
+
+            console.log(reds + "|" + blue);
+        }
+    </script>
+</body>
+
+</html>

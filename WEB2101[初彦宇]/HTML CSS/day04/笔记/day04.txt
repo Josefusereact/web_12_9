@@ -1,0 +1,139 @@
+AM正课：
+    继承：
+        [1]h1标签的字体大小无法被继承
+        [2]a标签无法继承字体颜色    a存在源声明值
+        某些子元素会继承父元素的css样式
+        color   font-size   line-height
+        通常跟文字相关的属性都能被继承,跟文字相关的样式一般都设置给body为默认
+    特殊:
+        color: inherit  强制继承
+    两个特殊的值:
+        inherit     手动(强制)继承,将父元素的值取出,应用于该元素
+        initial     初始值,将属性设置为默认值
+    补充:
+        轮廓:
+            outline-color:          轮廓颜色
+            outline-style:          轮廓样式
+                取值:   none        无
+                        dotted      点状轮廓
+                        dashed      虚线轮廓
+                        solid       实线
+                        double      双实线
+            outline-width:          轮廓宽度
+
+        简写：
+            outline: none;          outline在html4只有表单元素好使
+
+    列表项：
+        list-style-type             列表项标记的类型
+            取值：  none      [无]
+                    disc    [实心圆]
+                    circle  [空心圆]
+                    square   [方块]
+                    decimal [标记是数字]
+                    decimal-leading-zero    [以0开头的标记 01 02 03]
+                    lower-roman             [小写罗马数字]
+                    upper-roman             [大写罗马数字]
+                    lower-alpha             [小写英文字母]
+                    upper-alpha             [大写英文字母]
+
+        list-style-position         列表项标记的位置
+            取值：  inside    [列表标记放在文本以内]
+                    outside    [列表标记放在文本以外]
+        list-style-image            列表项标记用图像替代
+            取值：  url("路径")     [relative absolute]
+            
+        简写：
+            list-style: 
+                取值： none
+
+    边框：
+        border-width    边框宽度
+            取值：具体数值+单位     
+        border-style    边框样式
+            取值：none      无
+                  solid     实线
+                  dotted    点状虚线
+                  dashed    虚线边框
+                  double    双实线
+        border-color    边框颜色
+            取值：同color
+        单独设置某个方向：top right left bottom
+        border-[direction]:
+        简写：
+            border：width style color；
+        
+        强调：元素若想设置边框。元素必须存在内容或者设置宽高。
+
+    背景:
+        background-color    背景颜色
+        background-image    背景图片
+            取值: url("")
+        background-size     背景尺寸
+            取值: 具体数值 + 宽度 高度   100%   100%
+                    如果数值只写一个值 表示宽度更改 高度等比缩放
+                    cover   缩放
+                    contain 宽度充满，高度等比缩放
+        background-repeat   平铺方式
+            取值：repeat[默认值] no-repeat x-repeat y-repeat
+        background-position 背景定位
+            取值: top bottom left right [x坐标][y坐标]
+        background-attachment 北京滚动
+            取值：fixed     固定
+                  scroll    跟随滚动[默认值]
+
+        简写：
+            background: color image repeat size position;[任意组合 任意搭配 不限顺序]
+
+    鼠标：
+        cursor
+            取值：pointer           小手
+                    move            移动
+                    crosshair       十字
+                    text            输入
+                    wait            等待
+                    help            帮助
+    边框阴影：
+        box-shadow: h-shadow v-shadow [blur spread color inset];            
+        h-shadow:               水平阴影的位置，可写负值
+        v-shadow:               垂直阴影的位置，可写负值
+        blur:                   模糊距离
+        spread:                 阴影大小
+        color:                  颜色
+        inset:                  阴影的位置（内部/外部）
+    文字阴影：
+        text-shadow：h-shadow v-shadow [blur color];
+
+PM正课：
+    盒模型：
+        box：每个元素在页面中都会生成一个矩形的区域。盒子
+            一切皆为框
+    类型：
+        块盒：  块级元素                独占一行[占据父元素100%宽度] 存在边框 可以直接设置宽高 可以设置padding margin
+            display:block;              
+        行盒：  行级元素                同一行显示 不能直接设置宽高[宽高由内容撑开] 设置margin左右和padding左右 上下无效
+            display:inline;             
+        行块盒：行级块元素              同一行显示 可以设置宽高 可以设置padding margin
+            display:inline-block;       
+    
+    盒子的组成部分:
+        无论行盒或者块盒都存在一下几部分:从内向外
+            [1]内容         content
+                width       
+                height      
+            [2]填充内边距   padding
+                padding  内容与边框的距离
+                padding-[direction]
+                    direction: top left right bottom
+            [3]边框         border
+            [4]外边距       margin
+                margin  当前元素与其他元素间距
+                margin-[direction]
+                    direction: top left right bottom
+                强调: 两元素垂直外边距取最大值
+                      水平外边距取和
+    怪异盒模型:
+        box-sizing  以特定的方式定义匹配某个区域的特定元素
+            取值: content-box   内容盒   固定内容的尺寸 在固定的内容尺寸上设置边距
+                  border-box    边框盒   固定边框以内的尺寸 
+                  

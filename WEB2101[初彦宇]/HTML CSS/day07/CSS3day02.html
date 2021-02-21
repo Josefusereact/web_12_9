@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3day02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .skew1 {
+            margin: 100px auto;
+            width: 400px;
+            height: 200px;
+            background: linear-gradient(65deg, #0f1423, #f7f7f7, #f40);
+            transform: perspective(700px);
+            transition: all 2s ease-in;
+            border: 7px solid #0f1423;
+            border-radius: 12px;
+            animation: hoverAnim 5s ease-in-out 2s infinite alternate-reverse;
+        }
+
+        /* .skew1:hover {
+            width: 800px;
+            transform: rotate3d(1, 1, 0, 55deg);
+            background: linear-gradient(65deg, red, blue, purple);
+            border: 7px solid #fff;
+        } */
+
+        @keyframes hoverAnim {
+            from {
+                width: 300px;
+            }
+
+            to {
+                width: 800px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="skew1"></div>
+</body>
+
+</html>

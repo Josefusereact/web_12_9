@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day04</title>
+</head>
+
+<body>
+    <script>
+        /* var f1 = Foo();
+        var f2 = Foo();
+        function Foo() {
+            var i = 0;
+            return function () {
+                console.log(i);
+                i++;
+            };
+        }
+        f1();
+        f1();
+        f2(); */
+
+
+
+        /* var b;
+        (function () {
+            var a = b;
+            b = 5;
+        })();
+        console.log(b);
+        console.log(a); */
+        /* function foo() {
+            console.log(a);
+            var a = 1;
+            console.log(a);
+            function a() { }
+            console.log(a);
+        }
+        foo(); */
+
+
+
+        /*  var a;
+         c=1;
+         b=c;
+         a=b;
+         console.log(a);
+         console.log(b);
+         console.log(c); */
+
+
+        /* var enterNum = parseInt(prompt('enterNum: '))
+        while (enterNum >= 0) {
+            if (enterNum % 2 == 0 && enterNum % 2 == 1) {
+                var k;
+                k += s;
+                console.log(k);
+            }
+        } */
+
+
+
+
+
+
+
+
+
+
+        /*  var arr = [87, 121, 223, 445, 56, 67, 887, 999, 23];
+ 
+         function compare(a, b) { return a - b; }
+ 
+         function sort(array, comparator) {
+             if (comparator === undefined) {
+                 var comparator = function (operand1, operand2) {
+                     return String(operand1) > String(operand2) ? 1 :
+                         String(operand1) < String(operand2) ? -1 :
+                             0;
+                 }
+             }
+             for (var r = 1; r < array.length; r++) {
+                 for (var k = 0; k < array.length - r; k++) {
+                     if (comparator(array[k], arr[k + 1] > 0)) {
+                         array[k] = array[k] ^ array[k + 1];
+                         array[k + 1] = array[k] ^ array[k + 1];
+                         array[k] = array[k + 1] ^ array[k];
+                     }
+                 }
+             }
+         } */
+
+        // sort(arr, compare);
+        // console.log(arr);
+
+        var arr = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+        function cmp(a, b) { return b - a };
+        function sort(arr, cmp) {
+            if (cmp === undefined) {
+                var cmp = function (a, b) {
+                    return String(a) > String(b) ? 1 : String(a) < String(b) ? -1 : 0;
+                }
+            }
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr.length - i; j++) {
+                    if (cmp(arr[j], arr[j + 1]) > 0) {
+                        arr[j] = arr[j] ^ arr[j + 1];
+                        arr[j + 1] = arr[j] ^ arr[j + 1];
+                        arr[j] = arr[j] ^ arr[j + 1];
+                    }
+                }
+            }
+        }
+        sort(arr, cmp);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

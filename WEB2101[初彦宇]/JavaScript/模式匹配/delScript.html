@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delScript</title>
+    <!--此处引入script脚本用于测试开始-->
+    <!-- <script type="text/javascript" src="/jquery/jquery.js"></script> -->
+    <!-- <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                alert($("p").html());
+            });
+        });
+    </script> -->
+    <!--此处引入script脚本用于测试结束-->
+</head>
+
+<body>
+    <p id='pt'>This is a paragraph.</p>
+    <button id='btn' οnclick="removeAllScript()">点击删除Script!</button>
+    <script>
+        // 声明一个对象
+        var html = {
+            // 在对象内部声明一个arr成员变量
+            arr: [],
+            // 声明一个获取父节点所有子节点的方法  并传入要查找的标签名称以及
+            getNodes: function (tagNames, models) {
+                // 声明一个m接收父节点
+                var m = models ? models : this.models;
+                //声明child变量 存入父节点所有子元素节点
+                var child = null;
+                // 通过this调用当前对象成员变量
+                var arr = this.arr;
+                // 判断子节点是否为空了
+                if (child = m.children) {
+                    // 遍历所有子节点
+                    for (var i = 0; i < child.length; i++) {
+                        // 声明一个变量存放子节点标签名
+                        var empty = child[i].tagName.toLowerCase();
+                        // 判断标签名是否等于查找的标签名
+                        if (empty == tagNames) {
+                            // 如果相同就推入到arr数组中
+                            arr.push(child[i]);
+                        } else {
+                            // 不相同则继续执行与父元素相同的操作
+                            this.getNodes(tagNames, child[i]);
+                        }
+                    }
+                }
+                // 返回值|向外传递arr数组
+                return arr;
+            }
+        };
+
+
+        var body = html.getNodes('body', document.all[0])[0];
+        var reg = new RegExp('/^(<[^/>]*?)(script)(>)([^<]*)(\1/\2\3)$/', 'g');
+        var bodyChild = body.children;
+        var empty = [];
+        for (var i = 0; i < bodyChild.length; i++) {
+            if (bodyChild[i].nodeName == 'SCRIPT') {
+                empty.push(bodyChild[i]);
+            }
+        }
+        console.log(empty);
+
+
+        function removeAllScript(obj) {
+            var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+            while (SCRIPT_REGEX.test(obj)) {//传入文档对象，获取整体内容
+                txt = obj.replace(SCRIPT_REGEX, ""); //正则替换为空
+                console.log(empty);
+            }
+        }
+    </script>
+</body>
+
+</html>

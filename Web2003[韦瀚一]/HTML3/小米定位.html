@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米定位</title>
+    <style>
+        .container {
+            width: 1226px;
+            height: 460px;
+            background: url(作业/小米定位案例/111.jpg) no-repeat;
+            margin: 0 auto;
+        }
+
+        .container .left {
+            float: left;
+            width: 234px;
+            height: 457px;
+            background: url(作业/小米定位案例/xiaom_left.png) no-repeat;
+        }
+
+        .container .right {
+            float: right;
+            width: calc(992px - 15px);
+            height: 460px;
+            overflow: hidden;
+        }
+
+        .container .right .left-arrow {
+            float: left;
+            background: url(作业/小米定位案例/left.png) no-repeat;
+            margin-right: 15px;
+            margin-top: calc(230px - 34.5px);
+        }
+
+        .container .right .right-arrow {
+            float: right;
+            background: url(作业/小米定位案例/right.png) no-repeat;
+            margin-right: 15px;
+            margin-top: calc(230px - 34.5px);
+        }
+
+        .container .right .left-arrow,
+        .container .right .right-arrow {
+            width: 37px;
+            height: 69px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="left-arrow"></div>
+            <div class="right-arrow"></div>
+        </div>
+    </div>
+</body>
+
+</html>

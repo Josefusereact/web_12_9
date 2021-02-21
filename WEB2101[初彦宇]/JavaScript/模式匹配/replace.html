@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replace</title>
+</head>
+
+<body>
+    <script>
+        // 替换和谐字符
+        /* var story = '那天, 我去了他家\n' +
+            '我说:卧槽,你家真大\n' +
+            '她说:想和我去草地野餐\n' +
+            '我草草的收拾了草地\n' +
+            '她说:我去去就来\n';
+        story = story.replace(/([我卧])([去槽草]{1,})/g, function (kwords, $1, $2) {
+            return $1 + ($2.length == 2 ? '*' : '**');
+        });
+        console.info('%c' + story, "color: yellow; font-size: 20px");  */
+
+
+
+        // 去掉str开头空字符
+        function trim(str, location) {
+            if (location == 'space') {
+                return str.replace(/\s*/g, '')
+            }
+            else if (location == 'LR') {
+                return str.replace(/^\s+|\s+$/g, '')
+            }
+            else if (location == 'L') {
+                return str.replace(/^\s+/, '');
+            } else if (location == 'R') {
+                return str.replace(/\s+$/, '');
+            }
+        }
+        // 去掉str开头空字符
+        /* function Ltrim() {
+            return str.replace(/^\s+/, '');
+        } */
+
+        //去掉str结尾空字符
+        /* function Rtrim() {
+            return str.replace(/\s+$/, '');
+        } */
+
+        // 同时去掉开头和结尾空字符
+        /* function trim() {
+            return str.replace(/^\s+|\s+$/g, '')
+        } */
+
+        var str = '\t K i r i g a y a   K a z u t o \t';
+        /* console.log(Ltrim(str));
+        console.log(Rtrim(str));
+        console.log(trim(str)); */
+        console.log(trim(str, 'space'));
+    </script>
+</body>
+
+</html>

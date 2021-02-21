@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_替换盒子</title>
+    <style>
+        .w {
+            width: 500px;
+            height: 300px;
+            margin: 100px auto;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 500px;
+            height: 50px;
+        }
+
+        .w ul li {
+            float: left;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            background-color: blueviolet;
+        }
+
+        .w ul li.current {
+            background-color: brown;
+        }
+
+        .w>div {
+            width: 500px;
+            height: 450px;
+            background-color: brown;
+            text-align: center;
+            line-height: 450px;
+            font-size: 80px;
+            display: none;
+            /* visibility: hidden; */
+        }
+
+        .w div.show {
+            display: block;
+            /* visibility: visible; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <ul>
+            <li class="current">一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+        </ul>
+        <div class="show">一</div>
+        <div>二</div>
+        <div>三</div>
+        <div>四</div>
+        <div>五</div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var li = document.getElementsByTagName("li");
+            // var btn = document.getElementsByTagName("button");
+            var box = document.getElementsByClassName("w")[0];
+            var div = box.getElementsByTagName("div");
+            console.log(div);
+            for (var i = 0; i < li.length; i++) {
+                li[i].index = i;
+                li[i].onmouseover = function () {
+                    for (var j = 0; j < li.length; j++) {
+                        li[j].className = "";
+                        div[j].className = "";
+                    }
+                    li[this.index].className = "current";
+                    console.log(li[this.index]);
+                    div[this.index].className = "show";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

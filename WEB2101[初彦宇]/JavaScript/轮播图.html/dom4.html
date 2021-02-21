@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    姓名：<input type="text" name="" id="name">
+    年龄：<input type="text" name="" id="age">
+    <input type="button" value="添加" id="btn1">
+    <input type="text" name="" id="txt">
+    <input type="button" name="" id="btn2" value="搜索">
+    <table border="1" width="500px" id="tab1">
+        <thead>
+            <td>Id</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+                <td>21</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>李四</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>王五</td>
+                <td>19</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>瓦尔</td>
+                <td>22</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>刘五</td>
+                <td>56</td>
+                <td></td>
+            </tr>
+        </tbody>    
+    </table>
+</body>
+<script>
+    var oTab=document.getElementById('tab1')
+    var oBtn1=document.getElementById('btn1')
+    var oAge=document.getElementById('age')
+    var oName=document.getElementById('name')
+    var id=oTab.getElementsByTagName('tbody')[0].getElementsByTagName('tr').length+1
+
+    oBtn1.onclick=function(){
+        var oTr=document.createElement('tr')
+
+        var oTd=document.createElement('td')
+        oTd.innerHTML=id++
+        oTr.appendChild(oTd)
+
+        var oTd=document.createElement('td')
+        oTd.innerHTML=oName.value
+        oTr.appendChild(oTd)
+
+        var oTd=document.createElement('td')
+        oTd.innerHTML=oAge.value
+        oTr.appendChild(oTd)
+        var oTd=document.createElement('td')
+        oTd.innerHTML='<a href="javascript:;">删除</a>'
+        oTr.appendChild(oTd)
+
+        oTd.getElementsByTagName('a')[0].onclick=function(){
+            oTab.tBodies[0].removeChild(this.parentNode.parentNode)
+        }
+
+
+        oTab.tBodies[0].appendChild(oTr)
+    }
+
+    var oBtn2=document.getElementById('btn2')
+    var oTxt=document.getElementById('txt')
+
+    oBtn2.onclick=function(){
+        
+        for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+        {
+            var str1=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()
+            var str2=oTxt.value.toLowerCase()
+            if(str1.search(str2)!=-1)
+            {
+                oTab.tBodies[0].rows[i].style.background='red'
+            }
+            else
+            {
+                oTab.tBodies[0].rows[i].style.background=''
+            }
+        }
+    }
+</script>
+</html>

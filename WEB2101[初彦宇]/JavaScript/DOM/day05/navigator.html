@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 如果已经启用cookie 则提示cookie启用，请妥善保管个人信息
+    if(navigator.cookieEnabled){
+      document.write("cookie启用，请妥善保管个人信息");
+    }else{
+      // 否则，cookie已禁用，无法自动登录
+      document.write("cookie已禁用，无法自动登录");
+    }
+  </script>
+</body>
+</html>

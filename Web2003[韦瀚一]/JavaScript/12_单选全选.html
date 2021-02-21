@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_单选全选</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            margin: 0 auto;
+            color: cadetblue;
+        }
+
+        thead th {
+            height: 60px;
+            background-color: #17254d;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="check_all"></th>
+                <th>序号</th>
+                <th>姓名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><input type="checkbox" class="check_a"></th>
+                <th>1</th>
+                <th>张晓旭</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" class="check_a"></th>
+                <th>2</th>
+                <th>张三</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" class="check_a"></th>
+                <th>3</th>
+                <th>李四</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" class="check_a"></th>
+                <th>4</th>
+                <th>王五</th>
+            </tr>
+            <tr>
+                <th><input type="checkbox" class="check_a"></th>
+                <th>5</th>
+                <th>金兆新</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        window.onload = function () {
+            // 1.获取事件源
+            var tbody = document.getElementsByTagName("tbody")[0];
+            var tr = tbody.children;
+            var color = "";
+            var check_all = document.getElementsByClassName("check_all")[0];
+            var check_a = document.getElementsByClassName("check_a");
+            for (var i = 0; i < tr.length; i++) {
+                // tr[i].index = i;
+                if (i % 2 == 0) {
+                    tr[i].style.backgroundColor = "#666";
+                } else {
+                    tr[i].style.backgroundColor = "#989898";
+                }
+                tr[i].onmouseover = function () {
+                    color = this.style.backgroundColor;
+                    this.style.backgroundColor = "#fff";
+                }
+                tr[i].onmouseout = function () {
+                    // if (this.index % 2 == 0) {
+                    //     this.style.backgroundColor = "#666";
+                    // } else {
+                    //     this.style.backgroundColor = "#ccc";
+                    // }
+                    this.style.backgroundColor = color;
+                }
+            }
+
+            check_all.onclick = function () {
+                // 把check_a选中  checked = true
+                for (var i = 0; i < check_a.length; i++) {
+                    // if (this.checked == true) {
+                    //     check_a[i].checked = true;
+                    // } else {
+                    //     check_a[i].checked = false;
+                    // }
+                    check_a[i].checked = check_all.checked;
+                }
+            }
+
+            for (var i = 0; i < check_a.length; i++) {
+                check_a[i].onclick = function () {
+                    // if (check_a[i] == false) {
+                    //     check_all.checked = false;
+                    // }
+                    var bool = true;
+                    for (var j = 0; j < check_a.length; j++) {
+                        if (check_a[j].checked == false) {
+                            bool = false;
+                        }
+                        // check_a[j].checked == false ? bool = false : bool = true;
+                    }
+                    check_all.checked = bool;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

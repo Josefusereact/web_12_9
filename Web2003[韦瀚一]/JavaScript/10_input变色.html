@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_input变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #w {
+            position: relative;
+            display: inline-block;
+            margin: 5px 20px;
+        }
+
+        #w label {
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            font-size: 12px;
+            line-height: 24px;
+            color: #cccccc;
+            cursor: auto;
+        }
+
+        input {
+            height: 20px;
+            outline: none;
+            color: #989898;
+            border: "2px solid #0f1423";
+            border-radius: 2px;
+            padding: 0 5px;
+            transition: all .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 淘宝 -->
+    <div id="w">
+        <label for="inp">梦想改造家</label>
+        <input type="text" id="inp">
+    </div>
+    <!-- 判断input输入字符长度 边框变色 -->
+    <!-- <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            console.log(inp);
+            inp.onfocus = function () {
+                inp.style.border = "10px solid green";
+            }
+            inp.onblur = function () {
+                if (inp.value.length > 16 || inp.value.length < 6) {
+                    inp.style.border = "10px solid red";
+                } else {
+                    inp.style.border = "10px solid green";
+                }
+            }
+        }
+    </script> -->
+
+
+    <!-- 京东input  但是现在2021年是 div + input -->
+    <!-- <script type="text/javascript">
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            inp.style.color = "#ccc";
+            inp.style.outline = "none";
+            inp.style.border = "2px solid #0f1423";
+            inp.style.borderRadius = "2px";
+            inp.value = "请输入内容";
+            inp.onfocus = function () {
+                inp.style.border = "2px solid #0f1423";
+                if (this.value == "请输入内容") {
+                    this.value = "";
+                } else {
+                    this.value = this.value;
+                }
+            }
+            inp.onblur = function () {
+                inp.style.border = "2px solid darkred";
+                if (this.value != "") {
+                    this.value = this.value;
+                } else {
+                    this.value = "请输入内容";
+                }
+            }
+        }
+    </script> -->
+
+
+    <!-- 淘宝做法 label + input -->
+    <script>
+        window.onload = function () {
+            var inp = document.getElementsByTagName("input")[0];
+            var lb = document.getElementsByTagName("label")[0];
+            inp.oninput = function () {
+                if (this.value == "") {
+                    lb.innerHTML = "梦想制造家";
+                } else {
+                    lb.innerHTML = "";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

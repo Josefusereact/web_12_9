@@ -1,0 +1,99 @@
+body {
+    font: 400 13px/1.5 arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Tahoma, Arial, Helvetica, STHeiti;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.w {
+    width: 1575px;
+}
+
+/* navbar开始 */
+.header-topbar {
+    text-align: right;
+}
+
+.header-topbar .allRight-bar {
+    height: 32px;
+    border-bottom: 1px solid #ebebeb;
+    line-height: 31px;
+}
+
+.left-bar-words a,
+.right-bar-user a {
+    font: 600 13px/1.2 Arial;
+    text-decoration: underline;
+}
+
+.right-bar-user a {
+    font-weight: 400;
+}
+
+.left-bar-words .spacer {
+    color: #ebebeb;
+}
+
+.left-bar-words .current {
+    text-decoration: none;
+    color: #666;
+}
+
+/* 结束 */
+
+/* header开始 */
+.header {
+    text-align: center;
+}
+
+.bdNewsLogo {
+    width: 1054px;
+    height: 9px;
+}
+
+.logoIndent {
+    font-size: 0;
+    text-indent: -9999em;
+}
+
+.logoIndent img {
+    width: 135px;
+    height: 45px;
+}
+
+.f-inp {
+    width: 536px;
+    height: 40px;
+}
+
+.f-btn {
+    width: 104px;
+    height: 42px;
+    background-color: #3388ff;
+}
+
+/* 结束 */
+
+/* menu开始 */
+
+.header-navbar {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #01204f;
+}
+
+.menuListWrapper a span {
+    color: white;
+    font: 600 14px/1.5 Arial;
+}
+
+.menuListWrapper a:hover span {
+    color: #cc0000;
+}

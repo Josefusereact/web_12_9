@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东登录页</title>
+    <style>
+        table {
+            background-color: pink;
+            width: 400px;
+            height: 410px;
+        }
+
+        tr:nth-child(1) {
+            height: 70px;
+        }
+
+        tr:nth-child(3) {
+            vertical-align: middle;
+        }
+
+        tr:nth-child(5) {
+            text-align: center;
+        }
+
+        span {
+            color: red;
+            font-size: 12px;
+        }
+
+        img {
+            display: block;
+            padding-top: 20px;
+            width: 100px;
+            height: 27px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1" cellspacing="0" cellpadding="0">
+        <th colspan="2">京东会员</th>
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" maxlength="6"> <span>最多输入6个字符</span></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="text" maxlength="6"> <span>最多输入6个字符</span></td>
+        </tr>
+        <tr>
+            <td>验证码：</td>
+            <td>
+                <input type="text">
+                <img src="./images/yzm.jpg" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><a href="javascript:;">登录</a> | <a href="javascript:;">注册用户</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

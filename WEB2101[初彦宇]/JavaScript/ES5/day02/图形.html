@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图形</title>
+</head>
+
+<body>
+    <script>
+        /*
+       * 空心菱形
+       * @param Number n 输入的行数
+       * @return String`
+       * */
+        /*  function ling(n) {
+             if (n == 1) return 1;
+             var string = '';
+             var kong = '';
+             var s = '';
+             var ko = '';
+             for (var i = 1; i <= n; i++) {
+                 for (var k = n - 1; k >= i; k--) {
+                     kong += ' ';
+                 }
+                 for (var j = 1; j <= 2 * i - 1; j++) {
+                     if (j == 1 || j == 2 * i - 1) {
+                         string += '*';
+                     } else {
+                         string += ' ';
+                     }
+                 }
+                 console.log(kong + string);
+                 string = '';
+                 kong = '';
+             }
+             for (var a = n - 1; a >= 1; a--) {
+                 for (var b = n - 1; b >= a; b--) {
+                     ko += ' ';
+                 }
+                 for (var c = 1; c <= 2 * a - 1; c++) {
+                     if (c == 1 || c == 2 * a - 1) {
+                         s += '*';
+                     } else {
+                         s += ' ';
+                     }
+                 }
+                 console.log(ko + s);
+                 ko = "";
+                 s = "";
+             }
+         }
+         ling(4); */
+
+
+
+
+        /*
+        * 空心等腰梯形
+        * n:表示梯形第一行显示的星星的个数，如果n是偶数，则星星的个数会剪掉1
+        * */
+        /* function tiXing(n, m) {
+            var string = '';
+            //通过第一行星星的个数计算星星从第几行开始显示
+            n = Math.floor((n + 1) / 2);
+            // m = parseInt(10);
+            for (var i = 1; i <= m; i++) {
+                if (i >= n) {
+                    for (var k = m, g = ''; k > i; k--) {
+                        g += '  ';
+                    }
+                    for (var j = 1; j <= 2 * i - 1; j++) {
+                        if (i == n || i == m) {
+                            string += '* ';
+                        } else {
+                            if (j == 1 || j == 2 * i - 1) {
+                                string += '* ';
+                            } else {
+                                string += '  ';
+                            }
+                        }
+                    }
+                    console.log(g + string);
+                    string = '';
+                }
+            }
+        }
+        tiXing(6, 10); */
+
+
+    </script>
+</body>
+
+</html>

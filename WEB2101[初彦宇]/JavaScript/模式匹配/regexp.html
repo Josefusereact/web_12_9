@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regexp</title>
+</head>
+
+<body>
+    <script>
+        var kwords = ["明明", "静静", "日日"];
+        // var reg = //g;
+        var reg = new RegExp(kwords.join('|'), "g");
+        var msg = "明明喜欢我，却不告诉我" +
+            "\t别理我，我想静静" +
+            "静静是谁？\n" +
+            "\t你先告诉我明明是谁？\n" +
+            "日日思君不见君\n" +
+            "床前明月光\n" +
+            "\t明月是谁";
+        var arr = msg.match(reg);
+        console.dir(msg.match(reg));
+        document.write(arr);
+       /*  var empty = null;
+        while ((empty = reg.exec(msg)) != null) {
+            console.log(
+                "在位置" + empty.index +
+                "，发现敏感词，" + empty[0] +
+                "，下次从" + parseInt(reg.lastIndex) + "开始查找"
+            );
+        } */
+    </script>
+</body>
+
+</html>

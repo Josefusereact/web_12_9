@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3</title>
+    <style>
+        body {
+            background: #0f1423;
+        }
+
+        #bg {
+            width: 100%;
+            background: -webkit-linear-gradient(#9f1c65, #d89068, #7d1467, #ffe66c);
+            /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#9f1c65, #d89068, #7d1467, #ffe66c);
+            /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#9f1c65, #d89068, #7d1467, #ffe66c);
+            /* Firefox 3.6 - 15 */
+            background: linear-gradient(#9f1c65, #d89068, #7d1467, #ffe66c);
+            /* 标准的语法 */
+        }
+
+        @-webkit-keyframes shineRed {
+            from {
+                -webkit-box-shadow: 0 0 5px #bbb;
+            }
+
+            50% {
+                -webkit-box-shadow: 0 0 10px red;
+            }
+
+            to {
+                -webkit-box-shadow: 0 0 5px #bbb;
+            }
+        }
+
+        .shine_red {
+            -webkit-animation-name: shineRed;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shine_red" style="width:500px; height:100px; margin:0 auto"></div>
+</body>
+
+</html>

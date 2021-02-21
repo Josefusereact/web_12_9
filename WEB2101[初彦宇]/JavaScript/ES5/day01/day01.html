@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day01</title>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat praesentium sit ducimus possimus assumenda,
+        ipsum beatae adipisci saepe debitis vel!</p>
+    <button onclick="window.alert('asdasdas')">替换</button>
+    <button onclick="document.write('asfasfasf')">添加文字</button>
+    <script>
+        "use strict";
+        // 声明变量并赋值 变量初始化
+        /* var a = 299;
+        var b = 300;
+        var c = 400;
+        document.write(a, b, c); */
+
+        /* var a = 100, b = 100, c = 100;
+        document.write(a, b, c); */
+
+
+
+
+        //请用户输入一个数，用程序判断是奇数还是偶数
+        //1、请用户输入一个数字，保存在num中var num=prompt（“请输入数字"）；
+        // var enter = prompt("enter number: ");
+        //2、判断该数字是否为奇数，将判断结果保存在isodd中var isodd=num%2'==1；
+        // var isOdd = enter % 2 != 0;
+        //3、判断该数字是否为偶数，将判断结果保存在isEven中var isEven=num%2！=1；
+        // var isEven = enter % 2 == 0;
+        //4、输出
+        // console.log("是奇数吗？" + isOdd);
+        // console.log("是偶数吗？" + isEven);
+
+
+
+
+        /* var a = 4;
+        var b = 2;
+        var c = a++;
+        var sum2 = (a++ - ++b) + c++ - (c++ + b++);
+        console.log(sum2); */
+        /*
+            解题思路: c = a++; 解析器读取代码到下一行时已经执行完a++,所以 c=a 为 5
+                      sum2 = (5 - 3) + 5 - (6 + 3);
+                      sum2 = -2
+        */
+
+
+
+        var age = parseInt(prompt("请输入年龄："));
+        var grade = parseFloat(prompt("请输入成绩："));
+        var stature = parseFloat(prompt("请输入身高："));
+        alert("您的年龄为：" + age + "\n您的成绩为：" + grade + "\n您的身高为：" + stature + "cm");
+    </script>
+</body>

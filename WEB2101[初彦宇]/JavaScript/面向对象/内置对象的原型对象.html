@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象的原型对象</title>
+</head>
+
+<body>
+    <script>
+        // 解决 indexOf 在 IE8 内无法正常执行问题
+        // 兼容 IE8
+        var arr = [1, 2, 3, 2, 1];
+        // 判断是否支持 indexOf 方法
+        if (Array.prototype.indexOf === undefined) {
+            // 如果不支持则执行 自定义 indexOf 方法
+            Array.prototype.indexOf = function (val, fromi) {
+                // 如果没有自定义查找位置，则默认为 0 
+                fromi === undefined && (fromi = 0);
+                // 遍历当前数组
+                for (; fromi < this.length; fromi++) {
+                    // 判断当前数组中当前元素 是否和要查找 元素 相同
+                    if (val == this[fromi]) {
+                        // 相同则返回 对应索引位置
+                        return fromi;
+                    }
+                }
+                // 遍历结束
+                // 返回 -1
+                return -1;
+            }
+        }
+
+        document.write(arr.indexOf(2) + '<br>');
+        document.write(arr.indexOf(2, 2) + '<br>');
+        document.write(arr.indexOf(2, 4) + '<br>');
+        document.write(arr.indexOf(5) + '<br>');
+        /* var i = arr.indexOf(2);
+        console.log(i);
+        var i = arr.indexOf(2, 2);
+        console.log(i); */
+
+        document.write('<br>');
+        var str = "\tKirito and Asuna\t";
+        // 判断是否支持 trim 方法
+        if (String.prototype.trim === undefined) {
+            // 如果不支持就 执行自定义 trim
+            String.prototype.trim = function () {
+                // 用正则替换当前字符串的开头和结尾的空字符，返回结果
+                return this.replace(/^\s|\s$/g, '');
+            }
+        }
+        str = str.trim();
+        console.log(str);
+
+    </script>
+</body>
+
+</html>

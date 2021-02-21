@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_task</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tasks To Do List.</h1>
+    <ul></ul>
+    输入: <input type="text" id="newTask">
+    类型: <select name="" id="">
+        <option value="0" class="red">重要</option>
+        <option value="1" class="orange">一般</option>
+        <option value="2" class="green">普通</option>
+    </select>
+    <button id="add">add</button>
+    <script>
+        window.onload = function () {
+            // 1.获取事件源
+            var ul = document.getElementsByTagName("ul")[0];
+            var newTask = document.getElementById("newTask");
+            var select = document.getElementsByTagName("select")[0];
+            var opts = select.children;
+            var btn = document.getElementById("add");
+            var content = 0;
+            // 2.绑定事件
+            select.onchange = function () {
+                content = this.value;
+            }
+            btn.onclick = function () {
+                var li = document.createElement("li");
+                //li.innerHTML = "<input type='radio'">" + newTask.value;
+                var radio = document.createElement("input");
+                radio.setAttribute("type", "radio");
+                li.appendChild(radio);
+                var text = document.createTextNode(newTask.value);
+                li.appendChild(text);
+                for (var i = 0; i < opts.length; i++) {
+                    if (content == i) {
+                        li.style.color = opts[i].className;
+                    }
+                }
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</body>
+
+</html>
