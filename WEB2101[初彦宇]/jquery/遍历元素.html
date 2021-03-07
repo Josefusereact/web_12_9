@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .tabs li {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #aaa;
+        }
+
+        .tabs li.active {
+            border: 1px solid #aaa;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .panes {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #aaa;
+        }
+
+        .panes>div {
+            display: none;
+        }
+
+        .panes>div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="tabs">
+        <li class="active"><a href="#tc10">十元套餐</a></li>
+        <li><a href="#tc20">二十元套餐</a></li>
+        <li><a href="#tc30">三十元套餐</a></li>
+    </ul>
+    <div class="panes">
+        <div id="tc10" class="active">十元套餐详情: lorem</div>
+        <div id="tc20">二十元套餐详情: lorem</div>
+        <div id="tc30">二十元套餐详情: lorem</div>
+    </div>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $('ul li a').on('click', function (e) {
+            e.preventDefault();
+            $(this).parent().siblings('.active').removeClass('active');
+            $(this).parent().addClass('active');
+            $($(this).attr('href')).siblings('.active').fadeOut(500).removeClass('active');
+            $($(this).attr('href')).fadeIn(500).addClass('active');
+
+
+        });
+        $('.tabs li a').click(function (e) {
+            e.preventDefault();
+            //修改页头的active的位置
+            $(this).parent().addClass('active').siblings('.active').removeClass('active');
+
+            //修改标签页的active
+            var id = $(this).attr('href');
+            $('.tabs .tab.active').fadeOut(500);
+            $(id).fadeIn(500);
+        });
+
+    </script>
+</body>
+
+</html>

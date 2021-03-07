@@ -179,6 +179,7 @@
             }, 2000)
         }
         function stop() {
+            console.log('asdsa');
             clearInterval(timer);
         }
         // 圆点跟随图片变化
@@ -194,7 +195,7 @@
             })(i)
         }
         container.onmouseover = stop;
-        container.onmouseout = stop;
+        container.onmouseout = play;
         play();
     </script>
 </body>

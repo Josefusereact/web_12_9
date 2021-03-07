@@ -21,21 +21,43 @@
         }
 
         .inner {
+            position: relative;
+            width: 490px;
             height: 170px;
             overflow: hidden;
-            position: relative;
         }
 
         ul {
-            width: 3000px;
+            width: 2940px;
             height: 100%;
             list-style: none;
             position: relative;
-            right: 0;
         }
 
-        ul li {
+        li {
             float: left;
+        }
+
+        .number span {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            right: -358px;
+            bottom: 30px;
+            border: 1px solid red;
+            border-radius: 50%;
+            background-color: blueviolet;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .number span.current {
+            background: #fff;
+            color: black;
+            transition: .5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .span_box {
@@ -44,45 +66,25 @@
             width: 490px;
             top: 50%;
             margin-top: -25px;
-            /* display: none; */
+            vertical-align: middle;
+            display: none;
         }
 
         .span_box a {
             display: inline-block;
             width: 30px;
-            height: 50px;
-            position: inherit;
             color: white;
             background: rgba(0, 0, 0, .5);
             line-height: 50px;
             text-align: center;
             text-decoration: none;
             cursor: pointer;
+            user-select: none;
         }
 
         .right {
             position: absolute;
             right: 0;
-        }
-
-        .inner .number span {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            position: relative;
-            right: -358px;
-            bottom: 27px;
-            border: 1px solid red;
-            border-radius: 50%;
-            background-color: blueviolet;
-            text-align: center;
-            line-height: 20px;
-            cursor: pointer;
-        }
-
-        .inner .number span.current {
-            background: #fff;
-            color: black;
         }
     </style>
 </head>
@@ -98,11 +100,11 @@
                 <li><img src="e995db11759a499d3c85900a54c6585.jpg" alt=""></li>
             </ul>
             <div class="number">
-                <span class="current">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
+                <span class="span1 current">1</span>
+                <span class="span2">2</span>
+                <span class="span3">3</span>
+                <span class="span4">4</span>
+                <span class="span5">5</span>
             </div>
             <div class="span_box">
                 <a href='javascript:(0);' class="left" onselectstart="return false">&lsaquo;</a>
@@ -111,37 +113,196 @@
         </div>
     </div>
 
-    <script>
-        var span = document.querySelectorAll('span');
-        var ul = document.querySelector('ul');;
-        var inner = document.querySelector('.inner');
-        // 轮播索引
-        var num = 0;
-        function scorllRight() {
-            num++
-        }
-
-        autoScroll();
-        function autoScroll() {
-            for (var i = 0; i < span.length; i++) {
-                span[i].index = i;
-                span[i].onmouseover = function () {
-                    for (var j = 0; j < span.length; j++) {
-                        span[j].className = '';
+    <!-- // dot 圆点 跟随切换 -->
+    <!--  <script>
+        window.onload = function () {
+            // 1. 获取事件源
+            var number = document.querySelector('.number');
+            var number_li = number.children;
+            var ul = document.querySelector('ul');
+            var inner = document.querySelector('.inner'); // ul 移动的是第几个inner width
+            var timer = null;
+            // 2. 绑定事件
+            for (var i = 0; i < number_li.length; i++) {
+                // 给每一个元素身上绑定一个属性,属性值是 index 索引值
+                number_li[i].index = i;
+                number_li[i].onmouseover = function () {
+                    // 排他思想 给所有人先设置为空 然后再给自己设置current
+                    for (var j = 0; j < number_li.length; j++) {
+                        number_li[j].className = '';
                     }
                     this.className = 'current';
+                    // 鼠标移输入对应焦点 显示对应图片
+                    // i * inner.width
                     animate(ul, -this.index * inner.offsetWidth);
                 }
             }
+            function animate(ele, target) {
+                clearInterval(ele.timer);
+                ele.timer = setInterval(function () {
+                    var step = (target - ele.offsetLeft) > 0 ? 10 : -10;
+                    if (Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
+                        ele.style.left = target + 'px';
+                        clearInterval(ele.timer);
+                    } else {
+                        ele.style.left = ele.offsetLeft + step + 'px';
+                    }
+                }, 10);
+            }
         }
+    </script> -->
 
+    <!-- // 左右按钮点击切换图片 -->
+    <!-- <script>
+        window.onload = function () {
+            var ul = document.querySelector('ul');
+            var span_btn = document.querySelector('.span_box');
+            var liArr = ul.children;
+            // 左右按钮
+            var btnArr = span_btn.children;
+            var inner = document.querySelector('.inner');
+            var num = 0;
+            inner.onmouseover = function () {
+                span_btn.style.display = 'block';
+            }
+            inner.onmouseout = function () {
+                span_btn.style.display = 'none';
+            }
+            // 左按钮点击
+            btnArr[0].onclick = function () {
+                num--;
+                // 控制在第一张图片不让动
+                if (num < 0) {
+                    num = 0;
+                }
+                animate(ul, -num * inner.offsetWidth);
+            }
+            // 右按钮点击
+            btnArr[1].onclick = function () {
+                num++;
+                // 控制在第五张图片不让动
+                if (Math.abs(num) >= liArr.length - 1) {
+                    num = liArr.length - 1;
+                }
+                animate(ul, -num * inner.offsetWidth)
+            }
+        }
         function animate(ele, target) {
             clearInterval(ele.timer);
             ele.timer = setInterval(function () {
                 var step = (target - ele.offsetLeft) > 0 ? 10 : -10;
                 if (Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
-                    clearInterval(ele.timer)
                     ele.style.left = target + 'px';
+                    clearInterval(ele.timer);
+                } else {
+                    ele.style.left = ele.offsetLeft + step + 'px';
+                }
+            }, 10);
+        }
+    </script> -->
+
+    <!-- // 完整版轮播图 -->
+    <script>
+        window.onload = function () {
+            var inner = document.querySelector('.inner'),           // 轮播图ul外层区域inner
+                ul = document.querySelector('ul'),                  // 获取ul 用于位移
+                img_Arr = ul.children,                              // 五张轮播图
+                number = document.querySelector('.number'),         // 焦点按钮外层区域number
+                liArr = number.children,                            // 获取5个焦点按钮
+                span_btn = document.querySelector('.span_box'),     // 获取包含左右按钮的盒子span_box
+                btnArr = span_btn.children,                         // 获取左右按钮
+                num = 0,                                            // 记录左右按钮点击次数
+                key = 0,                                            // 专门记录焦点按钮的索引
+                timer = null,                                       // 创建一个定时器
+                frag = document.createDocumentFragment(),           // 创建 文档片段 documentFragElement
+                // 6. 复制一个真的第一张图片添加到ul里面做假 1 
+                colLi = img_Arr[0].cloneNode(true);                 // 克隆 第一张图片 节点 深克隆
+            frag.appendChild(colLi);                                // 先添加到文档片段中
+            ul.appendChild(frag);                                   // 将文档片段添加到ul
+            // 7. 执行自动滚动
+            autoScroll();
+            // 1. 鼠标移入inner让左右按钮显示出来
+            inner.onmouseover = function () {
+                span_btn.style.display = 'block';
+                clearInterval(timer)
+            }
+            inner.onmouseout = function () {
+                span_btn.style.display = 'none';
+                autoScroll();
+            }
+            // 2. 鼠标移入焦点切换焦点样式并且切换对应图片          // 圆点变色规则 排他思想
+            number.addEventListener('mouseover', function (e) {
+                for (var j = 0; j < liArr.length; j++) {
+                    liArr[j].className = '';
+                }
+                e.target.className = 'current';
+                animate(ul, -(e.target.innerText - 1) * inner.offsetWidth);
+                // 4. 把当前图片的索引给num，记录一下当前索引值让左右按钮继续根据这个索引值来移动，
+                // 焦点按钮和左右按钮结合到一块
+                num = key = e.target.innerText - 1;
+            }, false);
+            // 3. 鼠标点击左右按钮 num++ 并切换 -num*inner.offsetWidth+'px'  // 切换左右按钮的时候，焦点按钮也要跟着切换
+            span_btn.addEventListener('click', scrollMain, false);
+            function scrollMain(e) {
+                if (e.target == btnArr[0]) {
+                    scrollLeft();
+                }
+                if (e.target == btnArr[1]) {
+                    scrollRight();
+                }
+                e.stopPropagation();
+            }
+            // 左按钮
+            function scrollLeft() {
+                num--;
+                key--;
+                if (num < 0) { // 7. 如果现在是第一张图片，摁左按钮闪现到第六张图片上然后移动到第五张图片上
+                    // num = 0;
+                    ul.style.left = -(img_Arr.length - 1) * inner.offsetWidth + 'px';
+                    num = img_Arr.length - 2;
+                }
+                if (key < 0) {
+                    key = liArr.length - 1;
+                }
+                for (var j = 0; j < liArr.length; j++) { // 5. 左右按钮切换让焦点随之切换
+                    liArr[j].className = '';
+                }
+                liArr[key].className = 'current';
+                animate(ul, -num * inner.offsetWidth);
+            };
+            // 右按钮
+            function scrollRight() {
+                num++; // 左右按钮
+                key++; // 焦点按钮
+                if (num > img_Arr.length - 1) { // 8. 如果图片到了第六张 那么我们就闪现到第一张
+                    // num = liArr.length - 1;
+                    ul.style.left = 0;
+                    num = 1;
+                }
+                if (key > liArr.length - 1) {
+                    key = 0;
+                }
+                for (var j = 0; j < liArr.length; j++) { // 5. 左右按钮切换让焦点随之切换
+                    liArr[j].className = '';
+                }
+                liArr[key].className = 'current';
+                animate(ul, -num * inner.offsetWidth);
+            };
+            // 自动滚动
+            function autoScroll() {
+                timer = setInterval(function () {
+                    scrollRight();
+                }, 3000);
+            }
+        }
+        // 动画效果
+        function animate(ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) > 0 ? 10 : -10;
+                if (Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
+                    ele.style.left = target + 'px';
+                    clearInterval(ele.timer);
                 } else {
                     ele.style.left = ele.offsetLeft + step + 'px';
                 }

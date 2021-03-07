@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width: 150px;
+            height: 200px;
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 计算器 -->
+    <div class="calc">
+        <input type="text" name="" id="" value="0" style="text-align: center;">
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+    </div>
+    <!-- 菜单选择 -->
+    <select name="" id="menu" size="5">
+        <option value="">京酱肉丝</option>
+        <option value="">鱼香肉丝</option>
+        <option value="">青椒肉丝</option>
+    </select>
+    <select name="" id="myOrder" size="5"></select>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $('.calc').delegate('button', "click", function (e) {
+            var tag = e.target;
+            console.log(tag == this);
+            var num = parseInt($(tag).html());
+            console.log($('.calc input').val());
+            var old = parseInt($('.calc input').val());
+            old += num;
+            $('.calc input').val(old);
+        });
+
+        $('#menu').delegate('option', 'dblclick', function (e) {
+            var tag = e.target;
+            $(tag).clone(false).appendTo("#myOrder");
+        });
+    </script>
+</body>
+
+</html>

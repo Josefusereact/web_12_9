@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28_筋斗云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        ul {
+            background-color: #ccc;
+        }
+
+        .box {
+            width: 1000px;
+            height: 42px;
+            margin: 100px auto;
+            position: relative;
+            background: white;
+        }
+
+        ul {
+            width: 1000px;
+            height: 42px;
+            list-style: none;
+            background: url(wifi.png) no-repeat right;
+            position: absolute;
+        }
+
+        ul li {
+            float: left;
+            width: 83px;
+            height: 42px;
+            line-height: 42px;
+            user-select: none;
+            text-align: center;
+        }
+
+        span {
+            width: 83px;
+            height: 42px;
+            position: absolute;
+            background: url(cloud.gif) no-repeat left;
+        }
+    </style>
+    </title>
+</head>
+
+<body>
+    <div class="box">
+        <span></span>
+        <ul>
+            <li data-index=1>aaa1</li>
+            <li data-index=2>bbb2</li>
+            <li data-index=3>ccc3</li>
+            <li data-index=4>ddd4</li>
+            <li data-index=5>eee5</li>
+            <li data-index=6>fff6</li>
+            <li data-index=7>ggg7</li>
+            <li data-index=8>hhh8</li>
+            <li data-index=9>iii9</li>
+        </ul>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var span = document.querySelector('span');
+            var liArr = document.querySelector('ul');
+            var liWidth = liArr.children[0].offsetWidth;
+            var content = 0;
+            liArr.addEventListener('mouseover', function (e) {
+                slowAnimate(span, (e.target.dataset.index - 1) * liWidth);
+                e.stopPropagation();
+            }, false);
+            liArr.addEventListener('mouseout', function (e) {
+                slowAnimate(span, content * liWidth);
+                e.stopPropagation();
+            }, false);
+            liArr.addEventListener('click', function (e) {
+                content = e.target.dataset.index - 1;
+                e.stopPropagation();
+            }, false);
+            function slowAnimate(ele, target) {
+                clearInterval(ele.timer);
+                ele.timer = setInterval(function () {
+                    var step = (target - ele.offsetLeft) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    if (Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
+                        ele.style.left = target + 'px';
+                        clearInterval(ele.timer);
+                    } else {
+                        ele.style.left = ele.offsetLeft + step + 'px';
+                    }
+                }, 10);
+            };
+        }
+    </script>
+</body>
+
+</html>

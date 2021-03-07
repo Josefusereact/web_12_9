@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btnAdd">添加新按钮</button>
+    <div class="container"></div>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $('#btnAdd').on('click', function () {
+            $(".container").append('<button>' + $('.container').children().length + '</button>');
+        });
+        $('.container').on('click', "button", function (e) {
+            console.log($(this).html());
+        });
+
+    </script>
+</body>
+
+</html>
