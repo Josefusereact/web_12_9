@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<div id="app">
+		<p>
+			案例1的改造
+		</p>
+		<my-component1></my-component1>
+		<my-component2 :list="list"></my-component2>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//定义一个observable对象他会返回一个被Vue监听的对象并包含定义的baseList
+		let state = Vue.observable({
+			baseList: []
+		})
+		console.log(state)
+		Vue.component('my-component1', {
+			// 我们直接在组件中定义data来模拟复杂业务中组件内部保存的数据
+			data() {
+				return {
+					list: []
+				}
+			},
+			template: `
+					<div>
+						<p>在my-component2中实时展示本组件的list的值</p>
+						<button @click="handleClick">+</button>
+						<button @click="handleClick1">-</button>
+					</div>
+				`,
+			methods: {
+				handleClick() {
+					this.list.push(this.list.length + 1)
+					//state对象在所有的Vue实例和组件中都可以进行存取并共享数据
+					state.baseList = this.list
+					vm.list = this.list
+				},
+				handleClick1() {
+					this.list.pop()
+					state.baseList = this.list
+					vm.list = this.list
+				}
+			}
+		})
+		Vue.component('my-component2', {
+			props: {
+				list: {
+					required: false,
+					type: Array,
+					default() {
+						return []
+					}
+				}
+			},
+			watch: {
+				list(v) {
+					console.log('props', v)
+				}
+			},
+			computed: {
+				getList() {
+					//computed可以对observable定义的对象进行监听来实现共享数据
+					return state.baseList;
+				},
+				getList1() {
+					return this.list
+				}
+			},
+			template: `<div>
+					<p>我是my-component2</p>
+					<div>{{getList}}</div>
+					<div>{{getList1}}</div>
+				</div>`
+		})
+		let vm = new Vue({
+			data() {
+				return {
+					list: []
+				}
+
+			},
+			watch: {
+				list(v) {
+					console.log(v)
+				}
+			}
+		}).$mount('#app')
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <!-- 
+    canvas自身相当于图片标签
+    他的自带的width和height属性是这个画布容器的屋里像素尺寸
+    如果使用css的width和height来对他进行了设置
+    出了1:1的时候会让这个canvas画布拉伸或者压缩
+    因为css改变的是canvas标签的尺寸并不是画布的原始像素尺寸
+    
+  -->
+  <h4>
+    让当前的红色方块自动的向右运动
+  </h4>
+  <canvas id="c" width="800" height="600"></canvas>
+  <script>
+    // 实例化绘图对象
+    // 抓取canvas标签对象
+    let c = document.querySelector('#c')
+    // 通过标签对象获取绘图对象,2d代表当前使用的2d绘图对象
+    let ctx = c.getContext('2d')
+    // 设置填充颜色,颜色可以写单词，#十六进制，或rgba
+    ctx.fillStyle = 'red'
+    // 想要实现动画，并且配合当前的canvas的特性
+    //我们已知画完的数据我们无法捕捉，但是我们可以
+    //手动定义一个对象来当作虚拟的节点进行一个追踪
+    let rect = {
+      x:0,
+      y:0,
+      width:100,
+      height:100
+    }
+    //然后我们要定义一个函数来绘制这个对象
+    //为了实现动画我们还需要借助一个浏览器的api
+    //setInterval()
+    setInterval(function(){
+      //实现动画一定要做的事就是在每次绘制之前先清除之前的图形
+      //ctx.clearRect(x,y,width,height)
+      //他基于传入的坐标和宽高可以清除指定画布的区域
+      ctx.clearRect(0,0,800,600)
+      // 在这里我们需要做的就是不停的向画布绘制这个矩形
+      //同时呢根据要求改变他的位置
+      ctx.fillRect(rect.x,rect.y,rect.width,rect.height)
+      rect.x = rect.x+1;
+    },16.7)
+  </script>
+</body>
+</html>

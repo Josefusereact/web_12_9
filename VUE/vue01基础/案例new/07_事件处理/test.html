@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>07_事件处理</title>
+</head>
+
+<body>
+  <!--
+1. 绑定监听:
+  v-on:xxx="fun"
+  @xxx="fun"
+  @xxx="fun(参数)"
+  默认事件形参: event
+  隐含属性对象: $event
+2. 事件修饰符:
+  .prevent : 阻止事件的默认行为 event.preventDefault()
+  .stop : 停止事件冒泡 event.stopPropagation()
+3. 按键修饰符
+  .keycode : 操作的是某个keycode值的健
+  .enter : 操作的是enter键
+-->
+
+  <div id="example">
+
+    <h2>1. 绑定监听</h2>
+    <button>test1</button>
+    <button>test2</button>
+    <button>test3</button>
+    <button @click="click3('abc',$event)">test</button>
+
+    <h2>2. 事件修饰符</h2>
+    <a href="http://www.baidu.com" @click.prevent="preventdemo">百度一下</a>
+    <div style="width: 200px;height: 200px;background: rgb(13, 141, 24)" @click="clickouter">
+      <div style="width: 100px;height: 100px;background: rgb(188, 36, 226)" @click.stop="clickinner"></div>
+    </div>
+
+    <h2>3. 按键修饰符</h2>
+    <input type="text" @keyup.13="keyenter">
+    <input type="text" @keyup.enter="keyenter">
+
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    new Vue({
+      el: '#example',
+      data: {
+
+      },
+      methods: {
+        click3(str, event) {
+          console.log(event);
+          console.log(event.target.innerText);
+        },
+        clickouter() {
+          alert("outer");
+        },
+        clickinner() {
+          alert("inner");
+        },
+        preventdemo() {
+          alert("不能跳转百度了");
+        },
+        keyenter(event) {
+          alert(event.keyCode + " " + event.target.value);
+          location.href = "https://www.sina.com.cn";
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>

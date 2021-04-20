@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #new {
+            background: red;
+        }
+
+        #tech {
+            background: green;
+        }
+
+        /* *********定义 vue 的 transition 过渡样式********* */
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-leave,
+        .fade-enter-to {
+            opacity: 1;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            position: absolute;
+            width: 100%;
+            transition: all 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="menu='new'">新闻</button>
+            <a href=" javascript:void(0);" @click="menu='tech'">科技</a>
+        </div>
+        <div>
+            <transition name="fade">
+                <keep-alive :include="['new','tech']">
+                    <component :is="menu" :style="{color:color[0]}"></component>
+                </keep-alive>
+            </transition>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('new', {
+            template: `
+                <div id="new"  >
+                    新闻<input />
+                </div>
+            `,
+            activated() {
+                console.log("切换回来了，激活新闻");
+            }
+        });
+        Vue.component('tech', {
+            template: `
+                <div id="tech">
+                    科技<input />
+                </div>
+            `,
+            activated() {
+                console.log("切换回来了，激活科技");
+            }
+        });
+
+
+        new Vue({
+            data() {
+                return {
+                    color: ["white", "blue"],
+                    menu: "new",
+                }
+            }
+        }).$mount("#app");
+    </script>
+</body>
+
+</html>

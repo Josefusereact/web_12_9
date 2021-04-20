@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let obj = {
+				name:'a'
+			}
+			//创建代理对象
+			let p = new Proxy(obj,{
+				set(target, property, value, receiver){
+					// console.log(target,property,value)
+					console.log(`对obj的${property}设置了值:${value}`)
+					target[property] = value
+				},
+				get: function(target, property, receiver) {
+					console.log(`提取了obj的${property}的值`)
+					return target[property]
+				}
+			})
+			//代理对象与obj都可以直接使用
+			console.log(p)
+			p.name = '1'
+			console.log(p.name)
+			p.age = 123
+			console.log(p)
+			p.name = 'aaa'
+			console.log(p.name)
+			p.sex = 'ddd'
+			console.log(p.sex)
+			//最终obj的对象的值会随着p的代理对象一起改变
+			console.log(obj)
+			//以下内容并不会触发set和get函数执行
+			//json对象交给代理之后的监听全部由代理执行
+			//所以我们操作对象想要拦截赋值和取值
+			//要使用代理对象进行操作，也就相当于
+			//将这个对象的所有设置和获取值的工作全权交给代理
+			//如果交给代理之后还操作原对象，代理是无法监听的
+			obj.name = "11111"
+			console.log(obj.name)
+		</script>
+	</body>
+</html>

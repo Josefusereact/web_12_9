@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const demo = async () => {
+        console.log('我是直接打印的')
+        let result = await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("我延迟了一秒");
+          }, 1000);
+        });
+        //由于await监听的是promise对象
+        //必须await后面是一个promise对象
+        //然后这个对象的状态发生变化才会触发后续的
+        //代码执行，如果await后面不是promise对象
+        //这个对象不会触发等待效果就不会造成后面代码进行等待
+        let res1 = await setTimeout(() => {
+          console.log('我会在2秒后执行')
+        }, 2000);
+        console.log(res1)
+        console.log("我等了1秒，我由于上面的程序还没执行完，先不执行“等待一会”");
+        return result;
+      };
+      // demo的返回当做Promise
+      demo().then((result) => {
+        console.log("输出", result); // 输出 我延迟了一秒
+      });
+    </script>
+  </body>
+</html>

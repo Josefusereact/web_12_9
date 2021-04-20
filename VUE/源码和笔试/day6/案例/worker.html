@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //创建线程1
+    let w1 = new Worker('worker1.js')
+    //创建线程2
+    let w2 = new Worker('worker2.js')
+    //1秒之后运行两个线程
+    setTimeout(() => {
+      w1.postMessage('')
+      w2.postMessage('')
+    }, 1000);
+    
+  </script>
+</body>
+</html>

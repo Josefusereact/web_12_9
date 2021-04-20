@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var obj = {
+      a: 10,
+      b: () => {
+        console.log(this.a); // undefined
+        console.log(this); // Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, frames: Window, …}
+      },
+      c: function() {
+        console.log(this.a); // 10
+        console.log(this); // {a: 10, b: ƒ, c: ƒ}
+      },
+      d:function(){
+        console.log(this)
+        let test = () => {
+          console.log(this.a)
+          console.log(this)
+        }
+        test();
+      },
+      e:function(){
+        console.log(this)
+        let test = () => {
+          console.log(this.a)
+          console.log(this)
+        }
+        return test
+      },
+      f:function(){
+        console.log('最后一个')
+        console.log(this)
+        function test(){
+          console.log(this.a)
+          console.log(this)
+        }
+        return test
+      }
+    }
+    obj.b(); 
+    obj.c();
+    obj.d();
+    obj.e()();
+    obj.f()();
+  </script>
+</body>
+</html>

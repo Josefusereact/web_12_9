@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            background-color: rgba(48, 61, 252, .6);
+        }
+
+        .change-enter,
+        .change-leave-to {
+            background-color: rgba(255, 178, 208, .7);
+        }
+
+        .change-enter-to,
+        .change-leave {
+            background-color: rgba(48, 61, 252, .6);
+        }
+
+        .change-enter-active,
+        .change-leave-active {
+            transition: all .6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="handleShow">切换过过渡</button>
+        <transition name="change">
+            <p style="font: size 36px;" v-show='isShow'>过渡动画for vue</p>
+        </transition>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            data() {
+                return {
+                    isShow: false,
+                }
+            },
+            methods: {
+                handleShow() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>

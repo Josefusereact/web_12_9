@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.p-menu{
+				padding: 0;
+			}
+			.p-menu li{
+				list-style: none;
+				display: inline-block;
+			}
+			.page-one,.page-two,.page-three{
+				background-color: bisque;
+				width: 400px;
+				height: 400px;
+			}
+			.page-two{
+				background-color: burlywood;
+			}
+			.page-three{
+				background-color: darkseagreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h4>
+				动态组件component的基本使用(模拟页面切换)
+			</h4>
+			<!-- 定义p-menu组件并双向绑定checkedMenu属性实时返回选择的组件名称 -->
+			<p-menu v-model="checkedMenu"></p-menu>
+			<!-- 缓存组件 -->
+			<!-- 
+			 include属性可以指定keep-alive究竟要缓存哪个组件，如果定义了include属性那么只有在
+			 include中定义的组件会被缓存include=[component,component...]
+			 如下代码表示当前只缓存page-one和page-two组件，所以在page-three中输入任何内容在切换回page-three中
+			 之前输入的内容都会消失，而page-one和page-two中的内容会被缓存
+			 -->
+			 <!-- 
+				接下来查看三个组件的生命周期，首先打开页面查看控制台page-one的五个生命周期会按顺序输出
+				page-one和page-two只有在第一次访问时会输出所有生命中期，在第二次之后就只输出activated
+				但是page-three组件不会输出activated并且每次访问都会输出其他四个生命周期
+				所以我们发现了如果component中引用的组件被keep-alive缓存了那么组件在第一次加载之后便不会再
+				执行原有的生命周期，因为他已经被缓存了，就不会每次都重新创建，为了让开发者能在被缓存组件打开时可以做拦截
+				操作所以被缓存的组件特有一个生命周期就是activated
+				，而没有被keep-alive缓存的组件不存在activated这个生命周期
+				-->
+			<keep-alive :include="['page-one','page-two']">
+				<!-- 动态组件标签 -->
+				<component :is="checkedMenu"></component>
+			</keep-alive>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 回顾一下组件封装中v-model的定义
+			Vue.component('p-menu',{
+				props:{
+					value:{
+						type:String,
+						default(){
+							return 'page-one'
+						},
+						required:false
+					}
+				},
+				model:{
+					// 将v-model的值绑定到value属性上
+					prop:'value',
+					// 监听change-value事件通过该事件自动改变v-model绑定的值
+					event:'change-value'
+				},
+				template:`
+					<ul class="p-menu">
+						<li><button @click="handleClick('page-one')">page-one</button></li>
+						<li><button @click="handleClick('page-two')">page-two</button></li>
+						<li><button @click="handleClick('page-three')">page-three</button></li>
+					</ul>
+				`,
+				methods:{
+					handleClick(value){
+						// 通过emit通知model中的事件去改变值
+						this.$emit('change-value',value)
+					}
+				}
+			})
+			Vue.component('page-one',{
+				template:`
+					<div class="page-one">
+						我是page-one
+						<input>
+					</div>`,
+				beforeCreate() {
+					console.log('page-one','beforeCreated')
+				},
+				created() {
+					console.log('page-one','created')
+				},
+				beforeMount() {
+					console.log('page-one','beforeMount')
+				},
+				mounted() {
+					console.log('page-one','mounted')
+				},
+				activated() {
+					console.log('page-one','activated')
+				}
+			})
+			Vue.component('page-two',{
+				template:`
+					<div class="page-two">
+						我是page-two
+						<input>
+					</div>`,
+				beforeCreate() {
+					console.log('page-two','beforeCreated')
+				},
+				created() {
+					console.log('page-two','created')
+				},
+				beforeMount() {
+					console.log('page-two','beforeMount')
+				},
+				mounted() {
+					console.log('page-two','mounted')
+				},
+				activated() {
+					console.log('page-two','activated')
+				}
+			})
+			Vue.component('page-three',{
+				template:`
+					<div class="page-three">
+						我是page-three
+						<input>
+					</div>`,
+				beforeCreate() {
+					console.log('page-three','beforeCreated')
+				},
+				created() {
+					console.log('page-three','created')
+				},
+				beforeMount() {
+					console.log('page-three','beforeMount')
+				},
+				mounted() {
+					console.log('page-three','mounted')
+				},
+				activated() {
+					console.log('page-three','activated')
+				}
+			})
+			new Vue({
+				data(){
+					return {
+						checkedMenu:'page-one'
+					}
+				},
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

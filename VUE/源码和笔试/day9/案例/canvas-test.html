@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #c{
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    canvas自身相当于图片标签
+    他的自带的width和height属性是这个画布容器的屋里像素尺寸
+    如果使用css的width和height来对他进行了设置
+    出了1:1的时候会让这个canvas画布拉伸或者压缩
+    因为css改变的是canvas标签的尺寸并不是画布的原始像素尺寸
+    
+  -->
+  <h4>
+    让当前的红色方块按照方向运动
+  </h4>
+  <canvas id="c" width="800" height="600"></canvas>
+  <script>
+    // 实例化绘图对象
+    // 抓取canvas标签对象
+    let c = document.querySelector('#c')
+    // 通过标签对象获取绘图对象,2d代表当前使用的2d绘图对象
+    let ctx = c.getContext('2d')
+    // 设置填充颜色,颜色可以写单词，#十六进制，或rgba
+    ctx.fillStyle = 'red'
+    // 想要实现动画，并且配合当前的canvas的特性
+    //我们已知画完的数据我们无法捕捉，但是我们可以
+    //手动定义一个对象来当作虚拟的节点进行一个追踪
+    let rect = {
+      x:0,
+      y:0,
+      width:100,
+      height:100
+    }
+    run()
+    function run(){
+      //先清除画布
+      ctx.clearRect(0,0,800,600)
+      ctx.fillStyle = 'red'
+      //绘制新的坐标
+      ctx.fillRect(rect.x,rect.y,rect.width,rect.height)
+    }
+    let code = 0;
+    document.body.onkeydown = function(e){
+      code = e.keyCode;
+      console.log(code)
+      
+    }
+    setInterval(() => {
+      switch(code){
+        case 37://zuo
+          rect.x = rect.x - 10
+          if(rect.x<=0){
+            rect.x = 0
+          }
+        break;
+        case 38://shang
+          rect.y = rect.y - 10
+          if(rect.y<=0){
+            rect.y = 0
+          }
+        break;
+        case 39://you
+          rect.x = rect.x + 10
+          if(rect.x>=800-rect.width){
+            rect.x=800-rect.width
+          }
+        break;
+        case 40://xia
+          rect.y = rect.y + 10
+          if(rect.y>=600-rect.height){
+            rect.y=600-rect.height
+          }
+        break;
+      }
+      run()
+    }, 16.7);
+  </script>
+</body>
+</html>

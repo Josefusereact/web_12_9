@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <!-- 
+    canvas自身相当于图片标签
+    他的自带的width和height属性是这个画布容器的屋里像素尺寸
+    如果使用css的width和height来对他进行了设置
+    出了1:1的时候会让这个canvas画布拉伸或者压缩
+    因为css改变的是canvas标签的尺寸并不是画布的原始像素尺寸
+    
+  -->
+  <canvas id="c" width="800" height="600"></canvas>
+  <script>
+    // 实例化绘图对象
+    // 抓取canvas标签对象
+    let c = document.querySelector('#c')
+    // 通过标签对象获取绘图对象,2d代表当前使用的2d绘图对象
+    let ctx = c.getContext('2d')
+    console.log(ctx)
+    // 设置填充颜色,颜色可以写单词，#十六进制，或rgba
+    ctx.fillStyle = 'red'
+    // 绘制一个100*100像素的矩形
+    // 绘制填充矩形
+    // 画布的自身坐标规则是左上角是00点
+    //向右x自增向下y自增
+    //canvas内部的像素规则是按照canvas本身的
+    //width和height来决定的和css无关他就是一个单独的
+    //图像渲染容器
+    //ctx.fillRect(x,y,width,height)
+    ctx.fillRect(0,0,100,100)
+    //设置helloWorld
+    // 配置字号和字体
+    ctx.font = '20px 楷体'
+    // 设置文字内容和展示位置
+    //ctx.fillText(内容,x,y)
+    // 文字默认按照上面设置的填充颜色排版
+    //文字的坐标基准点和其他图形不同
+    //文字是按照他的左下角为基准点定位的
+    //所以文字必须向下移动自己的字号大小才能正常
+    //按照左上角基准点布局
+    // 如果想更改文字的颜色可以使用fillStyle重新设置一次
+    ctx.fillStyle = 'blue'
+    ctx.fillText('Hello World',100,20)
+
+  </script>
+</body>
+</html>

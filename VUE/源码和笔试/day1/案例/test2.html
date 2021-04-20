@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      then(arg){
+        console.log('我是参数',arg)
+        console.log(this)
+        return this
+      }
+    }
+    obj.then(1).then(2)
+      .then(3)
+      .then(4)
+      .then(5)
+    let res = obj.then(6)
+    console.log(res)
+    res.then()
+  </script>
+</body>
+</html>

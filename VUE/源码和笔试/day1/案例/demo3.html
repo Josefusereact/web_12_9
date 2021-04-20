@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 声明一个空对象
+			var obj = {}
+			//声明一个中间值对象
+			var tempObj = {}
+			Object.defineProperty(obj,'age',{
+				get(){
+					console.log(`获取了obj的值：${tempObj.age}`)
+					return tempObj.age
+				},
+				//set函数相当于vue中的watch
+				//所以本函数的this指向是当前监听的对象本身
+				set(v){
+					console.log(`对obj.age设置了新值：${v}`)
+					tempObj.age = v
+					//为什么不在本函数中直接对this.age
+					//进行赋值是因为如果直接this.age=v
+					//由于age这个属性的赋值环境被监听到了
+					//就会造成一个死循环，只要this.age=v就会
+					//触发set函数，set函数中还有this.age=v
+					//这样就直接造成一个死循环出不去了
+					//可以将最下面的代码打开来体验一下
+					// this.age = v
+				}
+			})
+			// 这个设置会触发对age的监听
+			obj.age = 122
+			console.log(obj)
+			//这里才能触发对obj.age取值的监听
+			console.log(obj.age)
+			//这个设置会让之前的监听失效
+			//由于直接对obj设置了{}相当于更改了他的变量指向
+			//这样他原本的对象就不存在了，原本的对象监听也不存在了
+			obj = {
+				age:2000
+			}
+			console.log(obj)
+			console.log(obj.age)
+		</script>
+	</body>
+</html>

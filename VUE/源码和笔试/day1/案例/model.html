@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h4>1.v-model基础</h4>
+			<!-- 
+				v-model会自动将data中指定的属性值绑定到当前组件中，
+				并且引用后会持续与html组件关联，如输入框中人为再页面中输入新的值
+				inputValue的值会同步发生变化
+			-->
+			<input type="text" v-model="inputValue" ><br/>
+			<!-- v-once修饰的元素只在第一次执行时渲染，
+				不继续监听数据的变化 -->
+			<span v-once>我只渲染一次{{inputValue}}</span><br/>
+			inputValue的值:{{inputValue}}<br/>
+			<div v-html="inputValue"></div>
+			<div v-text="inputValue"></div>
+
+
+
+			<h4>
+				<!-- v-model默认支持所有的可输入表单控件以及vue的自定义组件，不支持普通的html元素-->
+				2.默认可使用v-model的常用原生html标签
+				<div>
+					学历:{{level}}
+					<label for="level1">
+						<input id="level1" 
+							type="radio" 
+							v-model="level"  
+							name="level" 
+							value="1">专科</label>
+					<label for="level2">
+						<input id="level2" 
+							type="radio" 
+							v-model="level"  
+							name="level" 
+							value="2">本科</label>
+					<label for="level3">
+						<input id="level3" 
+							type="radio" 
+							v-model="level" 
+							name="level" 
+							value="3">研究生</label>
+				</div>
+				<div>
+					爱好:{{like}}
+					<label for="like1">
+						<input id="like1" type="checkbox" v-model="like[0]"  name="like" >旅行
+					</label>
+					<label for="like2">
+						<input id="like2" type="checkbox" v-model="like[1]"  name="like" >摄影
+					</label>
+					<label for="like3">
+						<input id="like3" type="checkbox" v-model="like[2]"  name="like" >游戏
+					</label>
+					<label for="like4">
+						<input id="like4" type="checkbox" v-model="like[3]"  name="like" >写代码
+					</label>
+					<label for="like5">
+						<input id="like5" type="checkbox" v-model="like[4]"  name="like" >呆着
+					</label>
+				</div>
+				<div>
+					{{textareaValue}}<br/>
+					<textarea name="" id="" cols="30" v-model="textareaValue" rows="2"></textarea>
+				</div>
+				<div>
+					性别：{{sex}}
+					<select name="sex" v-model="sex" id="">
+						<option value="">请选择</option>
+						<option value="1">男</option>
+						<option value="2">女</option>
+					</select>
+				</div>
+			</h4>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				data(){
+					return {
+						//inputValue:'<script>alert(1)</script>',出错了
+						inputValue:'hello',
+						textareaValue:'',
+						level:'',
+						like:[false,false,false,false,false],
+						sex:''
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

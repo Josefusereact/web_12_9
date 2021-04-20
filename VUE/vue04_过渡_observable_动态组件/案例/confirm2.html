@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="assets/confirm.css">
+	<style>
+		.fade-enter,
+		.fade-leave-to {
+			opacity: 0;
+		}
+
+		.fade-enter-to,
+		.fade-leave {
+			opacity: 1;
+		}
+
+		.fade-enter-active,
+		.fade-leave-active {
+			transition: all .7s;
+			position: absolute;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<button @click="handleShow">SHOW</button>
+		<p-confirm v-model="show" title="提示" content="你快乐吗？" @ok="handleOk" @close="handleClose"></p-confirm>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		let c = Vue.observable({
+			color: ['rgba(0,0,0,.7)']
+		});
+		Vue.component('p-confirm', {
+			props: {
+				show: {
+					required: false,
+					type: Boolean,
+					default() {
+						return false
+					}
+				},
+				title: {
+					required: false,
+					type: String,
+					default() {
+						return '默认标题'
+					}
+				},
+				content: {
+					required: false,
+					type: String,
+					default() {
+						return '默认内容'
+					}
+				},
+				confirmButtonText: {
+					required: false,
+					type: String,
+					default() {
+						return '确认'
+					}
+				},
+				cancelButtonText: {
+					required: false,
+					type: String,
+					default() {
+						return '取消'
+					}
+				},
+			},
+			computed: {
+				getColor() {
+					return c.color
+				}
+			},
+			model: {
+				prop: 'show',
+				event: 'change-show'
+			},
+			template: `
+			<div>
+				<transition name="fade">
+					<div class="p-confirm-bg" v-show="show" :style="{background:getColor[0]}">
+						<div class="p-confirm">
+							<div class="p-confirm-title">
+								{{title}}
+								<div class="p-close" @click="handleClose">
+									&times;
+								</div>
+							</div>
+							<div class="p-confirm-content">
+								{{content}}
+							</div>
+							<div class="p-confirm-btn">
+								<button class="p-btn primary" @click="handleConfirm">{{confirmButtonText}}</button>
+								<button class="p-btn" @click="handleClose">{{cancelButtonText}}</button>
+							</div>
+						</div>
+					</div>
+				</transition>
+			</div>
+			`,
+			methods: {
+				handleClose() {
+					this.$emit('change-show', false);
+					this.$emit('close');
+					console.log('关闭');
+				},
+				handleConfirm() {
+					this.$emit('change-show', false)
+					this.$emit('ok');
+					console.log('确定');
+				},
+				confirm() {
+
+				},
+				close() {
+
+				}
+			}
+		});
+		new Vue({
+			data() {
+				return {
+					show: false,
+				}
+			},
+			methods: {
+				handleShow() {
+					this.show = !this.show;
+				},
+				handleOk() {
+					console.log('点的是确定');
+				},
+				handleClose() {
+					console.log('点的是取消');
+				}
+			}
+		}).$mount('#app');
+	</script>
+</body>
+
+</html>

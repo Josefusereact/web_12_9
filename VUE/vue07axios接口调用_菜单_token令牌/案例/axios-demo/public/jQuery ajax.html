@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Ajax</title>
+</head>
+
+<body>
+    <h2>jQuery Ajax</h2>
+    <button id="jq-btn-ajax">jQuery 的 Ajax 函数请求</button>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(() => {
+            $('#jq-btn-ajax').eq(0).click(() => {
+                $.post('http://localhost:8080/shop-service/v1/api-test/post/demo1', {}, (data) => {
+                    console.log("返回值：", data);
+                }, 'json');
+            });
+        });
+    </script>
+</body>
+
+</html>

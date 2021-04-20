@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>06_列表渲染</title>
+</head>
+
+<body>
+
+  <!--
+1. 列表显示
+  数组: v-for / index
+  对象: v-for / key
+2. 列表的更新显示
+  删除item
+  替换item
+-->
+
+  <div id="demo">
+    <h2>测试: v-for 遍历数组</h2>
+    <input type="text" name="" id="" v-model="searchname">
+    <ul>
+      <li v-for="(a, index) in filterPersons" :key="index">
+        {{index}}---{{a.name}} {{a.age}}
+        <button @click="deleteclick(index,a)">删除</button>
+        <button @click='updateclick(index,{name:"cat",age:15})'>更新</button>
+      </li>
+    </ul>
+    <div>
+      <button @click="setOrderType(1)">年龄升序</button>
+      <button @click="setOrderType(2)">年龄降序</button>
+      <button @click="setOrderType(0)">序号排序</button>
+    </div>
+    <h2>测试: v-for 遍历对象</h2>
+    <li v-for="(value,key) in persons[2]">{{key}}--{{value}}</li>
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#demo",
+      data() {
+        return {
+          searchname: "",
+          orderType: 0,
+          persons: [
+            { name: "tom", age: 5473 },
+            { name: "jack", age: 3463 },
+            { name: "rose", age: 5435 },
+            { name: "kook", age: 1212 },
+          ]
+        }
+      },
+      methods: {
+        deleteclick(index) {
+          this.persons.splice(index, 1);
+        },
+        updateclick(index, person) {
+          this.persons.splice(index, 1, person, person);
+        },
+        setOrderType(orderType) {
+          this.orderType = orderType
+        }
+      },
+      computed: {
+        filterPersons() {
+          const { serachname, persons, orderType } = this;
+          console.log(this);
+
+          let r = this.persons.filter(p => p.name.indexOf(this.searchname) != -1);
+          if (this.orderType != 0) {
+            r.sort((person1, person2) => {
+              if (this.orderType === 1) {
+                return person2.age - person1.age;
+              }
+              else {
+                return person1.age - person2.age;
+              }
+            });
+          }
+          return r;
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

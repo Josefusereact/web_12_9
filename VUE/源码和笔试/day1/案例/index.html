@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<h4>
+					仿真vue案例：根据Vue的基本语法结构和渲染逻辑实现vue的视图渲染和数据监听
+				</h4>
+				<div>
+					<button @click="handleClick" >按钮</button>
+					<button @click="handleClick1($event,name,age,123,'hahah')" >按钮传参数</button>
+					<br/>
+					<input type="text" placeholder="请输入姓名"
+						@input="handleInputName"><br/>
+					定义的name：{{name}}<br/>
+					<input type="text" placeholder="请输入年龄"
+					 @input="handleInputAge"></br>
+					定义的age：{{Number(age)+20}}<br/>
+					我是常量：{{'aaa'+'bbb'}}
+					我是表达式：{{'aaa'+'bbb'+name}}
+				</div>
+				这里也是定义的name：{{name}}
+				<div>
+					<input type="text" @input="handleInputValue">
+					{{inputValue}}
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//匹配取值表达式
+			let regx = /{{(.*?)}}/g
+			//匹配事件参数
+			let regx1 = /\((.*?)\)/g
+			//要观察的事件
+			let funMap = {
+				"@click":'click',
+				"@change":'change',
+				"@dbclick":'dbclick',
+				"@mouseover":'mouserover',
+				"@mouseout":'mouseout',
+				"@mousemove":'mousemove',
+				"@keyup":'keyup',
+				"@keydown":'keydown',
+				"@keypress":'keypress',
+				"@input":'input',
+				"@blur":'blur',
+				"@focus":'focus',
+				"v-on:click":'click',
+				"v-on:change":'change',
+				"v-on:dbclick":'dbclick',
+				"v-on:mouseover":'mouserover',
+				"v-on:mouseout":'mouseout',
+				"v-on:mousemove":'mousemove',
+				"v-on:keyup":'keyup',
+				"v-on:keydown":'keydown',
+				"v-on:keypress":'keypress',
+				"v-on:input":'input',
+				"v-on:blur":'blur',
+				"v-on:focus":'focus',
+			}
+			//用于创建监听data数据的函数
+			function defineProperty(_obj,obj,key,vue){
+				Object.defineProperty(obj,key,{
+					set(v){
+						if(vue.$options.beforeUpdate){
+							vue.$options.beforeUpdate.call(vue)
+						}
+						_obj[key] = v
+						vue.$render()
+						if(vue.$options.updated){
+							vue.$options.updated.call(vue)
+						}
+					},
+					get(){
+						return _obj[key]
+					}
+				})
+			}
+			//vue的全局观察者函数
+			function watch(data,vue){
+				const _data = {...data}
+				Object.keys(data).forEach(key => {
+					vue[key] = data[key]
+					defineProperty(_data,data,key,vue)
+					defineProperty(_data,vue,key,vue)
+				})
+				return _data
+			}
+			//Vue的实例
+			function Vue(options){
+				this.$options = options;
+				if(options.el){
+					this.$el = document.querySelector(options.el)
+				}
+				if(this.$options.beforeCreate){
+					this.$options.beforeCreate.call({})
+				}
+				if(options.data instanceof Function){
+					this._data = options.data()
+				}else if(options.data instanceof Object){
+					this._data = options.data
+				}
+				let obj = watch(this._data,this)
+				if(this.$options.created){
+					this.$options.created.call(this)
+				}
+			}
+			//Vue的原型渲染函数
+			Vue.prototype.$mount = function(el){
+				this.$el = document.querySelector(el)
+				// console.log(this.$el)
+				if(this.$options.beforeMount){
+					this.$options.beforeMount.call(this)
+				}
+				this.$initVDOM()
+				this.$render()
+				if(this.$options.mounted){
+					this.$options.mounted.call(this)
+				}
+				return this
+			}
+			//根据虚拟dom渲染到网页中
+			function renderVue(vdom,vue,dom){
+				if(vdom.nodeType == 1){
+					//当标签为非文本部分时
+					if(vdom.childNodes){
+						// 当标签有子元素时
+						vdom.childNodes.forEach(item => {
+							if(item.nodeType == 1){
+								// 如果子元素是html非文本标签时
+								//创建dom对象
+								let d = document.createElement(item.tagName)
+								if(item.id){
+									d.id = item.id
+								}
+								if(item.className){
+									d.className = item.className
+								}
+								d.placeholder = item.placeholder
+								d.value = item.value
+								//设置唯一标志
+								d.dataset['key'] = item.key
+								//绑定v-on的事件并处理自定义参数
+								Object.keys(item.on).forEach(handler => {
+									d.addEventListener(handler,function(e){
+										console.log(handler)
+										let func = item.on[handler];
+										let args = func.match(regx1)
+										let argArr
+										let funcName
+										if(args){
+											argArr = args[0].replace(/(\(|\))/g,'').split(',')
+											funcName = func.replace(args[0],'')
+										}else{
+											argArr = []
+											funcName = func
+										}
+										argArr = argArr.map(item => {
+											if(item.indexOf('"') == -1 || item.indexOf("'") == -1){
+												if(vue[item]){
+													return vue[item]
+												}else if(item == '$event'){
+													return e
+												}else{
+													return eval(item)
+												}
+											}else{
+												return eval(item)
+											}
+											return item;
+										})
+										if(argArr.length>0){
+											vue.$options.methods[funcName].apply(vue,argArr)
+										}else{
+											vue.$options.methods[funcName].call(vue,e)
+										}
+									},false)
+								})
+								//将元素追加到dom中
+								dom.appendChild(d)
+								//将当前子元素传入递归扫描深层
+								let res = renderVue(item,vue,d)
+							}else{
+								// 文本节点先递归一次处理表达式返回
+								let res = renderVue(item,vue,dom)
+								//将结果变成text追加到dom中
+								let d = document.createTextNode(res.data)
+								dom.appendChild(d)
+							}
+						})
+					}
+					return vdom
+				}else{
+					//当节点为文本节点时
+					//根据正则匹配取值表达式
+					let res = vdom.data.match(regx)
+					//获得最终标签内部的字符串数据
+					let data = vdom.data
+					//判断如果有匹配的取值表达式就执行替换逻辑
+					if(res){
+						//循环表达式
+						res.forEach(item => {
+							//设置替换的key
+							let key = item;
+							if(vue[item.replace(/{|}/g,'')]){
+								//判断如果该取值表达式中的内容只有vue的data属性时就根据变量生成文本
+								let value = vue[item.replace(/{|}/g,'')]
+								data = data.replace(key,value)
+							}else{
+								//如果没有直接匹配就按照表达式或常量处理
+								let value = item.replace(/{|}/g,'')
+								//根据data中的值作为key去检测当前混合的内容中是否存在变量
+								Object.keys(vue._data).forEach(item1 => {
+									//使用变量名定义正则做批量替换
+									let regx1 = new RegExp(item1,'g')
+									if(typeof vue[item1] == 'string'){
+										//如果vue的值是字符串需要替换时增加引号
+										value = value.replace(regx1,'"'+vue[item1]+'"')
+									}else{
+										//如果是其他类型直接替换值
+										value = value.replace(regx1,vue[item1])
+									}
+								})
+								data = data.replace(key,eval(value))
+							}
+						})
+					}
+					return {...vdom,data}
+				}
+			}
+			//渲染dom的函数
+			Vue.prototype.$render = function(){
+				//创建替换的dom对象
+				let renderDom = document.createElement(this.$vdom.tagName)
+				renderDom.id = this.$vdom.id
+				renderDom.className = this.$vdom.className
+				//调用生成dom对象树的函数
+				renderVue(this.$vdom,this,renderDom)
+				//将当前页面内容转运到新的dom树中
+				patch(this.$el,renderDom)
+				this.$el.innerHTML = ''
+				for(let item of renderDom.children){
+					this.$el.appendChild(item)
+				}
+			}
+			//用于将当前的dom中的可输入部分的值转运到新的dom中
+			function patch(dom,newDom){
+				if(dom.children.length>0){
+					for(let i = 0;i<dom.children.length;i++){
+						patch(dom.children[i],newDom.children[i])
+					}
+				}else{
+					if(dom.value){
+						//解决input焦点和数据丢失问题
+						newDom.value = dom.value
+						let dataKey = document.activeElement.dataset['key']
+						setTimeout(function(){
+							let ipt = document.querySelector(`input[data-key="${dataKey}"]`)
+							ipt.focus();
+						})
+					}
+					// console.log(newDom)
+				}
+			}
+			//生成虚拟dom树的函数
+			function makeVDOM(vdom,dom){
+				if(dom){
+					vdom.nodeType = dom.nodeType
+					vdom.key = (''+Math.random()).split('.')[1]
+					if(dom.nodeType == 1){
+						vdom.tagName = dom.tagName.toLowerCase()
+						vdom.id = dom.id
+						vdom.placeholder = dom.placeholder
+						vdom.className = dom.className
+						vdom.value = dom.value
+						vdom.on = {}
+						for(let key in funMap){
+							if(dom.attributes[key]){
+								vdom.on[funMap[key]] = dom.attributes[key].value
+							}
+						}
+					}else if(dom.nodeType == 3){
+						vdom.tagName = 'text'
+					}
+					if(dom.childNodes.length>0){
+						vdom.childNodes = [];
+						for(let item of dom.childNodes){
+							let v = makeVDOM({},item)
+							vdom.childNodes.push(v)
+						}
+					}else{
+						vdom.data = dom.data
+					}
+					return vdom;
+				}
+			}
+			//Vue的原型事件用来生成虚拟dom树
+			Vue.prototype.$initVDOM = function(){
+				this.$vdom = {}
+				makeVDOM(this.$vdom,this.$el)
+				console.log(this.$vdom)
+			}
+			/**------分界线-----**/
+			let vm = new Vue({
+				data(){
+					return {
+						name:'<a>小明</a>',
+						age:10,
+						sex:true,
+						inputValue:'我是新定义的内容'
+					}
+				},
+				methods:{	
+					handleClick(e){
+						this.name = '123'
+						console.log(e)
+					},
+					handleInputValue(e){
+						this.inputValue = e.target.value
+					},
+					handleInputName(e){
+						this.name = e.target.value
+					},
+					handleInputAge(e){
+						this.age = e.target.value
+					},
+					handleClick1(e,name,age,num,str){
+						console.log(e,name,age,num,str)
+					}
+				},
+				beforeCreate(){
+					console.log(this)
+				},
+				created(){
+					console.log(this)
+				},
+				beforeMount(){
+					console.log(document.querySelector("#app"))
+				},
+				mounted(){
+					console.log(document.querySelector("#app"))
+				},
+				beforeUpdate(){
+					console.log('beforeUpdate')
+				},
+				updated(){
+					console.log('updated')
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

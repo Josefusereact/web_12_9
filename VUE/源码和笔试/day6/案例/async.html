@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    setTimeout(() => {
+      console.log('我是异步代码')
+    }, 1000);
+    let d = new Date().getTime()
+    let d1 = new Date().getTime()
+    while(d1-d<5000){
+      d1 = new Date().getTime()
+    }
+    console.log('同步代码')
+
+  </script>
+</body>
+</html>

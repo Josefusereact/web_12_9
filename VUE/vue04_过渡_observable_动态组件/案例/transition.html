@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.p-ball{
+				width: 100px;
+				height: 100px;
+				background: radial-gradient(circle,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);
+				border-radius: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h4>
+				理解过渡案例 <button @click="handleReset">复位</button>
+			</h4>
+			1.不带过渡的状态变更<br>
+			<button @click="handleClick1">将球向右移动100px</button>
+			<div class="p-ball" :style="{transform:getLeft1}"></div>
+			2.2带过渡的状态变更<br>
+			<button @click="handleClick2">将球向右移动100px</button>
+			<div class="p-ball" style="transition: all .3s;" :style="{transform:getLeft2}"></div>
+		</div>
+		<div id="app">
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				data(){
+					return {
+						left1:0,
+						left2:0
+					}
+				},
+				computed:{
+					getLeft1(){
+						//相当于'translateX('+this.left1+'px)'
+						return `translateX(${this.left1}px)`;
+					},
+					getLeft2(){
+						return `translateX(${this.left2}px)`;
+					}
+				},
+				methods:{
+					handleClick1(){
+						this.left1 += 100;
+					},
+					handleClick2(){
+						this.left2 += 100;
+					},
+					handleReset(){
+						this.left1 = 0;
+						this.left2 = 0;
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

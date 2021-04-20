@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<div id="app">
+		<!-- 
+				该示例是无法正常工作的
+				结合js代码查看
+			 -->
+		<my-component1></my-component1>
+		<my-component2></my-component2>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+		/**
+		 * 我们在全局定义了baseList变量并在组件1中每次变化对其进行附值
+		 * 在组件2的计算属性中返回了这个baseList,逻辑上是没问题的但是没有发生值的变化
+		 * 虽然点击事件中baseList的值存储成功了但是无法触发computed对其进行监听
+		 * 所以要明确一件事：不同的组件中无法通过全局的变量去直接进行数据共享
+		 * 所以我们今天要学习observable
+		 */
+		var baseList = [1]
+		console.log(baseList)
+		Vue.component('my-component1', {
+			// 我们直接在组件中定义data来模拟复杂业务中组件内部保存的数据
+			data() {
+				return {
+					list: []
+				}
+			},
+			template: `
+					<div>
+						<p>在my-component2中实时展示本组件的list的值</p>
+						<button @click="handleClick">+</button>
+						<button @click="handleClick1">-</button>
+					</div>
+				`,
+			methods: {
+				handleClick() {
+					this.list.push(this.list.length + 1)
+					baseList = this.list
+					console.log(baseList)
+				},
+				handleClick1() {
+					this.list.pop()
+					baseList = this.list
+					console.log(baseList)
+				}
+			}
+		})
+		Vue.component('my-component2', {
+			computed: {
+				getList() {
+					return baseList;
+				}
+			},
+			template: `<div>
+					<p>我是my-component2</p>
+					<div>{{getList}}</div>
+				</div>`
+		})
+		new Vue({}).$mount('#app')
+	</script>
+</body>
+
+</html>

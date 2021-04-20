@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //打印顺序问题
+      let p = new Promise((resolve) => {
+        resolve(123);
+      });
+      let p1 = new Promise((resolve) => {
+        resolve(456);
+      });
+      async function test() {
+        let res = await p;
+        console.log(res);
+        setTimeout(() => {
+          console.log(1);
+        }, 0);
+        let a = 5;
+        //在执行test和test1的时候
+        //微任务队列只有test和test1两个任务
+        //先执行test函数的内容
+        //执行发现test函数中又有了一个promise任务
+        //就需要将他插入到微任务队列
+        //所以他就会放到test1这个任务之后
+        new Promise((resolve) => resolve(a)).then((res) => {
+          console.log(res);
+          console.log(3);
+        });
+        //等同写法
+        // await a
+        // console.log(a)
+        // console.log(3)
+        console.log(7);
+      }
+      async function test1() {
+        let res1 = await p1;
+        console.log(res1);
+        setTimeout(() => {
+          console.log(2);
+        }, 0);
+        let a = 6;
+        new Promise((resolve) => resolve(a)).then((res) => {
+          console.log(res);
+          console.log(4);
+        });
+        console.log(8);
+      }
+      test();
+      test1();
+    </script>
+  </body>
+</html>

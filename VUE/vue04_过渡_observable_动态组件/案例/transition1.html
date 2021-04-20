@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		/* ***************淡入淡出******************************** */
+			/* 定义进入和离开的过渡 */
+			.fade-enter-active,.fade-leave-active{
+				transition:opacity .5s;
+			}
+			/* 定义进入前元素的样式 */
+			.fade-enter{
+				opacity: 0;
+			}
+			/* 定义进入完成元素的样式 */
+			.fade-enter-to{
+				opacity: 1;
+			}
+			/* 定义离开前元素的样式 */
+			.fade-leave{
+				opacity: 1;
+			}
+			/* 定义离开完成元素的样式 */
+			.fade-leave-to{
+				opacity: 0;
+			}
+		/* **************滑进滑出********************************* */  
+			.slide-fade-enter{
+				transform: translateX(20px);
+				opacity: 0;
+			}
+			.slide-fade-enter-to{
+				transform: translateX(0px);
+				opacity: 1;
+			}
+			.slide-fade-leave{
+				transform: translateX(0px);
+				opacity: 1;
+			}
+			.slide-fade-leave-to{
+				transform: translateX(20px);
+				opacity: 0;
+			}
+			.slide-fade-enter-active{
+				transition: .5s;
+			}
+			.slide-fade-leave-active{
+				transition: .3s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h4>
+				1.通过name属性实现transition过渡
+			</h4>
+			<div>
+				<button @click="handleClick">点我切换</button>
+				<!-- 在transition上定义的name属性决定样式的写法 -->
+				<transition name="fade">
+					<!-- 想要实现过渡的元素需要被transition包裹并且切换展示和隐藏 -->
+					<p v-if="show">我是切换对象</p>
+				</transition>
+			</div>
+			<h4>
+				2.定义一个复杂的过渡动画
+			</h4>
+			<div>
+				<button @click="handleClick1">点我切换</button>
+				<!-- 在标签上增加appear属性可以让过渡动画在标签第一次渲染时就执行 -->
+				<!-- 只有通过v-bind传入的参数才有类型，所以传入boolean值时要使用v-bind:的方式 -->
+				<transition name="slide-fade" :appear="true">
+					<p v-show="show1">我是切换对象</p>
+				</transition>
+			</div>
+			<h4>
+				3.练习：自己动手实现一个基本的过渡动画 【旋转消失】
+				
+			</h4>
+			<div>
+				
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				data(){
+					return {
+						show:true,
+						show1:true,
+					}
+				},
+				methods:{
+					handleClick(){
+						this.show = !this.show;
+					},
+					handleClick1(){
+						this.show1 = !this.show1;
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

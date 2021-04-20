@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //这种写法就将demo5.html中的高耦合度的promise写法拆分成了通过.then处理
+    const setDelay = (millisecond) => {
+      return new Promise((resolve, reject)=>{
+          if (typeof millisecond != 'number') reject(new Error('参数必须是number类型'));
+          setTimeout(()=> {
+            resolve(`我延迟了${millisecond}毫秒后输出的`)
+          }, millisecond)
+      })
+    }
+    const setDelaySecond = (seconds) => {
+      return new Promise((resolve, reject)=>{
+          if (typeof seconds != 'number' || seconds > 10) reject(new Error('参数必须是number类型，并且小于等于10'));
+          setTimeout(()=> {
+            resolve(`先是setDelaySeconds函数输出，延迟了${seconds}秒`) // 这里依赖上一个Promise
+          }, seconds * 1000)
+      })
+    }
+  
+    // setDelaySecond(2).then(res => {
+    //   console.log(res)
+    //   return setDelay(2000)
+    // }).then(res => {
+    //   console.log(res)
+    // })
+    setDelay(2000)
+.then((result)=>{
+  console.log(result)
+  console.log('我进行到第一步的');
+  return setDelaySecond(20)
+})
+.then((result)=>{
+  console.log('我进行到第二步的');
+  console.log(result);
+}, (_err)=> {
+  console.log('我出错啦，但是由于catch在我前面，所以错误早就被捕获了，我这没有错误了');
+})
+.then((result)=>{
+  console.log('我还是继续执行的！！！！')
+})
+  </script>
+</body>
+</html>

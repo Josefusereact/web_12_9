@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      #outer {
+        padding: 20px;
+        background: #616161;
+      }
+
+      #inner {
+        width: 100px;
+        height: 100px;
+        background: #757575;
+      }
+    </style>
+    <div id="outer">
+      <div id="inner"></div>
+    </div>
+    复制代码
+    <script>
+      console.log("1");
+      async function async1() {
+        console.log("2");
+        await async2();
+        console.log("3");
+      }
+      async function async2() {
+        console.log("4");
+      }
+      setTimeout(function () {
+        console.log("6");
+        new Promise(function (resolve) {
+          console.log("8");
+          resolve();
+        }).then(function () {
+          console.log("9");
+        });
+      });
+      async1();
+      new Promise(function (resolve) {
+        console.log("10");
+        resolve();
+      }).then(function () {
+        console.log("11");
+      });
+      console.log("12");
+    </script>
+  </body>
+</html>

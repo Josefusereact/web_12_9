@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {}
+			Object.defineProperty(obj,'name',{
+				value:"我是默认值",
+				writable:false,
+			})
+			// 当writable为true时修改name的值才能生效
+			console.log(obj)
+			obj.name = '我是新的值'
+			console.log(obj)
+			//查看以下案例，首先看控制台的错误
+			//然后注释调value和writable
+			//因为使用了get和set之后就不能在用value和writable了
+			Object.defineProperty(obj,'age',{
+				// value:12,
+				// writable:true,
+				get(){
+					return 12
+				},
+				set(v){
+					console.log('我正在给age赋值',v)
+					console.log(this)
+					//以下是危险操作，不要使用
+					// this.age = v
+				}
+			})
+			obj.age = 20
+
+			console.log(obj)
+		</script>
+	</body>
+</html>

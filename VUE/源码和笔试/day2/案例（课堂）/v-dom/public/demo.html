@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button v-on:click="handleClick">
+				我是按钮
+			</button>
+			<input id="ddd"
+				placeholder="请输入inputStr的值"
+			 type="text" v-model="inputStr"><br/>
+			
+			inputStr的值：{{inputStr}}<br/>
+			{{1+1}}{{inputStr}}<br/>
+			<input 
+			placeholder="请输入aaa的值"
+				id="ddd2" type="text" v-model="aaa"><br/>
+			
+			aaa的值：{{aaa}}<br/>
+			<div>
+				<span>{{'input的值：'+inputStr}}</span>
+			</div>
+			<input type="text" 
+				v-model="xxx">
+			{{xxx}}
+			<input type="text" 
+				v-model="mmmm">
+			{{mmmm}}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+.p-btn{
+	padding: 5px 10px;
+	background: #eee;
+	outline: none;
+	border:1px solid #ddd;
+	color:#555;
+	border-radius: 5px;
+	cursor: pointer;
+	position: relative;
+}
+.p-btn:hover:after{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100,100,100,.2);
+}
+.p-btn:active:after{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(100,100,100,.3);
+}
+.p-btn.primary{
+	color: #fff;
+	background: #409EFF;
+	border-color: #409EFF;
+}
+.p-btn.success{
+	color: #fff;
+	background: #67C23A;
+	border-color: #67C23A;
+}
+.p-btn.danger{
+	color: #fff;
+	background: #F56C6C;
+	border-color: #F56C6C;
+}
+.p-btn.warning{
+	color: #fff;
+	background: #E6A23C;
+	border-color: #E6A23C;
+}
+.p-confirm-bg{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+	text-align: center;
+}
+.p-confirm-bg .p-confirm{
+	text-align: left;
+	background-color: #fff;
+	display: inline-block;
+	min-width: 300px;
+	margin-top: 150px;
+	border-radius: 9px;
+	padding: 10px 15px;
+}
+.p-confirm-bg .p-confirm .p-confirm-title{
+	color: #222;
+	position: relative;
+}
+.p-confirm-bg .p-confirm .p-confirm-title .p-close{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.p-confirm-bg .p-confirm .p-confirm-title .p-close:hover{
+	color: #666;
+}
+.p-confirm-bg .p-confirm .p-confirm-content{
+	font-size: 14px;
+	color: #444;
+	padding: 5px 0px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>
+    防抖案例(无防抖)：根据输入内容筛选包含关键字的结果
+  </h4>
+  <div>
+    <!-- 
+      首先查看这个案例，在页面中操作 
+      我们发现当前的页面输入汉字的时候
+      我们在打拼音的过程就触发了input函数的搜索
+      这样导致了输入拼音的时候触发不到匹配的内容
+      而出现了匹配数据全部消失的情况。
+      这种情况我们非常希望当我们输入完拼音生成汉字之后
+      文本框再做匹配，这样的话就需要让input事件只在我们
+      输入完成之后再执行模糊匹配
+      下面我们查看demo2.html
+    -->
+    <input id="ipt1" placeholder="请输入" type="text">
+    <div id="c1"></div>
+  </div>
+  <script>
+    let list = [
+      '安琪拉',
+      '亚瑟',
+      '王昭君',
+      '芈月',
+      '赵云',
+      '李欣',
+      '孙膑',
+      '孙尚香',
+      '刘备',
+      '刘禅'
+    ]
+    function renderList(el,list){
+      let ele = document.querySelector(el)
+      console.dir(ele)
+      let innerHtml = list.map(item => {
+        return `
+          <div>${item}</div>
+        `
+      }).join('')
+      ele.innerHTML = innerHtml
+    }
+    renderList('#c1',list)
+    //防抖函数的定义
+    //参数1为回调函数
+    //参数2为延时时间
+    function debounce(func, wait) {
+      // 定义timeout的唯一标志
+      //第一次执行时由于settimeout没有定义所以他是空值
+      let timeout;
+      return function () {
+        // 绑定this对象
+        let context = this;
+        //记录当前的函数中的所有参数
+        let args = arguments;
+        // 如果当前的timeout有值就清除之前的定时器
+        //这里就是让之前的settimout在没执行之前就关闭
+        if (timeout) clearTimeout(timeout);
+        // 定义延时函数在wait设定的时间后执行
+        //并且将定时器的id设置到timeout变量中
+        //所以如果input频繁触发多次的话
+        //每次执行这个函数的时候都会在上一个settimout执行
+        //之前将定时器关闭，这样最终只有最后一次输入的事件
+        //能正常在wait之后触发，这样就将input事件变成只有
+        //最后一次执行了
+        timeout = setTimeout(() => {
+          func.apply(context, args)
+        }, wait);
+      }
+
+    }
+ 
+    document.querySelector('#ipt1').oninput = debounce(function(e){
+      let list1 = list.filter(item => {
+        return item.indexOf(e.target.value)!=-1
+      })
+      renderList('#c1',list1)
+    },500)
+
+  </script>
+</body>
+</html>

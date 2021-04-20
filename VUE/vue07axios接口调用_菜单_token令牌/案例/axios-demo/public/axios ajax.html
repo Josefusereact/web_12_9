@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端最热门的axios请求包</title>
+</head>
+
+<body>
+    <h2>前端最热门的axios请求包</h2>
+    <button>axios</button>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            document.querySelector("button").addEventListener('click', () => {
+                /* console.log('111111111');
+                axios.get('http://localhost:8080/shop-service/v1/api-test/get/demo1')
+                    .then(function (response) {
+                        console.log('222222222');
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                console.log('333333333'); */
+                axios({
+                    method: 'GET',
+                    url: 'http://localhost:8080/shop-service/v1/api-test/get/demo1',
+                }).then(response => {
+                    console.log("服务器端返回的值", response);
+                }).catch(error => {
+                    console.log("出错了", error);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

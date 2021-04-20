@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="name"/>{{name}}
+    <br>
+    <input type="text" v-model="username"/>
+    <!-- {{getUserName}} -->
+    <br>
+    name_base:{{name_base}} <br>
+    
+    {{getUserInfo}}
+    <!-- {{getUserName}} -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+    // 这里的computed中的name可以设置两个函数
+    //set和get，他们的使用方式与Object.defineProperty是完全一样的
+    //所以能实现监听name这个key只要他发生变化就会触发相应的流程运行
+    //我们在继续观察username和getUserInfo以及name中的取值部分的js打印
+    //然后测试在页面中两个文本框的内部输入内容
+    //查看打印信息。
+    //最终得到的结论是computed中的函数不是每次页面更新都会触发
+    //而且只有computed中函数监听的变量发生变化才会触发他重新执行
+    //也就是说这个函数在第一次执行完之后默认会将结果缓存起来，
+    //如果他监听的值没有变化不会触发他每次都调用
+    let name = '123'
+    new Vue({
+      created(){
+        
+      },
+      data(){
+        return {
+          name_base:'111',
+          username:'222'
+        }
+      },
+      updated(){
+        console.log('页面更新了')
+      },
+      computed:{
+        name:{
+          set(v){
+            name = v
+            this.name_base = v
+          },
+          get(){
+            console.log(this.name_base)
+            return this.name_base
+          }
+        },
+        getUserInfo(){
+          console.log('userInfo')
+          return 'userInfo'+name
+        },
+        getUserName(){
+          console.log(this.username)
+          return this.username
+        }
+      }
+
+    }).$mount('#app')
+  </script>
+</body>
+</html>

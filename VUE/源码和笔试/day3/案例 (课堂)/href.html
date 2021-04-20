@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .item{
+      height: 400px;
+      color: #444;
+      font-weight: bold;
+      font-size: 50px;
+      padding: 15px;
+      margin: 15px;
+    }
+    .item:nth-child(2n){
+      background-color: antiquewhite;
+    }
+    .item:nth-child(2n+1){
+      background-color:aquamarine
+    }
+  </style>
+</head>
+<body>
+  <h4>
+    锚点回顾;
+    查看页面后完成练习。
+    <br>
+    练习说明：在文本框中输入跳转目标，点击跳转按钮实现页面切换滚动目标a,b,c,d
+    <!-- 
+
+      思路：
+      对按钮绑定原生的点击事件，再点击事件中
+      通过dom对象抓取input标签的值并且将href设置成
+      #input的值
+      这样就能实现滚动了
+     -->
+  </h4>
+  <input id="ipt" placeholder="请输入滚动目标" type="text">
+  <button onclick="jump()">跳转</button>
+  <br>
+  <a href="#a">滚动到a</a>
+  <a href="#b">滚动到b</a>
+  <a href="#c">滚动到c</a>
+  <a href="#d">滚动到d</a>
+  <a href="#e">滚动到d</a>
+  <div class="item" id="a">
+    a
+  </div>
+  <div class="item" id="b">
+    b
+  </div>
+  <div class="item" id="c">
+    c
+  </div>
+  <div class="item" id="d">
+    d
+  </div>
+  <script>
+    function jump(){
+      //document获取id对象的简写
+      let str = ipt.value
+      //跳转
+      location.href = '#'+str
+    }
+  </script>
+</body>
+</html>

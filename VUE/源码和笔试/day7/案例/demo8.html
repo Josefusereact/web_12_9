@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //promise.all相当于统一处理了
+    //多个promise任务，保证处理的这些所有promise
+    //对象的状态全部变成为fulfilled之后才会出发all的
+    //.then函数来保证将防止在all中的所有任务的结果返回
+    let p1 = new Promise(resolve => {
+      setTimeout(() => {
+        resolve('第一个promise执行完毕')
+      },1000)
+    })
+    let p2 = new Promise(resolve => {
+      setTimeout(() => {
+        resolve('第二个promise执行完毕')
+      },2000)
+    })
+    let p3 = new Promise(resolve => {
+      setTimeout(() => {
+        resolve('第三个promise执行完毕')
+      },3000)
+    })
+    Promise.all([p1,p3,p2]).then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+</html>

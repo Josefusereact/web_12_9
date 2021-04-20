@@ -1,0 +1,19 @@
+[{
+    "status": "success",
+    "name": "hf4s991617762479585.png",
+    "size": 1775935,
+    "percentage": 0,
+    "uid": 1617762479559,
+    "raw": {
+        "uid": 1617762479559
+    },
+    "url": "/public/face/hf4s991617762479585.png",
+    "response": {
+        "code": 200,
+        "data": {
+            "url": "/public/face/hf4s991617762479585.png",
+            "fileName": "hf4s991617762479585.png"
+        },
+        "msg": "上传成功"
+    }
+}]

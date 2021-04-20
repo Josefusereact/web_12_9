@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //promise的状态只能从pending到fulfilled
+    //或者从pending到rejected
+    //一旦状态改变，就不会再发生变化
+    let p = new Promise(function(resolve,reject){
+      resolve('成功')
+    })
+    p.then(function(res){
+      console.log(res)
+    })
+    p.catch(function(err){
+      console.log(err)
+    })
+    let p1 = new Promise(function(resolve,reject){
+      reject('失败')
+    })
+    p1.then(function(res){
+      console.log(res)
+    })
+    p1.catch(function(err){
+      console.error(err)
+    })
+    let p2 = new Promise(function(resolve,reject){
+      reject('失败1')
+      resolve('成功1')
+    })
+    p2.then(function(res){
+      console.log(res)
+    })
+    p2.catch(function(err){
+      console.error(err)
+    })
+    let p3 = new Promise(function(resolve,reject){
+      resolve('成功2')
+      reject('失败2')
+    })
+    p3.then(function(res){
+      console.log(res)
+    })
+    p3.catch(function(err){
+      console.error(err)
+    })
+
+  </script>
+</body>
+</html>

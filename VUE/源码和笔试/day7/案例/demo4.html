@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let promise1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('success')
+      }, 1000)
+    })
+    promise2 = promise1.then(res => {
+      throw new Error('这里抛出一个异常e')
+    })
+    promise2.then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err) //1秒后打印出：这里抛出一个异常e
+    })
+
+
+    let promise11 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('success')
+      }, 1000)
+    })
+    promise22 = promise11.then('这里的onFulfilled本来是一个函数，但现在不是')
+    promise22.then(res => {
+      console.log(res) // 1秒后打印出：success
+    }, err => {
+      console.log(err)
+    })
+  </script>
+</body>
+</html>

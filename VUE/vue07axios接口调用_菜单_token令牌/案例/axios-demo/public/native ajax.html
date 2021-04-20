@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生的 Ajax</title>
+</head>
+
+<body>
+    <h2>原生的Ajax</h2>
+    <button id="ajax-btn-get">按钮点击请求</button>
+    <script>
+        //第一步：创建ajax对象
+        window.onload = function () {
+            document.querySelector('#ajax-btn-get').addEventListener('click', () => {
+                var xhr;
+                //判断是什么浏览器，创建ajax对象
+                try {
+                    // Firefox, Opera 8.0+, Safari
+                    xhr = new XMLHttpRequest();
+                } catch (e) {
+                    // Internet Explorer
+                    try {
+                        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            alert("您的浏览器不支持AJAX！");
+                        }
+                    }
+                }
+                xhr.open("get", "http://localhost:8080/shop-service/v1/api-test/get/demo1");
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log(xhr.responseText);
+                        console.log(typeof xhr.responseText)
+                        var obj = JSON.parse(xhr.responseText);
+                        console.log(obj.code);
+                    }
+                }
+                xhr.send(null);
+            }, false);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.my-menu {
+			padding: 0;
+		}
+
+		.my-menu li {
+			list-style: none;
+			display: inline-block;
+		}
+
+		.page-one,
+		.page-two,
+		.page-three {
+			background-color: bisque;
+			width: 400px;
+			height: 400px;
+		}
+
+		.page-two {
+			background-color: burlywood;
+		}
+
+		.page-three {
+			background-color: darkseagreen;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<h4>
+			动态组件component的基本使用(模拟页面切换)
+		</h4>
+		<!-- 
+				阅读完完整代码之后请打开控制台的查看器，切换页面查看结果。
+				会发现，在切换组件之后component和slot插槽的效果是一样的，他本身并没有实际存在
+				只是在他的位置将当前is中传入的组件渲染了出来这就是动态组件的本质
+			 -->
+		<!-- 定义my-menu组件并双向绑定checkedMenu属性实时返回选择的组件名称 -->
+		<my-menu v-model="checkedMenu"></my-menu>
+		{{checkedMenu}}
+		<!-- 动态组件标签 -->
+		<component :is="checkedMenu"></component>
+		<h4>
+			练习（课堂上选做）：结合上述案例实现一个多层嵌套的动态组件
+			<!-- 实现步骤
+						1.自己创建两个页面组件，
+							一个与my-menu功能相同的菜单组件内部使用两个按钮
+						2.分别定义p-one和p-two两个组件作为基本页面
+						3.点击按钮时切换p-one和p-two组件的展示
+						4.切换的话需要使用component组件来实现切换
+						5.在p-one中实现第一个案例中的跳页效果
+						6.在p-one页面中展示第一个案例中的三个按钮
+						7.并且在p-one中切换三个按钮时在p-one中创建子页面来展示三个页面
+						8.效果要求在p-one中点击切换页面时，整体的p-one不会跳转到其他组件
+						
+				 -->
+		</h4>
+		<div>
+			<!-- <my-menu></my-menu> -->
+			<button @click="whichPage='p-one'">菜单一</button>
+			<button @click="whichPage='p-two'">菜单二</button>
+			<component :is="whichPage"></component>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		// 回顾一下组件封装中v-model的定义
+		Vue.component('my-menu', {
+			props: {
+				value: {
+					type: String,
+					default() {
+						return 'page-one'
+					},
+					required: false
+				}
+			},
+			model: {
+				// 将v-model的值绑定到value属性上
+				prop: 'value',
+				// 监听change-value事件通过该事件自动改变v-model绑定的值
+				event: 'change-value'
+			},
+			template: `
+					<ul class="my-menu">
+						<li><button @click="handleClick('page-one')">page-one</button></li>
+						<li><button @click="handleClick('page-two')">page-two</button></li>
+						<li><button @click="handleClick('page-three')">page-three</button></li>
+					</ul>
+				`,
+			methods: {
+				handleClick(value) {
+					// 通过emit通知model中的事件去改变值
+					this.$emit('change-value', value)
+				}
+			}
+		})
+		Vue.component('page-one', {
+			template: `<div class="page-one">我是page-one</div>`
+		})
+		Vue.component('page-two', {
+			template: `<div class="page-two">我是page-two</div>`
+		})
+		Vue.component('page-three', {
+			template: `<div class="page-three">我是page-three</div>`
+		})
+
+
+		Vue.component('p-one', {
+			template: `
+				<div class="page-one">页面一
+					<my-menu v-model="menu"></my-menu>	
+					<component :is="menu"></component>
+				</div>
+			`,
+			data() {
+				return {
+					menu: "page-one"
+				}
+			}
+		});
+		Vue.component('p-two', {
+			template: `
+				<div class="page-two">页面二</div>
+			`,
+		});
+
+		new Vue({
+			data() {
+				return {
+					checkedMenu: 'page-one',
+					whichPage: 'p-one'
+				}
+			},
+		}).$mount('#app')
+	</script>
+</body>
+
+</html>

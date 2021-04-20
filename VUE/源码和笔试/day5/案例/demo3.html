@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>改造成防抖效果</h4>
+  <div id="content" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+<script>
+    let num = 1;
+    let content = document.getElementById('content');
+    //防抖函数
+    function debounce(func, wait) {
+      // 定义timeout的唯一标志
+      //第一次执行时由于settimeout没有定义所以他是空值
+      let timeout;
+      return function () {
+        // 绑定this对象
+        let context = this;
+        //记录当前的函数中的所有参数
+        let args = arguments;
+        // 如果当前的timeout有值就清除之前的定时器
+        //这里就是让之前的settimout在没执行之前就关闭
+        if (timeout) clearTimeout(timeout);
+        // 定义延时函数在wait设定的时间后执行
+        //并且将定时器的id设置到timeout变量中
+        //所以如果input频繁触发多次的话
+        //每次执行这个函数的时候都会在上一个settimout执行
+        //之前将定时器关闭，这样最终只有最后一次输入的事件
+        //能正常在wait之后触发，这样就将input事件变成只有
+        //最后一次执行了
+        timeout = setTimeout(() => {
+          func.apply(context, args)
+        }, wait);
+      }
+    }
+    function count() {
+        console.log(num)
+        content.innerHTML = num++;
+    };
+    //请在这里改造
+    /**
+      思路：
+        将防抖函数直接定义在onmousemove上
+        在防抖函数中调用count来实现页面的防抖执行
+    */
+    content.onmousemove = debounce(count,300)
+</script>
+</body>
+</html>

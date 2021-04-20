@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>柱状图</title>
+
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px; height: 900px"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById("main"));
+      var data = {
+        name: "总决赛",
+        children: [
+          {
+            name: "半决赛",
+
+            children: [
+              {
+                name: "中国",
+                value: 54,
+              },
+              {
+                name: "日本",
+                value: 54,
+              },
+              {
+                name: "韩国",
+                value: 54,
+              },
+              {
+                name: "柬埔寨",
+                value: 54,
+              },
+            ],
+          },
+          {
+            name: "半决赛",
+
+            children: [
+              {
+                name: "中国",
+                value: 54,
+              },
+              {
+                name: "日本",
+                value: 54,
+              },
+              {
+                name: "韩国",
+                value: 54,
+              },
+              {
+                name: "柬埔寨",
+                value: 54,
+              },
+            ],
+          },
+        ],
+      };
+      // 结合官方文档学习树形图
+      var option = {
+        tooltip: {
+          trigger: "item",
+          triggerOn: "mousemove",
+        },
+        series: [
+          {
+            type: "tree",
+            id: 0,
+            name: "tree1",
+            data: [data],
+
+            top: "10%",
+            left: "8%",
+            bottom: "22%",
+            right: "20%",
+
+            symbolSize: 7,
+
+            edgeShape: "polyline",
+            edgeForkPosition: "63%",
+            initialTreeDepth: 3,
+
+            lineStyle: {
+              width: 2,
+            },
+
+            label: {
+              backgroundColor: "#fff",
+              position: "left",
+              verticalAlign: "middle",
+              align: "right",
+            },
+
+            leaves: {
+              label: {
+                position: "right",
+                verticalAlign: "middle",
+                align: "left",
+              },
+            },
+
+            expandAndCollapse: true,
+            animationDuration: 550,
+            animationDurationUpdate: 750,
+          },
+        ],
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>

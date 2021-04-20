@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app">
+		<child1></child1>
+		<child2></child2>
+		{{getValue3}}
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		let state = Vue.observable({
+			iptValue: '存储仓库'
+		})
+		Vue.component('child1', {
+			template: `
+                <div>
+                    <input type="text" v-bind:value="getValue1" @input="handleInput"/>
+					</div>
+					`,
+			computed: {
+				getValue1() {
+					return state.iptValue
+				}
+			},
+			methods: {
+				handleInput(e) {
+					state.iptValue = e.target.value;
+				}
+			}
+		})
+		Vue.component('child2', {
+			template: `
+					<div>
+						<input type="text" v-bind:value="getValue2"/>
+                </div>
+            `,
+			computed: {
+				getValue2() {
+					return state.iptValue
+				}
+			}
+		})
+		new Vue({
+			el: '#app',
+			computed: {
+				getValue3() {
+					return state.iptValue
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

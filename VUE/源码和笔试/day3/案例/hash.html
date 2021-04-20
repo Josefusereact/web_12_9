@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span{
+      text-decoration: underline;
+      color:cornflowerblue
+    }
+  </style>
+</head>
+<body>
+  <h4>
+    浏览器url变化的监听：hashchange
+  </h4>
+  <a href="#a">滚动到a</a>
+  <a href="#b">滚动到b</a>
+  <a href="#c">滚动到c</a>
+  <a href="#d">滚动到d</a>
+  <div>
+    从<span id="from" ></span>路径<br>
+    跳转到了<span id="to"></span>
+  </div>
+  <script>
+    // 监听浏览器url的hash部分变化并触发回调函数
+    window.onhashchange = function(event){
+      console.log(event)
+      let oldURL = event.oldURL.substring(event.oldURL.lastIndexOf('/'))
+      let newURL = event.newURL.substring(event.newURL.lastIndexOf('/'))
+      from.innerHTML = oldURL;
+      to.innerHTML = newURL;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>测试说明：点击按钮不能修改data中的值，而在文本框输入值data中的值变化了</p>
+			<h4>数组</h4>
+			<div>
+				数组的内容:
+				{{arr}}<br/>
+				改我会改变数组的第一个值：
+				<input type="text" v-model="arr[0]">
+				<br/>
+				改我会改变数组的第四个值：
+				<input type="text" v-model="arr[3]">
+				<br/>
+				<button type="button" @click="handleClick">
+					点我改变第五个值
+				</button>
+			</div>
+			<h4>
+				对象
+				{{formData}}
+				<br/>
+				我是username的值:
+				<input v-model="formData.username" />
+				<br/>
+				我可以设置nickname的值:
+				<input v-model="formData.nickname" />
+				<br/>
+				<h3>vue实例data对象中是没有age属性的，而我要点击设置年龄</h3>
+				<button @click="handleSetAge">点我设置age</button>
+			</h4>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			
+			
+			var vm = new Vue({
+				data(){
+					return {
+						arr:[1,2,3],
+						formData:{
+							username:'我是账号',
+							password:'我是密码'
+						}
+					}
+				},
+				methods:{
+					handleClick(){
+						this.arr[4] = 1
+						//当我们直接操作vue初始数据没有观察到的部分时
+						//如默认声明的数组长度为3我们给前三个以外的位置
+						//做值的设置时vue是直接监听不到的，这种情况
+						//vue可以采用$set()函数来让vue能重新的监听新的属性
+						//$set(data的变量,key/index,value)
+						// this.$set(this.arr,4,1)
+						console.log(this.arr)
+					},
+					handleSetAge(){
+						this.formData.age = 20
+						// this.$set(this.formData,'age',20)
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

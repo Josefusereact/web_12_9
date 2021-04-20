@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //新建一个html静态页面在js部分编写
+    var obj = {}
+    Object.defineProperty(obj,'name',{
+      value:'我是name',//设置obj中name属性的默认值
+      writable:true//设置当前属性是否可写入
+    })
+    Object.defineProperty(obj,'age',{
+      value:18,//设置obj中name属性的默认值
+      writable:true//设置当前属性是否可写入
+    })
+    console.log(obj.name)
+    obj.name = "新的名字"
+    console.log(obj.name)
+    console.log(obj.age)
+    obj.age = 20
+    console.log(obj.age)
+  </script>
+</body>
+</html>

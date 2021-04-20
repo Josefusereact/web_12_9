@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.my-animation-enter-active{
+				animation-name: my-animation;
+				animation-duration:.3s ;
+				animation-timing-function: linear;
+			}
+			.my-animation-leave-active{
+				animation-name: my-animation;
+				animation-duration:.3s ;
+				animation-timing-function: linear;
+				animation-direction: reverse;
+			}
+			@keyframes my-animation{
+				0%{transform: scale(0);}
+				50%{transform: scale(1.5);}
+				100%{transform: scale(1);}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h4>
+				通过定义css动画实现transition的过渡
+			</h4>
+			<div>
+				<button @click="handleClick">点我开始动画</button><br>
+				<transition name="my-animation">
+					<p v-if="show" style="display: inline-block;">我是内容</p>
+				</transition>
+			</div>
+			<h4>
+				练习：参考案例自己实现一个通过animation的过渡动画
+			</h4>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				data(){
+					return{
+						show:true
+					}
+				},
+				methods:{
+					handleClick(){
+						this.show = !this.show
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

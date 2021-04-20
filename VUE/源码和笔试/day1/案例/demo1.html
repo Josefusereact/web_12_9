@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {}
+			Object.defineProperty(obj,'name',{
+				//当前设置为false的时候obj的name属性就
+				//无法被delete删除
+				configurable:false,
+				//当前设置为false的时候obj的name属性就是
+				//不可枚举的，在控制台打印的是浅粉色
+				//如果为true，他就是可枚举的，在控制台
+				//打印的颜色为深粉色
+				//只有当前设置为可枚举的时候
+				//该obj对象才能在Object.keys的api中
+				//遍历出当前的name属性
+				enumerable:false,
+				value:'我是默认值'
+			})
+			//当configurable为false的时候不可以删除obj.name
+			delete obj.name
+			// obj.name = 123
+			console.log(obj)
+			//当enumerable为false的时候Object.keys(obj)是拿不到任何值的
+			console.log(Object.keys(obj))
+		</script>
+	</body>
+</html>

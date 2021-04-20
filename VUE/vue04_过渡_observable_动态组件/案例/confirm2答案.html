@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="assets/confirm.css"/>
+		<style type="text/css">
+			.fade-enter-active{
+				animation-name: fade-in;
+				animation-duration: .3s;
+			}
+			.fade-leave-active{
+				animation-name: fade-in;
+				animation-duration: .3s;
+				animation-direction: reverse;
+			}
+			@keyframes fade-in{
+				from{opacity: 0;}
+				to{opacity: 1;}
+			}
+			.p-confirm{
+				animation-name: slide-in;
+				animation-duration: .3s;
+			}
+			@keyframes slide-in{
+				from{opacity: 0; transform: translateY(-30px);}
+				to{opacity: 1; transform: translateY(0px);}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="handleClick">confirm</button>
+			<p-confirm v-model="show" :title="title" :content="content" 
+				:confirm-button-text="'保存'"
+				 @close="handleClose" 
+				 @confirm="handleConfirm"
+				 :cancel-button-text="'关闭'"></p-confirm>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('p-confirm',{
+				props:{
+					show:{
+						required:false,
+						type:Boolean,
+						default(){
+							return false
+						}
+					},
+					title:{
+						required:false,
+						type:String,
+						default(){
+							return ''
+						}
+					},
+					content:{
+						required:false,
+						type:String,
+						default(){
+							return ''
+						}
+					},
+					'confirm-button-text':{
+						required:false,
+						type:String,
+						default(){
+							return '确认'
+						}
+					},
+					'cancel-button-text':{
+						required:false,
+						type:String,
+						default(){
+							return '取消'
+						}
+					}
+				},
+				model:{
+					event:'change-show',
+					prop:'show'
+				},
+				template:`
+					<transition name="fade">
+						<div v-if="show" class="p-confirm-bg">
+							<div class="p-confirm">
+								<div class="p-confirm-title">
+									{{title}}
+									<div class="p-close" @click="handleClose">
+										&times;
+									</div>
+								</div>
+								<div class="p-confirm-content">
+									{{content}}
+								</div>
+								<div class="p-confirm-btn">
+									<button class="p-btn primary" @click="handleConfirm">{{confirmButtonText}}</button>
+									<button class="p-btn" @click="handleClose">{{cancelButtonText}}</button>
+								</div>
+							</div>
+						</div>
+					</transition>
+				`,
+				methods:{
+					handleClose(){
+						this.$emit('change-show',false)
+						this.$emit('close')
+					},
+					handleConfirm(){
+						this.$emit('change-show',false)
+						this.$emit('confirm')
+					}
+				}
+			})
+			new Vue({
+				data(){
+					return {
+						show:false,
+						title:'提示',
+						content:'我是内容'
+					}
+				},
+				methods:{
+					handleClick(){
+						this.show = !this.show
+					},
+					handleConfirm(){
+						console.log('confirm')
+					},
+					handleClose(){
+						console.log('close')
+					}
+				}
+			}).$mount('#app')
+		</script>
+	</body>
+</html>

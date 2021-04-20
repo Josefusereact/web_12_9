@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 对组件传入参数的案例 -->
+    <div id="app">
+        <!-- 组件定义了title参数之后就可以通过title对组件内部传参数，如果类型是字符串可以直接像html一样传值 -->
+        <my-component></my-component>
+        <!-- 组件的参数同样可以通过v-bind绑定组件外部的data数据 -->
+        <my-component :valu="value"></my-component>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            //组件传参选项props,他可以是数组，或者对象
+            //这里我们学习他的完整用法，对象用法
+            props: {
+                //props中定义参数名称key:{required:boolean,type:Type,default:function}
+                valu: {
+                    required: false,//该参数是否是必填参数
+                    type: String,//定义参数的类型如果允许多个类型可以使用[Stirng,Array]的写法，类型使用大写的对象名称
+                    default: function () {//组件的默认值，当required为true时不需要设置默认值
+                        return '我是默认值'
+                    }
+                }
+            },
+            //props中定义的属性在组件中是与data同级别的，除了不可以更改之外其他用法与data中的属性相同
+            template: '<div>{{valu}}</div>'
+        })
+        new Vue({
+            data() {
+                return {
+                    value: '我是绑定的参数'
+                }
+            }
+        }).$mount("#app");
+    </script>
+</body>
+
+</html>

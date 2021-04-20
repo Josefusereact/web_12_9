@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 思考一下为什么sex怎么输入都不能动态渲染 -->
+		<form id="addForm" action="">
+			<input name="username" placeholder="请出入账号" type="text"><br/>
+			<input name="password" placeholder="请出入密码" type="text"><br/>
+			<input name="nickname" placeholder="请出入昵称" type="text"><br/>
+			<input name="age" placeholder="请出入年龄" type="text"><br/>
+			<input name="sex" placeholder="请出入性别" type="text"><br/>
+		</form>
+		<div id="addFormValue"></div>
+		<script type="text/javascript">
+			//声明基本数据对象
+			var addForm = {
+				username:'',
+				password:'',
+				nickname:'',
+				age:'',
+				sex:''
+			}
+			var objTemp = {}
+			Object.keys(addForm).forEach((key,index) => {
+				console.log(key,index)
+				//获取指定key的表单中的input
+				let ipt = document
+					.querySelector(`input[name="${key}"]`)
+				//对input绑定输入事件，用来在输入中获取输入的值并赋值给
+				//指定的addForm中的key
+				ipt.oninput = function(event){
+					console.log(event.target.value)
+					//只要这里对addForm中的key赋值就会触发
+					//set函数并执行页面更新
+					addForm[key] = event.target.value
+				}
+				Object.defineProperty(addForm,key,{
+					set(v){
+						//当addForm中的值改变的时候
+						//动态修改对应name的input的值
+						ipt.value = v;
+						// console.log(v)
+						//将中间对象中对应的key设置成监听到的值
+						//这样取值的时候就可以直接取到
+						objTemp[key] = v
+						//更新视图中的json结果
+						document.querySelector('#addFormValue')
+							.innerText = JSON.stringify(addForm)
+					},
+					get(){
+						return objTemp[key]
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

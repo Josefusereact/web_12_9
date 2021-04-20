@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>官方例子</title>
+</head>
+
+<body>
+	<div id="app">
+		{{this.$store.getters.getCount}}
+		<button @click="increment">增加</button>
+	</div>
+	<!-- 先引入vuejs 这个是网上的js文件-->
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+	<!-- 再引入vuex -->
+	<script src="./vuex.js"></script>
+	<script>
+		const store = new Vuex.Store({
+			//存储的值
+			state: {
+				count: 0,
+			},
+			//修改值用的方法
+			mutations: {
+				increment(state) {
+					state.count++;
+				},
+			},
+			getters: {
+				getCount(state) {
+					return state.count;
+				}
+			}
+		});
+		new Vue({
+			el: '#app',
+			methods: {
+				increment() {
+					store.commit('increment');
+				}
+			},
+			store//引用Vuex
+		})
+	</script>
+</body>
+
+</html>

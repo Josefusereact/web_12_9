@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>08_条件渲染</title>
+</head>
+
+<body>
+  <!--
+1. 条件渲染指令
+  v-if
+  v-else
+  v-show
+2. 比较v-if与v-show
+  如果需要频繁切换 v-show 较好
+-->
+  <div id="demo">
+    <p id="p1" v-if=isOk :style={color:c1}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur placeat
+      delectus natus
+      repellendus officiis ab sint earum dolorum consequuntur voluptas? Ullam recusandae in consequatur sunt, fugiat
+      facere voluptates quidem cupiditate.</p>
+    <p id="p1" v-else :style={color:c2}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur placeat
+      delectus natus
+      repellendus</p>
+
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#demo",
+      data() {
+        return {
+          c1: "blue",
+          c2: "red",
+          isOk: true
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//新建一个html静态页面在js部分编写
+			var obj = {}
+			Object.defineProperty(obj,'name',{
+			  value:'我是name',//设置obj中name属性的默认值
+			  writable:false//设置当前属性是否可写入
+			})
+			console.log(obj.name)
+			obj.name = "新的名字"
+			console.log(obj.name)
+		</script>
+	</body>
+</html>

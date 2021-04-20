@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+			查看本页示例并且可以在浏览器的控制台中对p对象进行赋值
+			来查看对应的页面是否触发变更
+			再尝试直接在文本框赋值查看对应的文本框是否能改变p中对象的值
+			并且在最终我们可以在form中继续添加新的input
+			看是否能触发数据的值的变更
+		 -->
+		<form action="">
+			<div>
+				<input name="username" type="text">
+			</div>
+			<div>
+				<input name="password" type="text">
+			</div>
+			<div>
+				<input name="nickname" type="text">
+			</div>
+			<div>
+				<input name="age" type="text">
+			</div>
+			<div>
+				<input name="kkk" type="text">
+			</div>
+		</form>
+		<div id="show">
+			
+		</div>
+		<script type="text/javascript">
+			
+			//声明数据对象
+			let obj = {}
+			//对数据对象创建一个代理
+			let p = new Proxy(obj,{
+				// 监听赋值事件
+				set(target, property, value, receiver){
+					//对数据对象更新数据
+					target[property] = value
+					// 对input对应的文本框设置值
+					document
+						.querySelector(`input[name="${property}"]`)
+						.value = value
+					// 更新页面的obj的值的展示
+					document.querySelector('#show').innerText = 
+						JSON.stringify(target)
+						
+				},
+				get(target, property, receiver){
+					return target[property]
+				}
+			})
+			// 对所有input绑定输入事件
+			let ipts = document.querySelectorAll('input')
+			for(let item of ipts){
+				item.oninput = function(event){
+					// 输入时对代理对象的指定key赋值触发赋值事件
+					let name = event.target.name;
+					p[name] = event.target.value
+				}
+			}
+		</script>
+	</body>
+	
+</html>

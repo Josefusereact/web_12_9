@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //async变化的最基本示例
+      let p = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(123);
+        }, 1000);
+      });
+      let p1 = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(456);
+        }, 2000);
+      });
+      //正常的链式调用执行方式
+      // p.then(res => {
+      //   console.log(res)
+      //   return p1
+      // }).then(res => {
+      //   console.log(res)
+      // })
+      //async 和await的执行方式
+      async function test() {
+        //await修饰的代码如果是promise对象
+        //就可以直接在他前面获得到promise的值
+        let res = await p;
+        console.log(res);
+        let res1 = await p1;
+        console.log(res1);
+      }
+      let res = test();
+      console.log(res);
+      console.log("hello")(async function () {
+        return "我是Promise";
+      })();
+    </script>
+  </body>
+</html>

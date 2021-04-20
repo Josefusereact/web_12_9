@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>柱状图</title>
+    
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <button onclick="sortasc()">顺序</button>
+    <button onclick="sortdesc()">倒序</button>
+    <button onclick="sortrandom()">随机</button>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        //声明数据
+        let list = [{
+          name:'小明',
+          score:99
+        },{
+          name:'小红',
+          score:100
+        },{
+          name:'小黄',
+          score:75
+        },{
+          name:'小刚',
+          score:87
+        },{
+          name:'小芳',
+          score:120
+        },{
+          name:'小丽',
+          score:25
+        }]
+        // 指定图表的配置项和数据
+        var option = {
+          //图表的标题
+          title: {
+              text: '考试成绩排名'
+          },
+          //图表工具栏
+          tooltip: {},
+          //图表的标识点展示名称
+          legend: {
+              data:['成绩']
+          },
+          //x轴的配置
+          xAxis: {
+            // 将数据中的人名整理到x轴数据上
+            data: list.map(item => item.name)
+          },
+          //y轴的配置
+          yAxis: {},
+          // 图表的数据对象
+          series: [{
+            label:{
+              show:true
+            },
+            smooth:true,
+            smoothMonotone:'x',
+            //标识名称，必须与legend中配置的名称一样
+            name: '成绩',
+            //图表的类别，bar代表柱状图
+            type: 'line',
+            // 图表的数据，这里必须与xAxis中的数据长度一样的数组
+            //将数据中的分数整理到y轴上
+            data: list.map(item => item.score)
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        function sortasc(){
+          // 重新顺序排列数组
+          list = list.sort((a,b)=> a.score-b.score)
+          // 重新对option装载新数据
+          option.xAxis.data = list.map(item => item.name)
+          option.series[0].data = list.map(item => item.score)
+          // 调用echarts重新渲染
+          myChart.setOption(option);
+        }
+        function sortdesc(){
+          list = list.sort((a,b)=> b.score-a.score)
+          option.xAxis.data = list.map(item => item.name)
+          option.series[0].data = list.map(item => item.score)
+          myChart.setOption(option);
+        }
+        function sortrandom(){
+          list = list.sort((a,b)=> Math.random()>0.5?1:-1)
+          option.xAxis.data = list.map(item => item.name)
+          option.series[0].data = list.map(item => item.score)
+          myChart.setOption(option);
+        }
+    </script>
+</body>
+</html>

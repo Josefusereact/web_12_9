@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>普通效果</h4>
+  <div id="content" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+  <h4>节流效果</h4>
+  <div id="content1" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+  
+<script>  
+    let num = 1;
+    let content = document.getElementById('content');
+    function count(){
+      num++
+      content.innerHTML = num
+    }
+    content.onmousemove = count;
+    //节流函数示例
+    function throttle(callback,wait){
+      // 定义间隔时间起点
+      var timeout = 0
+      return function(){
+        // 定义上下文对象
+        var context = this;
+        // 获取函数的所有参数
+        var arg = arguments;
+        // 获取每次函数执行的时间
+        let now = new Date().getTime()
+        // 如果当前时间-时间起点达到间隔时间就调用
+        //一次回调函数，并将时间起点设置成当前时间
+        //用来降低回调函数的执行频率
+        if(now-timeout >=wait){
+          timeout = now
+          callback.apply(context,arguments)
+        }
+      }
+    }
+    let num1 = 1;
+    let content1 = document.getElementById('content1');
+    content1.onmousemove = throttle(function(){
+      num1++
+      content1.innerHTML = num1
+    },100)
+</script>
+</body>
+</html>

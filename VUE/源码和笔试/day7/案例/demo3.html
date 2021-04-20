@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let promise1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+    promise2 = promise1.then(res => {
+      console.log(res)
+      // 返回一个普通值
+      return '这里返回一个普通值'
+    })
+    promise2.then(res => {
+      console.log(res) //1秒后打印出：这里返回一个普通值
+    })
+
+    let promise11 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+    promise22 = promise11.then(res => {
+      // 返回一个Promise对象
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('这里返回一个Promise')
+        }, 2000)
+      })
+    })
+    promise22.then(res => {
+      console.log(res) //3秒后打印出：这里返回一个Promise
+    })
+  </script>
+</body>
+</html>
