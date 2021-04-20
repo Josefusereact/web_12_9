@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+
+    <style>
+        body {
+            background-color: teal;
+        }
+
+        main {
+            width: calc(100% - 40px);
+            height: 500px;
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            margin: 0 20px;
+        }
+
+        .choupai {
+            width: 100px;
+            height: 140px;
+            border-radius: 20px;
+            border: 2px solid greenyellow;
+            background-color: black;
+            background-size: 101.5% 100.5%;
+            display: none;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .choupai:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+            border: 2px solid red;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        span {
+            color: white;
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            display: none;
+            font-size: 25px;
+            writing-mode: vertical-lr;
+        }
+
+        #next {
+            margin: 0 40%;
+            display: none;
+        }
+
+        #motaikuang {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+        }
+
+        @keyframes a1 {
+            0% {}
+
+            100% {
+                top: 345px;
+                left: 420px;
+            }
+        }
+
+        .donghua {
+            animation: a1 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .xiaoguo {
+            left: 50px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="motaikuang"></div>
+    </main>
+    <div id="next"><button onclick="next()">下一位</button></div>
+    <script>
+        var names = "包烁言，蔡宇航，曾庆煌，董浩然，高睿，侯小龙，金兆新，林函宇，吕晨鹏，聂祥远，"
+            + "裴芷莹，彭田恬，苏鑫垒，王瑞，项刘威，徐晨，奚朦朦，闫会咏，赵春权，赵海东，赵磊，" +
+            "赵晓瑜，高宇，刘振，任果，孙佳伟，韦斯妮，王国栋，张晓旭，刘玉帅，赵静，邢浩宇，孙磊，" +
+            "杨远鹏，齐彦东，李昊阳，颜婷婷，温海东，李洪亮，";
+        var arrname = names.split("，");
+        console.log(arrname);
+        console.log(arrname.length);
+        s(arrname.length);
+
+        console.log(arrname.length);
+        function s(max) {
+            var arr = new Array();
+            while (arr.length < max) {
+                index = parseInt(Math.random() * ((max - 1) - 0 + 1));
+                if (arr.indexOf(index) == -1) {
+                    arr.push(index);
+                }
+            }
+            console.dir(arr);
+            var main = document.getElementsByTagName('main')[0];
+            var j = 150;
+            for (i = 0; i < max; i++) {
+                j = j + 30;
+                main.innerHTML += "<div class=\"choupai\" style=\"top:50px; left:" + j + "px;\"><img src='img/1.jpg'><span>" + arrname[arr[i]] + "</span></div> ";
+            }
+            xipai1();
+
+            function xipai1() {
+                var i = 0;
+                var start = setInterval(function () {
+                    $('.choupai').eq(i).fadeIn();
+                    if (i == max) {
+                        $('#motaikuang').hide();
+                        clearInterval(start);
+                    }
+                    i++;
+                }, 50);
+            };
+        }
+        var idnex;
+        // $('.choupai').hover(function() {
+        //         index = $(this).index();
+        //         $('.choupai').eq(index - 1).nextAll().stop().animate({
+        //             left: '+=50px'
+        //         })
+        //     },
+        //     function() {
+        //         $('.choupai').eq(index - 1).nextAll().stop().animate({
+        //             left: '-=50px'
+        //         })
+
+        //     });
+        $('.choupai').click(function () {
+            $('#motaikuang').show();
+            console.log($(this).index());
+            index = $(this).index();
+            console.log(index);
+            $('#next').fadeIn(500);
+            $(this).children('img').fadeOut(500);
+            $(this).addClass('donghua').children('span').fadeIn(500);
+        })
+
+        function next() {
+            console.log(index - 1);
+            $('.choupai').eq(index - 1).fadeOut();
+            $('#motaikuang').hide();
+            $('#next').fadeOut(500);
+        }
+    </script>
+</body>
+
+</html>
