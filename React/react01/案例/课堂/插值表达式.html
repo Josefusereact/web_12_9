@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <select name="" id="">
+        <script>
+            var prince = "<%=province%>";
+            for (var i = 0; i < 10; i++) {
+                document.write("<option value=" + i + ">" + i + "</option>");
+            }
+        </script>
+    </select>
+
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin
+        src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        var libai = { name: '李白', blood: 100 }
+        function LiBai() {
+            this.name = name;
+            this.blood = blood;
+        }
+        class Libai {
+            constructor(name, blood) {
+
+            }
+            sha() {
+
+            }
+            diaoxue() {
+
+            }
+        }
+        var str = "<i>我是一个字符串</i>"
+        var students = {
+            id: '001', name: 'Acujdl',
+            id: '002', name: 'Jack Lerst'
+        }
+        var array = new Array(1, 2, 4)
+        ReactDOM.render(
+            <div>
+                <h2>输出一个值：{str}</h2>
+                <span dangerouslySetInnerHTML={{ __html: str }}></span>
+                <div dangerouslySetInnerHTML={{ __html: str }}></div>
+                <h2>输出一个数组：{array}</h2>
+                {/* 对象数组也需要转化 */}
+                <h2>输出对象数组：{JSON.stringify(students)}</h2>
+                <h4>
+                    自执行函数：
+                    {
+                        (() => {
+                            alert("页面执行到这就执行");
+                        })()
+                    }
+                </h4>
+            </div>,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+
+</html>

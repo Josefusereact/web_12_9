@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    name: '我是初始值',
+                    num: 0,
+                    url: 'https://www.bilibili.com/',
+                    src: 'https://picsum.photos/980/375?1254',
+                    title: `跳转到bilibili`,
+                    alt: '图片裂开'
+                }
+            }
+            handleClick() {
+                this.setState({ name: '点击后发生了变化' })
+            }
+            handleClick2() {
+                let n = this.state.num + 1;
+                this.setState({ num: n })
+            }
+            render() {
+                return (
+                    <h1>
+                        {this.state.name.substring(3)}
+                        {this.state.num}
+                        <button onClick={() => { this.handleClick() }}>点我</button>
+                        <button onClick={() => { this.handleClick2() }}>点我2</button>
+                        <a href={this.state.url} >
+                            <img src={this.state.src} alt={this.state.alt} title={this.state.title} />
+                        </a>
+                    </h1>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <div><App /></div>,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+
+</html>
